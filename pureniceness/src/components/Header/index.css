@@ -1,0 +1,19 @@
+header{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.logo {
+    width: 15%;
+    margin-right: 95%;
+    
+}
+
+.svg-inline--fa{
+    color: #9e8a58;
+    height: 0.8rem;
+    
+}
+
