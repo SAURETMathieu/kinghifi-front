@@ -6,17 +6,19 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 //Importation des composants
-import Home from './components/App/index.jsx'
-import Admin from './components/Admin/index.jsx';
-import Contact from './components/Contact/index.jsx';
-import Account from './components/Account/index.jsx';
+import App from './components/App'
+import Home from './components/Home'
+import Admin from './components/Admin';
+import Contact from './components/Contact';
+import Account from './components/Account';
 
 //Création du routeur
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <App />,
     children: [
+        {index:true , element:<Home />},
         { path: "/admin", element: <Admin /> },
         { path: "/contact", element: <Contact /> },
         { path: "/account", element: <Account /> },

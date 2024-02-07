@@ -7,12 +7,11 @@ import { NavLink } from "react-router-dom";
 
 function Header() {
 
-
     return(
       <header className='header'>
 
         <NavLink to='/'>
-          <img src='../public/KHF BANNER.jpg' />
+          <img className='logo'src='../public/KHF BANNER.jpg' />
         </NavLink>
 
         <NavLink to='/admin'>

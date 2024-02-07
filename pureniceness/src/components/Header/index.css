@@ -4,7 +4,8 @@ header{
     justify-content: space-between;
     
 }
-img {
+
+.logo {
     width: 15%;
     margin-right: 95%;
     
@@ -13,6 +14,6 @@ img {
 .svg-inline--fa{
     color: #9e8a58;
     height: 0.8rem;
-    padding-right: 5%;
+    
 }
 

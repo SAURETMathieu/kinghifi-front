@@ -5,9 +5,8 @@ import Header from '../Header'
 import Footer from '../Footer'
 
 
-function Home() {
+function App() {
  
-
   return (
     <div className='App'>
 
@@ -19,4 +18,4 @@ function Home() {
   )
 }
 
-export default Home
+export default App
