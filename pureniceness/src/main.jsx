@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 //Importation des composants
-import Home from './components/Home/index.jsx'
+import Home from './components/App/index.jsx'
 import Admin from './components/Admin/index.jsx';
 import Contact from './components/Contact/index.jsx';
 import Account from './components/Account/index.jsx';

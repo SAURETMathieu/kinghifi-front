@@ -1,9 +1,10 @@
 // import './index.css'
 
-function Admin() {
 
-    return("Admin")
+const Admin = () => {
+          
     
-}
+   }
+
 
 export default Admin;
