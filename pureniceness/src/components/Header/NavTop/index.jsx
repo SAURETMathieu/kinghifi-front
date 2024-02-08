@@ -5,7 +5,7 @@ import { faUser, faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 import { NavLink } from "react-router-dom";
 
-function Header() {
+function NavTop() {
 
     return(
       <header className='header'>
@@ -32,4 +32,4 @@ function Header() {
     
 }
 
-export default Header;
+export default NavTop;
