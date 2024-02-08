@@ -1,0 +1,21 @@
+header{
+    background-color: black;
+    display: flex;
+    
+    /* max-height: 10%; */
+    
+}
+
+.logo {
+    width: 20%;
+    margin-right: 70%;
+}
+
+.nav-icon{
+    color: #9e8a58;
+    padding: 0.5%;
+    margin: auto;      
+}
+
+
+
