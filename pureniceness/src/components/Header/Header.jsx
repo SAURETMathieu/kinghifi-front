@@ -6,7 +6,7 @@ function Header() {
 
     return(
       <header className='header'>      
-        <NavTop></NavTop>
+        <NavTop />
       </header>
         
     )

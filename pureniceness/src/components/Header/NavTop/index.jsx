@@ -8,7 +8,8 @@ import { NavLink } from "react-router-dom";
 function NavTop() {
 
     return(
-      <header className='header'>
+      <>
+      <nav className='navbar-top'>
 
         <NavLink to='/'>
           <img className='logo'src='../public/KHF BANNER.jpg' />
@@ -22,13 +23,29 @@ function NavTop() {
           <FontAwesomeIcon icon={faEnvelope} />
         </NavLink>
 
-        <NavLink to='/account' >
-          <FontAwesomeIcon icon={faUser}/>
+        <NavLink to='/account'>
+          <div className="dropdown is-hoverable">
+            <div className="dropdown-trigger">
+              <FontAwesomeIcon icon={faUser} aria-haspopup="true" aria-controls="dropdown-menu4"/>
+            </div>
+
+            <div className="dropdown-menu" id="dropdown-menu4" role="menu">
+              <div className="dropdown-content">
+                <div className="dropdown-item">
+                  <NavLink to='/info perso'>Info personnelle</NavLink>
+                  <NavLink to='/favorites'>Favoris</NavLink>
+                  <NavLink to='/signout'>Se déconnecter</NavLink>
+                </div>
+              </div>
+            </div>
+            
+          </div>
         </NavLink>
-      
-      </header>
-        
-    )
+
+      </nav>
+
+</>
+)
     
 }
 
