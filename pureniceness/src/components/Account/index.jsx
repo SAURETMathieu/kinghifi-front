@@ -1,17 +1,15 @@
+/* eslint-disable react/no-unescaped-entities */
 // import './index.css'
 
 import { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
+
 
 const Account = () => {
 
-    // const [isAccountOpen, setIsAccountOpen] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    // const toggleAccount = () => {
-    //   setIsAccountOpen(!isAccountOpen)
-    // };
-  
     const handleEmailChange = (event) => {
       setEmail(event.target.value);
     };
@@ -38,7 +36,7 @@ const Account = () => {
                               
           <input className='account-input'
               type="email"
-              id="email"
+              name="email"
               placeholder={"email"}
               value={email}
               onChange={handleEmailChange}
@@ -46,13 +44,16 @@ const Account = () => {
       
           <input className='account-input'
               type="password"
-              id="password"
+              name="password"
               placeholder={"Mot de passe"}
               value={password}
               onChange={handlePasswordChange}
               required />
           
-        <button className="button"type="submit">Se connecter</button>
+        <button className="button"type="submit">Connexion</button>
+
+        <Link>Mot de passe oublié ?</Link>
+        <NavLink to='/signup'> S'inscrire</NavLink>
           
     </form>
     

@@ -2,6 +2,7 @@ header{
     background-color: black;
     display: flex;
     justify-content: space-between;
+    max-height: 10%;
     
 }
 
@@ -11,9 +12,10 @@ header{
     
 }
 
-.svg-inline--fa{
+a{
     color: #9e8a58;
-    height: 0.8rem;
-    
+    padding: 1%;
+    margin: auto;
+      
 }
 
