@@ -4,7 +4,9 @@ function Footer() {
 
     return(
         <div className='footer'>
-
+            Nous contacter
+            Réseau sociaux
+            Mention légales
         </div>
     )
     
