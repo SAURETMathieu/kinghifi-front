@@ -1,17 +1,15 @@
+/* eslint-disable react/no-unescaped-entities */
 // import './index.css'
 
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Account = () => {
 
-    // const [isAccountOpen, setIsAccountOpen] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    // const toggleAccount = () => {
-    //   setIsAccountOpen(!isAccountOpen)
-    // };
-  
     const handleEmailChange = (event) => {
       setEmail(event.target.value);
     };
@@ -52,7 +50,10 @@ const Account = () => {
               onChange={handlePasswordChange}
               required />
           
-        <button className="button"type="submit">Se connecter</button>
+        <button className="button"type="submit">Connexion</button>
+
+        <Link>Mot de passe oublié ?</Link>
+        <NavLink to='/account/signup'> S'inscrire</NavLink>
           
     </form>
     

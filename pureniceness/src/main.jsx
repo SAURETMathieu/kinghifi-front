@@ -11,6 +11,7 @@ import Home from './components/Home'
 import Admin from './components/Admin';
 import Contact from './components/Contact';
 import Account from './components/Account';
+import Signup from './components/Signup';
 
 //Création du routeur
 const router = createBrowserRouter([
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
         {index:true , element:<Home />},
         { path: "/admin", element: <Admin /> },
         { path: "/contact", element: <Contact /> },
-        { path: "/account", element: <Account /> },
+        { path: "/account", element: <Account />, 
+          children: [{ path: "signup", element: <Signup /> },]},
     ],
   },
 ]);
