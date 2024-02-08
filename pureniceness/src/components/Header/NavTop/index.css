@@ -1,25 +1,21 @@
 header{
     background-color: black;
     display: flex;
-    justify-content: space-between;
-    max-height: 10%;
+    
+    /* max-height: 10%; */
     
 }
 
 .logo {
-    width: 15%;
-    margin-right: 95%;
-    
+    width: 20%;
+    margin-right: 70%;
 }
 
-a{
+.nav-icon{
     color: #9e8a58;
-    padding: 1%;
-    margin: auto;
-      
+    padding: 0.5%;
+    margin: auto;      
 }
 
-a :hover{
-    color: blueviolet;
-}
+
 
