@@ -16,6 +16,18 @@ function Singup() {
         city: ''
       });
 
+      const initialFormUserData = {
+        email: '',
+        password: '',
+        firstname: '',
+        lastname: '',
+        birthdate: '',
+        address: '',
+        zipcode: '',
+        country: '',
+        city: ''
+      };
+
       const handleChange = (event) => {
         const { name, value } = event.target;
         setFormUserData({ ...formUserData, [name]: value });
@@ -27,7 +39,7 @@ function Singup() {
       
       console.log({ ...formUserData});
             
-      setFormUserData({ ...formUserData, key: '' });
+      setFormUserData({ ...initialFormUserData });
     };
 
     return (
