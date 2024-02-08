@@ -1,6 +1,8 @@
 // import './index.css'
 
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Singup() {
    
@@ -12,8 +14,8 @@ function Singup() {
         birthdate: '',
         address: '',
         zipcode: '',
+        city: '',
         country: '',
-        city: ''
       });
 
       const initialFormUserData = {
@@ -24,8 +26,8 @@ function Singup() {
         birthdate: '',
         address: '',
         zipcode: '',
+        city: '',
         country: '',
-        city: ''
       };
 
       const handleChange = (event) => {
@@ -96,12 +98,6 @@ function Singup() {
             value={formUserData.zipcode} 
             onChange={handleChange} />
 
-          <input 
-            type="text" 
-            name="country" 
-            placeholder="Pays" 
-            value={formUserData.country} 
-            onChange={handleChange} />
 
           <input 
             type="text" 
@@ -110,7 +106,15 @@ function Singup() {
             value={formUserData.city} 
             onChange={handleChange} />
 
-        <button type="submit">S'inscrire</button>
+          <input 
+            type="text" 
+            name="country" 
+            placeholder="Pays" 
+            value={formUserData.country} 
+            onChange={handleChange} />
+
+        <button type="submit"> S'inscrire </button>
+        <NavLink to='/account'> Retour </NavLink>
         
       </form>
                           
