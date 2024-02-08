@@ -1,14 +1,14 @@
 // import './index.css'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 function Singup() {
    
     const [formUserData, setFormUserData] = useState({
         email: '',
         password: '',
+        passwordConfirm: '',
         firstname: '',
         lastname: '',
         birthdate: '',
@@ -21,6 +21,7 @@ function Singup() {
       const initialFormUserData = {
         email: '',
         password: '',
+        passwordConfirm: '',
         firstname: '',
         lastname: '',
         birthdate: '',
@@ -62,6 +63,13 @@ function Singup() {
             placeholder="Mot de passe" 
             value={formUserData.password} 
             onChange={handleChange} />
+
+          <input 
+            type="password" 
+            name="passwordConfirm" 
+            placeholder="Confirmation du mot de passe" 
+            value={formUserData.passwordConfirm} 
+            onChange={handleChange} />
       
           <input 
             type="text" 
@@ -97,8 +105,7 @@ function Singup() {
             placeholder="Code postal" 
             value={formUserData.zipcode} 
             onChange={handleChange} />
-
-
+          
           <input 
             type="text" 
             name="city" 

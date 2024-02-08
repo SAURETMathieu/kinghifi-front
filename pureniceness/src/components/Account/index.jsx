@@ -36,7 +36,7 @@ const Account = () => {
                               
           <input className='account-input'
               type="email"
-              id="email"
+              name="email"
               placeholder={"email"}
               value={email}
               onChange={handleEmailChange}
@@ -44,7 +44,7 @@ const Account = () => {
       
           <input className='account-input'
               type="password"
-              id="password"
+              name="password"
               placeholder={"Mot de passe"}
               value={password}
               onChange={handlePasswordChange}
