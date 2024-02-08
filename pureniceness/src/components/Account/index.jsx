@@ -53,7 +53,7 @@ const Account = () => {
         <button className="button"type="submit">Connexion</button>
 
         <Link>Mot de passe oublié ?</Link>
-        <NavLink to='/account/signup'> S'inscrire</NavLink>
+        <NavLink to='/signup'> S'inscrire</NavLink>
           
     </form>
     
