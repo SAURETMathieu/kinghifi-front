@@ -1,4 +1,9 @@
 .footer{
-background-color: black;
+  background-color: black;
+  bottom: 0;
+  position:fixed;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
 
 }

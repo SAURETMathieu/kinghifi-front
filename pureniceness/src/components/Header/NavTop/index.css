@@ -1,20 +1,18 @@
 header{
     background-color: black;
     display: flex;
-    
-    /* max-height: 10%; */
-    
+   
 }
 
 .logo {
     width: 20%;
-    margin-right: 70%;
+    margin-right: 75%;
+    margin-top: 0.5%;
 }
 
 .nav-icon{
     color: #9e8a58;
-    padding: 0.5%;
-    margin: auto;      
+    margin: auto 2% auto 1%;      
 }
 
 
