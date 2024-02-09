@@ -36,7 +36,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-//MRouterProvider permet à react-router-dom de checker les routes de notre application
+//RouterProvider permet à react-router-dom de checker les routes de notre application
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />

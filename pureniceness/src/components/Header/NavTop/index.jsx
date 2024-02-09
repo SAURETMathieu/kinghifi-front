@@ -15,7 +15,7 @@ function NavTop() {
   };
 
     return(
-      <>
+      <div className='navbar'>
 
         <NavLink to='/' className='nav-logo'>
           <img className='logo'src='../public/KHF BANNER.jpg' />
@@ -31,12 +31,12 @@ function NavTop() {
 
         <NavLink to='/account' 
         className='nav-icon'
-        onclick={toggleUserLogged}>
+        onClick={toggleUserLogged}>
           
           {isUserLogged ? (<DropdownMenuUser/>) : (<FontAwesomeIcon icon={faDoorOpen} />)}
           
         </NavLink>
-        </>
+        </div>
 
 )
     
