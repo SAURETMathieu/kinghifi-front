@@ -1,0 +1,14 @@
+.navfloat{
+    background-color:darkolivegreen;
+    display: flex;
+    justify-content: space-around;
+    height: 6%;
+    font-size: x-large;
+       
+}
+
+a{
+    margin-bottom: 1%;
+    padding: 1%;
+    color: black;
+}

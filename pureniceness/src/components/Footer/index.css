@@ -1,9 +1,10 @@
 .footer{
+  display:flex;
   background-color: black;
   bottom: 0;
   position:fixed;
-  width: 100%;
+  width: 100vw;
   padding: 10px;
-  text-align: center;
+  justify-content: space-between;
 
 }

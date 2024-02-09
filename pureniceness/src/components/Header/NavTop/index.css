@@ -1,13 +1,14 @@
 header{
     background-color: black;
     display: flex;
+    height: 12%;
    
 }
 
 .logo {
     width: 20%;
     margin-right: 75%;
-    margin-top: 0.5%;
+    
 }
 
 .nav-icon{
