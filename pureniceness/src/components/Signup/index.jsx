@@ -1,6 +1,6 @@
-// import './index.css'
+import './index.css'
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function Singup() {
@@ -9,8 +9,8 @@ function Singup() {
         email: '',
         password: '',
         passwordConfirm: '',
-        firstname: '',
         lastname: '',
+        firstname: '',
         birthdate: '',
         address: '',
         zipcode: '',
@@ -22,8 +22,8 @@ function Singup() {
         email: '',
         password: '',
         passwordConfirm: '',
-        firstname: '',
         lastname: '',
+        firstname: '',
         birthdate: '',
         address: '',
         zipcode: '',
@@ -46,46 +46,37 @@ function Singup() {
     };
 
     return (
-      <div className='singup'>
+      <div className='form'>
 
-         <form className="submit-form" onSubmit={handleSubmit} >
+         <form className="submit-form field is-horizontal" onSubmit={handleSubmit} >
                               
-          <input 
+          <input
+            className="input is-expanded is-warning"  
             type="text" 
             name="email" 
             placeholder="Email" 
             value={formUserData.email} 
             onChange={handleChange} />
 
-          <input 
-            type="password" 
-            name="password" 
-            placeholder="Mot de passe" 
-            value={formUserData.password} 
-            onChange={handleChange} />
-
-          <input 
-            type="password" 
-            name="passwordConfirm" 
-            placeholder="Confirmation du mot de passe" 
-            value={formUserData.passwordConfirm} 
+          <input
+            className="input is-normal is-warning"  
+            type="text" 
+            name="lastname" 
+            placeholder="Nom" 
+            value={formUserData.lastname} 
             onChange={handleChange} />
       
           <input 
+            className="input is-normal is-warning" 
             type="text" 
             name="firstname" 
             placeholder="Prénom" 
             value={formUserData.firstname} 
             onChange={handleChange} />
 
-          <input 
-            type="text" 
-            name="lastname" 
-            placeholder="Nom de famille" 
-            value={formUserData.lastname} 
-            onChange={handleChange} />
 
           <input 
+            className="input is-normal is-warning" 
             type="text" 
             name="birthdate" 
             placeholder="Date de naissance" 
@@ -93,13 +84,15 @@ function Singup() {
             onChange={handleChange} />
 
           <input 
+            className="input is-expanded is-warning" 
             type="text" 
             name="address" 
             placeholder="Adresse" 
             value={formUserData.address} 
             onChange={handleChange} />
 
-          <input 
+          <input
+            className="input is-normal is-warning"  
             type="text" 
             name="zipcode" 
             placeholder="Code postal" 
@@ -107,20 +100,38 @@ function Singup() {
             onChange={handleChange} />
           
           <input 
-            type="text" 
+            className="input is-normal is-warning"  
+            type="text"
             name="city" 
             placeholder="Ville" 
             value={formUserData.city} 
             onChange={handleChange} />
 
           <input 
-            type="text" 
+            className="input is-normal is-warning" 
+            type="text"
             name="country" 
             placeholder="Pays" 
             value={formUserData.country} 
             onChange={handleChange} />
 
-        <button type="submit"> S'inscrire </button>
+          <input 
+            className="input is-expanded is-warning"
+            type="password" 
+            name="password" 
+            placeholder="Mot de passe" 
+            value={formUserData.password} 
+            onChange={handleChange} />
+            
+          <input
+            className="input is-expanded is-warning"  
+            type="password" 
+            name="passwordConfirm" 
+            placeholder="Confirmation du mot de passe" 
+            value={formUserData.passwordConfirm} 
+            onChange={handleChange} />
+
+        <button className="button is-warning is-light" type="submit"> S'inscrire </button>
         <NavLink to='/account'> Retour </NavLink>
         
       </form>

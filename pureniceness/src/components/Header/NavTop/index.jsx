@@ -2,23 +2,20 @@ import './index.css'
 // import des icons
 import {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser ,faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faDoorOpen ,faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 import { NavLink } from "react-router-dom";
 import DropdownMenuUser from '../../Account/DropdownMenuUser';
 
 function NavTop() {
-  const [isUserLogged, setIsUserLogged] = useState(false);
+  const [isUserLogged, setIsUserLogged] = useState(true);
 
   const toggleUserLogged = () => {
     setIsUserLogged(!isUserLogged)
   };
 
-
-
     return(
-      
-      <div className='navbar-top'>
+      <>
 
         <NavLink to='/'>
           <img className='logo'src='../public/KHF BANNER.jpg' />
@@ -36,12 +33,10 @@ function NavTop() {
         className='nav-icon'
         onclick={toggleUserLogged}>
           
-          {isUserLogged ? (<DropdownMenuUser/>) : (<FontAwesomeIcon icon={faUser} />)}
+          {isUserLogged ? (<DropdownMenuUser/>) : (<FontAwesomeIcon icon={faDoorOpen} />)}
           
         </NavLink>
-
-      </div>
-
+        </>
 
 )
     

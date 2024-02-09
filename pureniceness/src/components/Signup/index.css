@@ -1,0 +1,28 @@
+.form{
+    display: flex;
+}
+  
+.submit-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 75%;  
+}
+  
+.input{
+   margin: 1%;  
+}
+
+.input.is-normal{
+    margin:1%;
+    width: 40%;
+}
+
+button{
+    margin: auto 25% auto 35%;
+}
+
+a{
+    margin: 0.5%;
+}
+
