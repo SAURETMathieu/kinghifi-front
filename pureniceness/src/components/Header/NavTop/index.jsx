@@ -17,7 +17,7 @@ function NavTop() {
     return(
       <>
 
-        <NavLink to='/'>
+        <NavLink to='/' className='nav-logo'>
           <img className='logo'src='../public/KHF BANNER.jpg' />
         </NavLink>
 

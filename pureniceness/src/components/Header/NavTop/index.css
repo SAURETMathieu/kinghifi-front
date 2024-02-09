@@ -5,16 +5,20 @@ header{
    
 }
 
-.logo {
-    width: 20%;
-    margin-right: 75%;
-    
-}
-
 .nav-icon{
     color: #9e8a58;
-    margin: auto 2% auto 1%;      
+    margin: auto 2% auto 1%;
+    padding: 1%;      
 }
 
+.nav-logo{
+    padding:0%;
+    max-width: 12%;
+    margin-right: 68%;
+}
+
+a.active{
+    padding:1%
+}
 
 
