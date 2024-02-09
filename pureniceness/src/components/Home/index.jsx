@@ -1,11 +1,33 @@
 import './index.css'
 
+import axios from "axios"; 
+import { useState, useEffect } from 'react';
+
+
 function Home() {
+
+  const [labelDetails, setLabelDetails] = useState({});
+  
+    const fetchDetails = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/labels`);
+        setLabelDetails(response.data);       
+
+        console.log(response.data[0]);
+      } catch (error) {
+        console.log(error);
+      } 
+    };
+
+  useEffect(() => {
+    fetchDetails();
+  }, []);
+
   return (
     <>
       <div className='head'>
-        <img className='head-image'src='public/KHF fisheye.jpg'></img>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis officia porro veritatis, quibusdam, provident perspiciatis quasi, esse inventore atque nemo eius numquam sed aliquid alias ex. Commodi, illum numquam? Vel.</p>
+        <img className='head-image'src='projet-15-pureniceness-records-front/pureniceness/public/KHF BANNER.jpg'></img>
+          <p>{labelDetails.description}</p>
       </div>
 
       <div className='card'>
