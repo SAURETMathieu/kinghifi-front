@@ -34,10 +34,10 @@ function Dropdown({ title, icon, links, caret }) {
 
   return (
     <div className={`dropdown is-hoverable is-right ${isHovered ? 'hovered' : ''}`} 
-    onMouseEnter={handleMouseEnter} 
-    onMouseLeave={handleMouseLeave}>
+      onMouseEnter={handleMouseEnter} 
+      onMouseLeave={handleMouseLeave}>
       <div className="dropdown-trigger" 
-      onClick={toggleDropdown}>
+        onClick={toggleDropdown}>
         <span className="navbar-text">{title}</span>
         <FontAwesomeIcon className='navbar-icon' icon={icon} />
         {caret ? <FontAwesomeIcon icon={faCaretDown} aria-haspopup="true" aria-controls="dropdown-menu4"/> : null}

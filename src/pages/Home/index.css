@@ -72,8 +72,8 @@ margin: 0 auto;
 }
 
 @media screen and (min-width: 1440px) {
-.label__card-main{
-  flex-direction:row;
-}
+  .label__card-main{
+    flex-direction:row;
+  }
 }
   
