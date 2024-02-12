@@ -1,0 +1,42 @@
+.dropdown-content{
+    background:grey;
+    width:300px;
+  }
+  
+  .dropdown-item{
+    display:flex;
+    justify-content: space-evenly;
+    flex-direction:column;
+    font-size:1.5rem;
+    background:grey;
+    color:white;
+    font-weight:600;
+  }
+  
+  .dropdown-trigger{
+    color: black;
+    display:flex;
+    gap:0.2rem;
+    justify-content:center;
+    align-items:center;
+  }
+  
+  .dropdown:hover{
+    cursor:pointer;
+  }
+  
+  @media screen and (max-width: 426px) {
+    .dropdown-menu{
+      position:fixed;
+      top:3rem;
+      left:0;
+      width:100%;
+      padding:0;
+      gap:0.2rem;
+      background:grey;
+    }
+    
+    .dropdown-content{
+      width:100%;
+    }
+  }

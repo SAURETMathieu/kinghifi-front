@@ -1,0 +1,39 @@
+.navbar-top{
+    padding:0 1.5rem;
+    background-color: black;
+    display: flex;
+    height: var(--navbar-height);
+    width:100%;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.navbar-top__left,
+.navbar-top__right{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    height:100%;
+    gap:1.5rem;
+}
+
+.logo{
+    width:2.5rem;
+}
+
+.nav-icon{
+    margin:0;
+    font-size:1.5rem;
+    color:white;
+}
+
+.nav-logo{
+    margin:0;
+    
+}
+
+
+
+
+
+
