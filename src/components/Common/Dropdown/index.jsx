@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
-import './index.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import './index.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
-function Dropdown({ title, icon, links, caret }) {
+function Dropdown({
+  title, icon, links, caret,
+}) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); 
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -33,22 +35,32 @@ function Dropdown({ title, icon, links, caret }) {
   };
 
   return (
-    <div className={`dropdown is-hoverable is-right ${isHovered ? 'hovered' : ''}`} 
-      onMouseEnter={handleMouseEnter} 
-      onMouseLeave={handleMouseLeave}>
-      <div className="dropdown-trigger" 
-        onClick={toggleDropdown}>
+    <div
+      className={`dropdown is-hoverable is-right ${isHovered ? 'hovered' : ''}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div
+        className="dropdown-trigger"
+        onClick={toggleDropdown}
+      >
         <span className="navbar-text">{title}</span>
-        <FontAwesomeIcon className='navbar-icon' icon={icon} />
-        {caret ? <FontAwesomeIcon icon={faCaretDown} aria-haspopup="true" aria-controls="dropdown-menu4"/> : null}
+        <FontAwesomeIcon className="navbar-icon" icon={icon} />
+        {caret ? <FontAwesomeIcon icon={faCaretDown} aria-haspopup="true" aria-controls="dropdown-menu4" /> : null}
       </div>
-  
+
       {isOpen && (
         <div className="dropdown-menu" id="dropdown-menu4" role="menu">
           <div className="dropdown-content">
             <div className="dropdown-item">
               {links.map((link, index) => (
-                <NavLink key={index} to={link.path} onClick={() => { handleClickLink(); closeDropdown(); }}>{link.label}</NavLink>
+                <NavLink
+                  key={index}
+                  to={link.path}
+                  onClick={() => { handleClickLink(); closeDropdown(); }}
+                >
+                  {link.label}
+                </NavLink>
               ))}
             </div>
           </div>
@@ -63,13 +75,13 @@ Dropdown.propTypes = {
   icon: PropTypes.object.isRequired,
   links: PropTypes.arrayOf(PropTypes.shape({
     path: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
   })).isRequired,
-  caret: PropTypes.bool.isRequired
+  caret: PropTypes.bool.isRequired,
 };
 
 Dropdown.defaultProps = {
-  caret: true
+  caret: true,
 };
 
 export default Dropdown;

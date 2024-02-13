@@ -1,10 +1,5 @@
 // import './index.css'
 
-
-const Medias = () => {
-          
-  return("Medias")
- }
-
+const Medias = () => ('Medias');
 
 export default Medias;

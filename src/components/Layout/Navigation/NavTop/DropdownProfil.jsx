@@ -1,14 +1,11 @@
 import './DropdownProfil.css';
 
-import Dropdown from '/src/components/Common/Dropdown';
-
 import { useState } from 'react';
 import { faRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons';
+import Dropdown from '../../../Common/Dropdown';
 
 function DropdownProfil() {
   const [isUserLogged, setIsUserLogged] = useState(false);
-
- 
 
   const loggedLinks = [
     { path: '/profil', label: 'Profil' },
@@ -25,11 +22,11 @@ function DropdownProfil() {
   return (
     isUserLogged ? (
       <div className="navbar-top-icon">
-        <Dropdown title="" icon={faUser}  links={loggedLinks} caret={false}/>
+        <Dropdown title="" icon={faUser} links={loggedLinks} caret={false} />
       </div>
     ) : (
       <div className="navbar-top-icon">
-        <Dropdown title="" icon={faRightToBracket}  links={loggedOutLinks} caret={false}/>
+        <Dropdown title="" icon={faRightToBracket} links={loggedOutLinks} caret={false} />
       </div>
     )
   );
