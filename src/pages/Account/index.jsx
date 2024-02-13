@@ -5,7 +5,7 @@
 // import { NavLink, Link } from "react-router-dom";
 
 
-// const Account = () => {
+const Account = () => {
 
 //     const [email, setEmail] = useState('');
 //     const [password, setPassword] = useState('');
@@ -61,6 +61,7 @@
     
 //     </div>
     
-// )}
+// )
+}
 
-// export default Account;
+export default Account;
