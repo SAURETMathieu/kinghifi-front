@@ -1,0 +1,35 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: darkolivegreen;
+    --background-color: #202020;
+    --main-padding:1rem;
+    --navbar-height: 3rem;
+  }
+  
+  #root {
+    min-width: 100vw;
+    min-height: 100vh;
+    text-align: center;
+    min-width:300px;
+    width:100%;
+    box-sizing:border-box;
+  }
+  
+  main{
+    min-height:100vh;
+    background:var(--background-color);
+    color:white;
+    padding:1rem;
+    margin-top:var(--navbar-height);
+  }
+  
+  main a{
+    margin:0;
+    padding:0;
+  }
+  
+  @media screen and (min-width: 426px) {
+    main{
+      margin-top:0;
+    }
+  }
