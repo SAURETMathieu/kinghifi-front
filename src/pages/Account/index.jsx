@@ -1,66 +1,66 @@
-/* eslint-disable react/no-unescaped-entities */
-import './index.css'
+// /* eslint-disable react/no-unescaped-entities */
+// import './index.css'
 
-import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+// import { useState } from "react";
+// import { NavLink, Link } from "react-router-dom";
 
 
-const Account = () => {
+// const Account = () => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+//     const [email, setEmail] = useState('');
+//     const [password, setPassword] = useState('');
 
-    const handleEmailChange = (event) => {
-      setEmail(event.target.value);
-    };
+//     const handleEmailChange = (event) => {
+//       setEmail(event.target.value);
+//     };
   
-    const handlePasswordChange = (event) => {
-      setPassword(event.target.value);
-    };
+//     const handlePasswordChange = (event) => {
+//       setPassword(event.target.value);
+//     };
   
-    const handleSubmit = (event) => {
-      event.preventDefault();
+//     const handleSubmit = (event) => {
+//       event.preventDefault();
       
-      console.log('Email:', email);
-      console.log('Mot de passe:', password);
+//       console.log('Email:', email);
+//       console.log('Mot de passe:', password);
       
-      setEmail('');
-      setPassword('');
-    };
+//       setEmail('');
+//       setPassword('');
+//     };
 
-  return (
+//   return (
       
-    <div className='form' >
+//     <div className='form' >
                    
-        <form className="submit-form" onSubmit={handleSubmit} >
+//         <form className="submit-form" onSubmit={handleSubmit} >
                               
-          <input 
-            className="input is-warning"
-            type="email"
-            name="email"
-            placeholder={"email"}
-            value={email}
-            onChange={handleEmailChange}
-            required />
+//           <input 
+//             className="input is-warning"
+//             type="email"
+//             name="email"
+//             placeholder={"email"}
+//             value={email}
+//             onChange={handleEmailChange}
+//             required />
       
-          <input 
-            className="input is-warning"
-            type="password"
-            name="password"
-            placeholder={"Mot de passe"}
-            value={password}
-            onChange={handlePasswordChange}
-            required />
+//           <input 
+//             className="input is-warning"
+//             type="password"
+//             name="password"
+//             placeholder={"Mot de passe"}
+//             value={password}
+//             onChange={handlePasswordChange}
+//             required />
           
-        <button className="button is-warning is-light"type="submit">Connexion</button>
+//         <button className="button is-warning is-light"type="submit">Connexion</button>
 
-        <Link>Mot de passe oublié ?</Link>
-        <NavLink to='/signup'> S'inscrire</NavLink>
+//         <Link>Mot de passe oublié ?</Link>
+//         <NavLink to='/signup'> S'inscrire</NavLink>
           
-    </form>
+//     </form>
     
-    </div>
+//     </div>
     
-)}
+// )}
 
-export default Account;
+// export default Account;
