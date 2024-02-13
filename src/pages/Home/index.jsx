@@ -1,6 +1,5 @@
 import './index.css'
 
-import axios from "axios"; 
 import { useState, useEffect } from 'react';
 
 import LabelsDetails from './LabelsDetails';
@@ -13,9 +12,9 @@ function Home() {
   //TODO factoriser dans /services/api/getLabels.jsx
   const fetchDetails = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/labels`);
-      setLabelsDetails(response.data); 
-       
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/labels`);
+      const data = await response.json();
+      setLabelsDetails(data); 
     } catch (error) {
       console.log(error);
     } 
