@@ -1,10 +1,5 @@
 // import './index.css'
 
-
-const Events = () => {
-          
-  return("Events")
- }
-
+const Events = () => ('Events');
 
 export default Events;

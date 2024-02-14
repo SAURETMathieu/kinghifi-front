@@ -4,10 +4,6 @@
 // import { useState } from "react";
 // import { NavLink, Link } from "react-router-dom";
 
-const Account = () => {
-
-  return('Account')
-
-};
+const Account = () => ('Account');
 
 export default Account;
