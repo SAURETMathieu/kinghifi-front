@@ -96,7 +96,7 @@ Dropdown.propTypes = {
     path: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
   })).isRequired,
-  caret: PropTypes.bool.isRequired,
+  caret: PropTypes.bool,
 };
 
 Dropdown.defaultProps = {

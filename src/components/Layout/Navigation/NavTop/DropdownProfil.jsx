@@ -1,13 +1,11 @@
 import './DropdownProfil.css';
 
 import { useState, useEffect } from 'react';
-// import { useHistory } from 'react-router-dom';
 import { faRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '../../../Common/Dropdown';
 
 function DropdownProfil() {
   const [isUserLogged, setIsUserLogged] = useState(false);
-  // const history = useHistory();
   const loggedLinks = [
     { id: 1, path: '/profil', label: 'Profil' },
     { id: 2, path: '/infos', label: 'Mes informations' },
