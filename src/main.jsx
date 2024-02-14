@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       {
         path: '/labels',
         element: <Labels />,
-        children: [{ path: '/labels/:id', element: <Label /> }],
+        children: [{ path: '/labels/:id', element: <Labels /> }],
       },
     ],
   },
