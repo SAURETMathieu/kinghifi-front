@@ -3,7 +3,6 @@ import './index.css';
 import { useState, useEffect } from 'react';
 
 import LabelsDetails from './LabelsDetails';
-import Test from '../Auth/Signin/test';
 
 function Home() {
   const [labelsDetails, setLabelsDetails] = useState([]);
@@ -23,10 +22,7 @@ function Home() {
   }, []);
 
   return (
-    <>
-      <LabelsDetails labelsDetails={labelsDetails} />
-      <Test />
-    </>
+    <LabelsDetails labelsDetails={labelsDetails} />
   );
 }
 

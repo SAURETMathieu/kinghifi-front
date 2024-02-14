@@ -34,6 +34,11 @@ function Dropdown({
     setIsHovered(false);
   };
 
+  const logout = () => {
+    localStorage.removeItem('authApiToken');
+    window.location.href = '/';
+  };
+
   return (
     <div
       className={`dropdown is-hoverable is-right ${isHovered ? 'hovered' : ''}`}
@@ -53,14 +58,28 @@ function Dropdown({
         <div className="dropdown-menu" id="dropdown-menu4" role="menu">
           <div className="dropdown-content">
             <div className="dropdown-item">
-              {links.map((link, index) => (
-                <NavLink
-                  key={index}
-                  to={link.path}
-                  onClick={() => { handleClickLink(); closeDropdown(); }}
-                >
-                  {link.label}
-                </NavLink>
+              {links.map((link) => (
+                (link.path !== '/signout')
+                  ? (
+                    <NavLink
+                      key={link.id}
+                      to={link.path}
+                      onClick={() => { handleClickLink(); closeDropdown(); }}
+                    >
+                      {link.label}
+                    </NavLink>
+                  )
+                  : (
+                    <button
+                      key={link.id}
+                      className="button is-warning is-light"
+                      type="submit"
+                      onClick={logout}
+                    >
+                      Me déconnécter
+                    </button>
+                  )
+
               ))}
             </div>
           </div>
