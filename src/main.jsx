@@ -31,7 +31,6 @@ const router = createBrowserRouter([
       { path: '/labels', element: <Labels /> },
       { path: '/events', element: <Events /> },
       { path: '/medias', element: <Medias /> },
-
     ],
   },
 ]);
