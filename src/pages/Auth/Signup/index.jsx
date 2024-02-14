@@ -44,106 +44,104 @@ function Singup() {
   };
 
   return (
-    <div className="form">
 
-      <form className="submit-form field is-horizontal" onSubmit={handleSubmit}>
+    <form className="submit-form is-horizontal" onSubmit={handleSubmit}>
 
-        <input
-          className="input is-expanded is-warning"
-          type="text"
-          name="email"
-          placeholder="Email"
-          value={formUserData.email}
-          onChange={handleChange}
-        />
+      <input
+        className="input is-expanded is-warning"
+        type="text"
+        name="email"
+        placeholder="Email"
+        value={formUserData.email}
+        onChange={handleChange}
+      />
 
-        <input
-          className="input is-normal is-warning"
-          type="text"
-          name="lastname"
-          placeholder="Nom"
-          value={formUserData.lastname}
-          onChange={handleChange}
-        />
+      <input
+        className="input is-normal is-warning"
+        type="text"
+        name="lastname"
+        placeholder="Nom"
+        value={formUserData.lastname}
+        onChange={handleChange}
+      />
 
-        <input
-          className="input is-normal is-warning"
-          type="text"
-          name="firstname"
-          placeholder="Prénom"
-          value={formUserData.firstname}
-          onChange={handleChange}
-        />
+      <input
+        className="input is-normal is-warning"
+        type="text"
+        name="firstname"
+        placeholder="Prénom"
+        value={formUserData.firstname}
+        onChange={handleChange}
+      />
 
-        <input
-          className="input is-normal is-warning"
-          type="text"
-          name="birthdate"
-          placeholder="Date de naissance"
-          value={formUserData.birthdate}
-          onChange={handleChange}
-        />
+      <input
+        className="input is-normal is-warning"
+        type="text"
+        name="birthdate"
+        placeholder="Date de naissance"
+        value={formUserData.birthdate}
+        onChange={handleChange}
+      />
 
-        <input
-          className="input is-expanded is-warning"
-          type="text"
-          name="address"
-          placeholder="Adresse"
-          value={formUserData.address}
-          onChange={handleChange}
-        />
+      <input
+        className="input is-expanded is-warning"
+        type="text"
+        name="address"
+        placeholder="Adresse"
+        value={formUserData.address}
+        onChange={handleChange}
+      />
 
-        <input
-          className="input is-normal is-warning"
-          type="text"
-          name="zipcode"
-          placeholder="Code postal"
-          value={formUserData.zipcode}
-          onChange={handleChange}
-        />
+      <input
+        className="input is-normal is-warning"
+        type="text"
+        name="zipcode"
+        placeholder="Code postal"
+        value={formUserData.zipcode}
+        onChange={handleChange}
+      />
 
-        <input
-          className="input is-normal is-warning"
-          type="text"
-          name="city"
-          placeholder="Ville"
-          value={formUserData.city}
-          onChange={handleChange}
-        />
+      <input
+        className="input is-normal is-warning"
+        type="text"
+        name="city"
+        placeholder="Ville"
+        value={formUserData.city}
+        onChange={handleChange}
+      />
 
-        <input
-          className="input is-normal is-warning"
-          type="text"
-          name="country"
-          placeholder="Pays"
-          value={formUserData.country}
-          onChange={handleChange}
-        />
+      <input
+        className="input is-normal is-warning"
+        type="text"
+        name="country"
+        placeholder="Pays"
+        value={formUserData.country}
+        onChange={handleChange}
+      />
 
-        <input
-          className="input is-expanded is-warning"
-          type="password"
-          name="password"
-          placeholder="Mot de passe"
-          value={formUserData.password}
-          onChange={handleChange}
-        />
+      <input
+        className="input is-expanded is-warning"
+        type="password"
+        name="password"
+        placeholder="Mot de passe"
+        value={formUserData.password}
+        onChange={handleChange}
+      />
 
-        <input
-          className="input is-expanded is-warning"
-          type="password"
-          name="passwordConfirm"
-          placeholder="Confirmation du mot de passe"
-          value={formUserData.passwordConfirm}
-          onChange={handleChange}
-        />
+      <input
+        className="input is-expanded is-warning"
+        type="password"
+        name="passwordConfirm"
+        placeholder="Confirmation du mot de passe"
+        value={formUserData.passwordConfirm}
+        onChange={handleChange}
+      />
 
-        <button className="button is-warning is-light" type="submit"> S&apos;inscrire </button>
-        <NavLink to="/account"> Retour </NavLink>
+      <button className="button is-warning is-light" type="submit"> S&apos;inscrire </button>
+      <NavLink to="/account"> Retour </NavLink>
 
-      </form>
+    </form>
 
-    </div>
   );
 }
 
