@@ -1,10 +1,5 @@
 // import './index.css'
 
-
-const Labels = () => {
-          
-  return("Labels")
- }
-
+const Labels = () => ('Labels');
 
 export default Labels;

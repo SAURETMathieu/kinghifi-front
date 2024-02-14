@@ -1,35 +1,41 @@
 import './DropdownProfil.css';
 
-import Dropdown from '/src/components/Common/Dropdown';
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+// import { useHistory } from 'react-router-dom';
 import { faRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons';
+import Dropdown from '../../../Common/Dropdown';
 
 function DropdownProfil() {
   const [isUserLogged, setIsUserLogged] = useState(false);
-
- 
-
+  // const history = useHistory();
   const loggedLinks = [
-    { path: '/profil', label: 'Profil' },
-    { path: '/infos', label: 'Mes informations' },
-    { path: '/favorites', label: 'Mes favoris' },
-    { path: '/messages', label: 'Mes messages' },
+    { id: 1, path: '/profil', label: 'Profil' },
+    { id: 2, path: '/infos', label: 'Mes informations' },
+    { id: 3, path: '/favorites', label: 'Mes favoris' },
+    { id: 4, path: '/messages', label: 'Mes messages' },
+    { id: 5, path: '/signout', label: 'Me déconnecter' },
   ];
 
   const loggedOutLinks = [
-    { path: '/signin', label: 'Se connecter' },
-    { path: '/signup', label: 'S\'inscrire' },
+    { id: 1, path: '/signin', label: 'Se connecter' },
+    { id: 2, path: '/signup', label: 'S\'inscrire' },
   ];
+
+  useEffect(() => {
+    const token = localStorage.getItem('authApiToken');
+    if (token) {
+      setIsUserLogged(true);
+    }
+  }, []);
 
   return (
     isUserLogged ? (
       <div className="navbar-top-icon">
-        <Dropdown title="" icon={faUser}  links={loggedLinks} caret={false}/>
+        <Dropdown title="" icon={faUser} links={loggedLinks} caret={false} />
       </div>
     ) : (
       <div className="navbar-top-icon">
-        <Dropdown title="" icon={faRightToBracket}  links={loggedOutLinks} caret={false}/>
+        <Dropdown title="" icon={faRightToBracket} links={loggedOutLinks} caret={false} />
       </div>
     )
   );
