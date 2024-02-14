@@ -1,10 +1,5 @@
 // import './index.css'
 
-
-const Admin = () => {
-          
-  return("Admin")
- }
-
+const Admin = () => ('Admin');
 
 export default Admin;

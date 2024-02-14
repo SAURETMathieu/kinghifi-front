@@ -19,14 +19,12 @@ function Account() {
       });
       const data = await response.json();
       if (!response.ok) {
-        return data.error;
+        return { error: data.error };
       }
-
       localStorage.setItem('authApiToken', data.token);
-
-      return window.location.href('/');
+      return { redirectTo: '/' };
     } catch (error) {
-      return error;
+      return { error };
     }
   };
 
@@ -45,11 +43,14 @@ function Account() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    postAuth();
-    setEmail('');
-    setPassword('');
+    const result = await postAuth();
+    if (result.redirectTo) {
+      window.location.href = result.redirectTo;
+    } else if (result.error) {
+      console.log(result.error);
+    }
   };
 
   return (
