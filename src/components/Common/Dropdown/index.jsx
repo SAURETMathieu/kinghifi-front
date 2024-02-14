@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import fetchData from '../../../services/api/call.api';
 
 function Dropdown({
   title, icon, links, caret,
@@ -34,9 +35,12 @@ function Dropdown({
     setIsHovered(false);
   };
 
-  const logout = () => {
-    localStorage.removeItem('authApiToken');
-    window.location.href = '/';
+  const logout = async () => {
+    const isLoggedOut = await fetchData('GET', 'auth/signout', null, true);
+    if (isLoggedOut) {
+      localStorage.removeItem('authApiToken');
+      window.location.href = '/';
+    }
   };
 
   return (
