@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import Account from './pages/Account';
 import Signup from './pages/Auth/Signup';
 import Labels from './pages/Labels';
+import Label from './pages/Label';
 import Events from './pages/Events';
 import Medias from './pages/Medias';
 import Signin from './pages/Auth/Signin';
@@ -28,9 +29,13 @@ const router = createBrowserRouter([
       { path: '/account', element: <Account /> },
       { path: '/signin', element: <Signin /> },
       { path: '/signup', element: <Signup /> },
-      { path: '/labels', element: <Labels /> },
       { path: '/events', element: <Events /> },
       { path: '/medias', element: <Medias /> },
+      {
+        path: '/labels',
+        element: <Labels />,
+        children: [{ path: '/labels/:id', element: <Labels /> }],
+      },
     ],
   },
 ]);
