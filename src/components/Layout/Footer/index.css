@@ -1,17 +1,32 @@
 .footer{
-    display:flex;
-    background-color: black;
-    bottom: 0;
-    width: 100%;
-    min-height:10rem;
-    padding: 10px;
-    justify-content: space-evenly;
-    align-items:center;
-    margin-bottom:var(--navbar-height);
+  display:flex;
+  background-color: black;
+  bottom: 0;
+  width: 100%;
+  min-height:10rem;
+  padding: 10px;
+  justify-content: space-evenly;
+  align-items:center;
+  margin-bottom:var(--navbar-height);
   }
-  
-  @media screen and (min-width: 426px) {
-    .footer{
-      margin-bottom:0;
-    }
+
+.contactus{
+  background-color: rgb(226, 13, 13);
+}
+
+.socials{
+  background-color: rgb(33, 219, 9);
+}
+
+.legals{
+  background-color: rgb(9, 5, 240);
+}
+
+@media screen and (min-width: 426px) {
+  .footer{
+    margin-bottom:0;
   }
+  .contactus-text{
+    display:block;
+}
+}
