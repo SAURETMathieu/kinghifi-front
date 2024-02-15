@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 
 import Label from '../Label';
+import fetchData from '../../services/api/call.api';
 
 function Labels() {
   const [labelsAlbums, setLabelsAlbums] = useState([]);
@@ -13,23 +14,12 @@ function Labels() {
   const fetchLabelsAlbums = async () => {
     // si id est undefined, on charge tout, si il a une valeur
     if (!id) {
-      try {
-        // requete api get all labels with albums
-        const response = await fetch('http://localhost:4000/api/labels/albums');
-        const data = await response.json();
-        setLabelsAlbums(data);
-      } catch (error) {
-        console.log(error);
-      }
+      const labelsData = await fetchData('GET', 'labels/albums');
+      setLabelsAlbums(labelsData);
     } else {
       // on charge que le label qui a l'id récupéré
-      try {
-        const response = await fetch(`http://localhost:4000/api/labels/${id}/albums`);
-        const data = await response.json();
-        setLabelsAlbums(data);
-      } catch (error) {
-        console.log(error);
-      }
+      const labelsData = await fetchData('GET', `labels/${id}/albums`);
+      setLabelsAlbums(labelsData);
     }
   };
   useEffect(() => {
@@ -38,25 +28,7 @@ function Labels() {
 
   return (
 
-    !id ? (
-      labelsAlbums.map((label) => (
-        <div key={label.id}>
-          <div className="label-name">
-            {label.name}
-          </div>
-          {label.albums.map((album) => (
-            <div className="label-albums" key={album.id}>
-              <img className="label__album-image" src={album.url_image} alt={album.name} />
-              <p>{album.year}</p>
-            </div>
-          ))}
-        </div>
-      ))
-    )
-      : (
-        <Label albumsData={labelsAlbums} />
-      )
-
+    <Label labelsWhithAlbums={labelsAlbums} />
   );
 }
 
