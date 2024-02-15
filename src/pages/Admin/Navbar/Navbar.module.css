@@ -37,7 +37,7 @@
 }
 
 .navbar a:hover{
-  background:var(--secondary-color);
+  background:#00D1B2;
   color:black;
 }
 
