@@ -7,7 +7,18 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Importation des composants
 import App from './app';
 import Home from './pages/Home';
-import Admin from './pages/Admin';
+import {
+  Admin,
+  UserAdmin,
+  ArtistAdmin,
+  LabelAdmin,
+  AlbumAdmin,
+  TrackAdmin,
+  EventAdmin,
+  MediaAdmin,
+  MessageAdmin,
+  Settings,
+} from './pages/Admin';
 import Contact from './pages/Contact';
 import Account from './pages/Account';
 import Signup from './pages/Auth/Signup';
@@ -25,7 +36,22 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Home /> },
-      { path: '/admin', element: <Admin /> },
+      {
+        path: '/admin',
+        element: <Admin />,
+        children:
+        [
+          { path: '/admin/users', element: <UserAdmin /> },
+          { path: '/admin/artists', element: <ArtistAdmin /> },
+          { path: '/admin/labels', element: <LabelAdmin /> },
+          { path: '/admin/albums', element: <AlbumAdmin /> },
+          { path: '/admin/tracks', element: <TrackAdmin /> },
+          { path: '/admin/events', element: <EventAdmin /> },
+          { path: '/admin/medias', element: <MediaAdmin /> },
+          { path: '/admin/messages', element: <MessageAdmin /> },
+          { path: '/admin/settings', element: <Settings /> },
+        ],
+      },
       { path: '/contact', element: <Contact /> },
       { path: '/account', element: <Account /> },
       { path: '/signin', element: <Signin /> },
