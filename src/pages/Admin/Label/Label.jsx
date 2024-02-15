@@ -1,6 +1,8 @@
+import AdminTemplate from '../Template/Template';
+
 function LabelAdmin() {
   return (
-    <div>Label</div>
+    <AdminTemplate route="admin/labels" title="Labels" />
   );
 }
 

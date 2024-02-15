@@ -29,7 +29,7 @@ function UserAdmin() {
 
   return (
     <>
-      <h1>User</h1>
+      <h1>Users</h1>
       <AdminSearch datas={users} onSearch={handleSearch} />
 
       <AdminTable datas={filteredUsers} />

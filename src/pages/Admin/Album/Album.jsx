@@ -1,6 +1,8 @@
+import AdminTemplate from '../Template/Template';
+
 function AlbumAdmin() {
   return (
-    <div>Album</div>
+    <AdminTemplate route="admin/albums" title="Albums" />
   );
 }
 

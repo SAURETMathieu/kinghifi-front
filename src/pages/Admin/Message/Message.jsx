@@ -1,6 +1,8 @@
+// import AdminTemplate from '../Template/Template';
+
 function MessageAdmin() {
   return (
-    <div>Message</div>
+    'message'
   );
 }
 
