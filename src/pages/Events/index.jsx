@@ -12,7 +12,7 @@ function Events() {
 
   const fetchDetails = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/labels');
+      const response = await fetch('http://localhost:4000/api/events');
       const data = await response.json();
       setEventsDetails(data);
     } catch (error) {

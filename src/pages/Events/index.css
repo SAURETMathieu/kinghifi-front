@@ -14,7 +14,6 @@
   padding: 1rem;
 }
 
-
 .img_container {
   width: 50%;
   display: flex;
@@ -35,7 +34,6 @@
   .event_container {
     flex-direction: column;
   }
-
 
   .img_container {
     width: 100%;
