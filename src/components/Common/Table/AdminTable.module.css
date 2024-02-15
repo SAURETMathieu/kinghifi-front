@@ -1,0 +1,54 @@
+.container{
+  width:100%;
+  overflow-x: auto;
+  max-width:100%;
+  margin: 1.5rem 0;
+}
+
+.container .table{
+  width:100%;
+  border-collapse: collapse;
+}
+
+.container td,
+.container tr,
+.container th {
+  text-align: center;
+  width:fit-content;
+  height:100%;
+  vertical-align: middle;
+  max-width:9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container tr{
+  cursor:default;
+}
+
+.container th{
+  background:black;
+  font-weight:600;
+}
+
+.container [aria-label="delete"]{
+  color:red;
+  font-size:1.5rem;
+  opacity:0.9;
+}
+
+.container [aria-label="update"]{
+  color:blue;
+  font-size:1.5rem;
+  opacity:0.9;
+}
+
+.container [aria-label="update"]:hover,
+.container [aria-label="delete"]:hover{
+  transform:scale(1.1);
+}
+
+.container button{
+  background:none;
+  width:fit-content;
+}
