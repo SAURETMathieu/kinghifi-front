@@ -22,12 +22,13 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
 
     const response = await fetch(url, options);
     const data = await response.json();
+    const dataArray = Array.isArray(data) ? data : [data];
 
     if (!response.ok) {
       throw new Error(`Erreur HTTP: ${response.status}`);
     }
 
-    return data;
+    return dataArray;
   } catch (error) {
     console.error('Une erreur s\'est produite:', error);
     return null;
