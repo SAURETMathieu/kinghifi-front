@@ -20,7 +20,7 @@ function NavTop() {
 
       <div className="navbar-top__left">
         <NavLink to="/" className="nav-logo">
-          <img className="logo" src="/images/KHF BANNER.jpg" alt="" />
+          <img className="logo" src="/images/banner_khf.jpg" alt="" />
         </NavLink>
       </div>
 
