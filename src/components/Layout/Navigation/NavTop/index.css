@@ -24,7 +24,7 @@
 .nav-icon{
     margin:0;
     font-size:1.5rem;
-    color: #9e8a58;
+    color: var(--secondary-color)
 }
 
 .nav-logo{

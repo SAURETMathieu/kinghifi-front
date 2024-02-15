@@ -1,0 +1,44 @@
+.label-container{
+  overflow-x:auto;
+  white-space: nowrap;
+  width: 100%;
+}
+.label-name{
+  border: 1px solid var(--secondary-color);
+  color: white;
+  font-weight: lighter;
+  padding: 0.3rem;
+  margin: 0.3rem;
+
+}
+
+.label-albums{
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.album{
+  display: flex;
+  flex-wrap: wrap;
+  border: 0.5px solid white; 
+  width: 5rem;
+  justify-content: center;
+  color: var(--secondary-color);
+  
+}
+
+.album-image{
+  padding: 0.2rem !important;
+}
+
+@media screen and (min-width: 426px) {
+  .label-albums{
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .album{
+    margin:0.2rem;
+  }
+}
