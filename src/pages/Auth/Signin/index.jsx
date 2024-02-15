@@ -1,15 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
 import './index.css';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { UserContext } from '../../../context/userContext';
+import checkAdminRole from '../../../services/auth/checkAdmin';
 
 function Account() {
   const [email, setEmail] = useState('testt@test.fr');
   const [password, setPassword] = useState('12341234');
-
+  const { isAdmin, setIsAdmin } = useContext(UserContext);
   const postAuth = async () => {
     try {
       const response = await fetch('http://localhost:4000/api/auth/signin', {
@@ -22,6 +24,7 @@ function Account() {
         return { error: data.error };
       }
       localStorage.setItem('authApiToken', data.token);
+      setIsAdmin(checkAdminRole());
       return { redirectTo: '/' };
     } catch (error) {
       return { error };
