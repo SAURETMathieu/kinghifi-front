@@ -1,6 +1,8 @@
+import AdminTemplate from '../Template/Template';
+
 function EventAdmin() {
   return (
-    <div>Event</div>
+    <AdminTemplate route="admin/events" title="Events" />
   );
 }
 
