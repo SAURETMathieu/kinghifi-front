@@ -15,6 +15,10 @@
     width:100%;
     box-sizing:border-box;
   }
+
+  .is-selected {
+    color: black !important;
+  }
   
   main{
     min-height:100vh;

@@ -1,6 +1,8 @@
+import AdminTemplate from '../Template/Template';
+
 function TrackAdmin() {
   return (
-    <div>Track</div>
+    <AdminTemplate route="admin/tracks" title="Sons" />
   );
 }
 

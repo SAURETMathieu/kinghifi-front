@@ -1,6 +1,8 @@
+import AdminTemplate from '../Template/Template';
+
 function ArtistAdmin() {
   return (
-    <div>Artist</div>
+    <AdminTemplate route="admin/artists" title="Artistes" />
   );
 }
 
