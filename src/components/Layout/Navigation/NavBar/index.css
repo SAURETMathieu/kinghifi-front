@@ -27,7 +27,7 @@ a:hover{
     margin:0;
 }
 
-.active{
+.navbar-main .active{
     border-bottom:solid 2px black;
 }
 
