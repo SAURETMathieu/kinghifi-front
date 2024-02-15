@@ -1,36 +1,19 @@
 import './index.css';
 // import des icons
-import { jwtDecode } from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { NavLink, useLocation } from 'react-router-dom';
 import DropdownProfil from './DropdownProfil';
+import checkAdminRole from '../../../../services/auth/checkAdmin';
 
 function NavTop() {
   const [isAdmin, setIsAdmin] = useState(false);
   const location = useLocation();
 
-  const checkAdminRole = () => {
-    const token = localStorage.getItem('authApiToken');
-    if (token) {
-      const decodedToken = jwtDecode(token);
-      if (decodedToken && decodedToken.role === 'admin') {
-        setIsAdmin(true);
-      } else {
-        setIsAdmin(false);
-      }
-    } else {
-      setIsAdmin(false);
-    }
-  };
-
   useEffect(() => {
-    checkAdminRole();
+    setIsAdmin(checkAdminRole());
   }, [location.pathname]);
-
-  useEffect(() => {
-  }, [isAdmin]);
 
   return (
     <nav className="navbar-top">

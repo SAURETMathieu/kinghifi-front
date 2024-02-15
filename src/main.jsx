@@ -16,6 +16,7 @@ import Label from './pages/Label';
 import Events from './pages/Events';
 import Medias from './pages/Medias';
 import Signin from './pages/Auth/Signin';
+import UserProvider from './context/userContext';
 
 // Création du routeur
 const router = createBrowserRouter([
@@ -43,6 +44,8 @@ const router = createBrowserRouter([
 // RouterProvider permet à react-router-dom de checker les routes de notre application
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </React.StrictMode>,
 );
