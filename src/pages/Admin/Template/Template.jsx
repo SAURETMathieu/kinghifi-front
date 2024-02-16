@@ -32,7 +32,7 @@ function AdminTemplate({ route, title = 'Admin' }) {
     <>
       <h1>{title}</h1>
       <AdminSearch datas={data} onSearch={handleSearch} />
-      <AdminTable datas={filteredData} />
+      <AdminTable datas={filteredData} route={route} setFilteredData={setFilteredData} />
     </>
   );
 }

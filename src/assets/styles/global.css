@@ -18,6 +18,7 @@
 
   .is-selected {
     color: black !important;
+    background:#9e8a5862 !important;
   }
   
   main{
