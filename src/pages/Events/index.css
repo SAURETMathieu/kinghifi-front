@@ -11,7 +11,12 @@
 .event_container {
   width: 100%;
   display: flex;
-  padding: 1rem;
+  padding: 0rem 2rem 2rem 1rem;
+}
+
+.is_active {
+  flex-direction: row-reverse;
+  
 }
 
 .img_container {
@@ -26,8 +31,9 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: start;
-  padding: 1.5rem 1rem;
+  padding: 4rem 5rem;
   text-align: left;
+  margin-left: 1rem;
 }
 
 @media screen and (max-width: 600px) {
