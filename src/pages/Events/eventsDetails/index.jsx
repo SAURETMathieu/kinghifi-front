@@ -11,8 +11,8 @@ function EventsDetails({ eventsDetails }) {
 
       {
 
-            events.map((event) => (
-              <div className="event_container" key={event.id}>
+            events.map((event, index) => (
+              <div className={index % 2 === 0 ? 'event_container' : 'event_container is_active'} key={event.id}>
                 <div className="img_container">
                   <img className="event_image" src="images/Barracuda.jpg" alt="Barracuda" />
                 </div>
