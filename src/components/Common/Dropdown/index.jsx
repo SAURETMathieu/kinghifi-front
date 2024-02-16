@@ -37,8 +37,10 @@ function Dropdown({
 
   const logout = async () => {
     const isLoggedOut = await fetchData('GET', 'auth/signout', null, true);
+    if (isLoggedOut) {
       localStorage.removeItem('authApiToken');
       window.location.href = '/';
+    }
   };
 
   return (
