@@ -30,12 +30,12 @@ function Footer() {
       </div>
       <div className="socials">
         {labels.map((label) => (
-          <div key={label.id}>
+          <div className="socials-card" key={label.id}>
             <p>{label.name}</p>
-            <div>
+            <div className="socials-icon">
               {label.socials.map((social) => (
                 <div key={social.id}>
-                  <a href={social.url} target="_blank" rel="noopener noreferrer">{social.name}</a>
+                  <FontAwesomeIcon icon={faEnvelope} />
                 </div>
               ))}
             </div>
@@ -44,6 +44,7 @@ function Footer() {
       </div>
       <div className="legals">
         <NavLink to="/legals" className="footer-icon">
+          <FontAwesomeIcon icon={faEnvelope} />
           <span className="legals-text">Mentions légales</span>
           {legals}
         </NavLink>
