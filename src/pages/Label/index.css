@@ -1,8 +1,9 @@
 .label-container{
-  overflow-x:auto;
-  white-space: nowrap;
-  width: 100%;
+  overflow-x:scroll;
+  flex-wrap: nowrap;
+
 }
+
 .label-name{
   border: 1px solid var(--secondary-color);
   color: white;

@@ -12,8 +12,6 @@ function Home() {
   const fetchDetails = async () => {
     try {
       const labelsData = await fetchData('GET', 'labels');
-      // const response = await fetch('http://localhost:4000/api/labels');
-      // const data = await response.json();
       setLabelsDetails(labelsData);
     } catch (error) {
       console.log(error);
