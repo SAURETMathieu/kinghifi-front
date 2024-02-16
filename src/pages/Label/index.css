@@ -19,19 +19,26 @@
   
 }
 
-.album{
+.button-album-container{
   display: flex;
   flex-wrap: wrap;
-  border: 0.5px solid white; 
-  width: 5rem;
+  width: 3rem;
+  height: 3rem;
   justify-content: center;
   color: var(--secondary-color);
-  
+  margin-top: 0.3rem;
+    
 }
 
-.album-image{
+.button-album__image{
   padding: 0.2rem !important;
+  height: 75%;
+  
 }
+.button-album__name{
+  font-size: 0.8rem;
+  
+  }
 
 @media screen and (min-width: 426px) {
   .label-albums{
