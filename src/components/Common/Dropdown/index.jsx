@@ -80,7 +80,7 @@ function Dropdown({
                       type="submit"
                       onClick={logout}
                     >
-                      Me déconnécter
+                      {link.label}
                     </button>
                   )
 

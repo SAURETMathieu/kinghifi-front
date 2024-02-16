@@ -9,7 +9,7 @@ import { UserContext } from '../../../context/userContext';
 import checkAdminRole from '../../../services/auth/checkAdmin';
 
 function Account() {
-  const [email, setEmail] = useState('testt@test.fr');
+  const [email, setEmail] = useState('ap@ap.fr');
   const [password, setPassword] = useState('12341234');
   const { isAdmin, setIsAdmin } = useContext(UserContext);
   const postAuth = async () => {
