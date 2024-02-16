@@ -8,7 +8,6 @@ import fetchData from '../../services/api/call.api';
 
 function Labels() {
   const [labelsAlbums, setLabelsAlbums] = useState([]);
-  const [allAlbumsSongs, setAllAlbumsSongs] = useState([]);
 
   // On récupère l'id de l'url
   const { id } = useParams();
@@ -30,7 +29,7 @@ function Labels() {
 
   return (
     <>
-      <Label labelsWhithAlbums={labelsAlbums} setAllAlbumsSongs={setAllAlbumsSongs} />
+      <Label labelsWhithAlbums={labelsAlbums} />
 
       {/* <Album allAlbumsSongs={allAlbumsSongs} setAllAlbumsSongs={setAllAlbumsSongs} /> */}
     </>

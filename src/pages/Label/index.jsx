@@ -1,13 +1,28 @@
 /* eslint-disable react/prop-types */
 import './index.css';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import fetchData from '../../services/api/call.api';
 import Album from '../Album';
 
 function Label({ labelsWhithAlbums }) {
   const [oneAlbumSongs, setOneAlbumSongs] = useState([]);
-  const allAlbumsSongs = labelsWhithAlbums.map((label) => label.albums);
-  const handleClick = () => { setOneAlbumSongs(allAlbumsSongs.map((album) => album.name)); };
+  const [albumId, setAlbumId] = useState(1);
+  // const allAlbumsSongs = labelsWhithAlbums.map((label) => label.albums);
+  const handleClick = (key) => {
+    setAlbumId(key);
+  };
+
+  const fetchOneAlbumData = async () => {
+    const oneAlbumData = await fetchData('GET', `albums/${albumId}/tracks`);
+    setOneAlbumSongs(oneAlbumData);
+  };
+
+  useEffect(() => {
+    if (albumId !== null) {
+      fetchOneAlbumData();
+    }
+  }, [albumId]);
 
   return (
     labelsWhithAlbums.map((label) => (
@@ -24,7 +39,7 @@ function Label({ labelsWhithAlbums }) {
                 type="button"
                 style={{ backgroundImage: `url(${album.url_image})` }}
                 aria-label={album.name}
-                onClick={handleClick}
+                onClick={() => handleClick(album.id)}
               />
               <div className="button-album__name">{album.name}</div>
             </div>
