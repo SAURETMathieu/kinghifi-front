@@ -21,6 +21,9 @@ height-max: 20rem;
 color:black;
 background:white;
 }
+.label__card is_reverse{
+  flex-direction: row-reverse;
+}
 
 .label__card-header{
 width:100%;

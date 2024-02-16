@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const fetchData = async (method, endpoint, requestData = null, needToken = false) => {
   const apiUrl = import.meta.env.VITE_API_URL;
   try {
@@ -29,8 +30,17 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
       return true;
     }
     const data = await response.json();
-    const dataArray = Array.isArray(data) ? data : [data];
-    return dataArray;
+    const datasArray = Array.isArray(data) ? data : [data];
+
+    datasArray.forEach((dataArray) => {
+      Object.keys(dataArray).forEach((columnName) => {
+        if (Array.isArray(dataArray[columnName]) && !dataArray[columnName][0]) {
+          dataArray[columnName] = [];
+        }
+      });
+    });
+    console.log(datasArray);
+    return datasArray;
   } catch (error) {
     console.error('Une erreur s\'est produite:', error);
     return null;

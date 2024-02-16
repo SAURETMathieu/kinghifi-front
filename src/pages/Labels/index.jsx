@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 
 import Label from '../Label';
+import Album from '../Album';
 import fetchData from '../../services/api/call.api';
 
 function Labels() {
@@ -27,8 +28,11 @@ function Labels() {
   }, [id]);
 
   return (
+    <>
+      <Label labelsWhithAlbums={labelsAlbums} />
 
-    <Label labelsWhithAlbums={labelsAlbums} />
+      {/* <Album allAlbumsSongs={allAlbumsSongs} setAllAlbumsSongs={setAllAlbumsSongs} /> */}
+    </>
   );
 }
 

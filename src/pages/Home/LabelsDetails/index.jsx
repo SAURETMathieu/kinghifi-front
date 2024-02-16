@@ -27,8 +27,8 @@ function LabelsDetails({ labelsDetails }) {
       }
 
       {
-      labels.map((label) => (
-        <div className="label__card" key={label.id}>
+      labels.map((label, index) => (
+        <div className={index % 2 === 0 ? 'label__card' : 'label__card is_reverse'} key={label.id}>
           <div className="label__card-header" />
           <img className="label__card-image" src={label.url_image} alt={label.name} />
           <div className="label__card-content">
