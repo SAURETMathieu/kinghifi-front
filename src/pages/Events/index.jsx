@@ -5,6 +5,7 @@ import './index.css';
 import { useState, useEffect } from 'react';
 
 import EventsDetails from './eventsDetails';
+import fetchData from '../../services/api/call.api';
 
 function Events() {
 //   const [uneVariable, setUneVariable] = useState('');
@@ -12,9 +13,9 @@ function Events() {
 
   const fetchDetails = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/events');
-      const data = await response.json();
-      setEventsDetails(data);
+      const eventsData = await fetchData('GET', 'events');
+      // const data = await response.json();
+      setEventsDetails(eventsData);
     } catch (error) {
       console.log(error);
     }
