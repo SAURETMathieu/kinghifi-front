@@ -10,10 +10,10 @@
   color: rgb(96, 96, 96);
   }
 
-.label__card{
+.label__card-main{
 display: flex;
+flex-direction: column;
 justify-content: space-between;
-flex-direction:column;
 border: solid 3px black;
 border-radius:1rem;
 width:100%;
@@ -21,25 +21,12 @@ height-max: 20rem;
 color:black;
 background:white;
 }
-.label__card is_reverse{
-  flex-direction: row-reverse;
-}
 
 .label__card-header{
-width:100%;
-height: 0.02rem !important;
-padding:1rem;
-background:linear-gradient(to top, white,rgba(0, 0, 0, 0.8)) ;
-border-radius:.65rem .65rem 0 0;
+  display: flex;
+  padding:1rem;
+  border-radius:.65rem .65rem 0 0;
 
-}
-
-.label__card-main{
-width:100%;
-padding:1rem;
-display:flex;
-justify-content:space-evenly;
-flex-direction:column;
 }
 
 .label__card-content{
@@ -51,13 +38,21 @@ margin:auto 0;
 }
 
 .label__card-image{
-width: 13rem;
-margin: 0 auto;
+  width: 80%;
+  margin: auto;
 }
 
-@media screen and (min-width: 1440px) {
+
+@media screen and (min-width: 600px)  {
   .label__card-main{
     flex-direction:row;
   }
+  .is_reverse{
+    flex-direction:row-reverse;
+  }
+  .label__card-image{
+     width: 100%;
+  }
+
 }
   
