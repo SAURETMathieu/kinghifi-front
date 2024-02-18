@@ -2,16 +2,21 @@
 import './index.css';
 
 import { useEffect, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../../../context/userContext';
 import checkAdminRole from '../../../services/auth/checkAdmin';
+import checkConnected from '../../../services/auth/checkConnected';
 
 function Account() {
   const [email, setEmail] = useState('ap@ap.fr');
   const [password, setPassword] = useState('12341234');
   const { isAdmin, setIsAdmin } = useContext(UserContext);
+  const { isConnected, setIsConnected } = useContext(UserContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const postAuth = async () => {
     try {
       const response = await fetch('http://localhost:4000/api/auth/signin', {
@@ -25,6 +30,7 @@ function Account() {
       }
       localStorage.setItem('authApiToken', data.token);
       setIsAdmin(checkAdminRole());
+      setIsConnected(checkConnected());
       return { redirectTo: '/' };
     } catch (error) {
       return { error };
@@ -34,7 +40,7 @@ function Account() {
   useEffect(() => {
     const token = localStorage.getItem('authApiToken');
     if (token) {
-      window.location.href = '/';
+      navigate('/', { state: { from: location }, replace: true})
     }
   }, []);
 
@@ -50,7 +56,7 @@ function Account() {
     event.preventDefault();
     const result = await postAuth();
     if (result.redirectTo) {
-      window.location.href = result.redirectTo;
+      navigate(result.redirectTo, { state: { from: location }, replace: true})
     } else if (result.error) {
       console.log(result.error);
     }
