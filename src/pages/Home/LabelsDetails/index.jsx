@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 
 function LabelsDetails({ labelsDetails }) {
-  console.log(labelsDetails);
   // TODO: remplacer Label 1 par le vrai nom
   const crews = labelsDetails.filter((label) => label.name === 'King Hi-Fi Sound System');
 
