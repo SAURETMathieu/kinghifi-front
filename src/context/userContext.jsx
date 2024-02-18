@@ -6,11 +6,12 @@ export const UserContext = createContext();
 
 function UserProvider({ children }) {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
 
-  const isAdminValues = { isAdmin, setIsAdmin };
+  const userValues = { isAdmin, setIsAdmin, isConnected, setIsConnected };
 
   return (
-    <UserContext.Provider value={isAdminValues}>
+    <UserContext.Provider value={userValues}>
       {children}
     </UserContext.Provider>
   );
