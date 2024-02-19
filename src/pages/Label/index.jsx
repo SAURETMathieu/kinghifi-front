@@ -34,7 +34,7 @@ function Label({ labelsWhithAlbums }) {
   // Rendering the component
   return (
     // Mapping over all albums of all labels
-    labelsWhithAlbums.map((label) => (
+    labelsWhithAlbums?.map((label) => (
       <div className="label-container" key={label.id}>
         {/* Displaying the label name */}
         <div className="label-name hero">
@@ -42,7 +42,7 @@ function Label({ labelsWhithAlbums }) {
         </div>
         {/* Displaying albums for the label */}
         <div className="label-albums">
-          {label.albums.map((album) => (
+          {label.albums?.map((album) => (
             <div className="button-album-container" key={album.id}>
               {/* Button to select an album */}
               <button
@@ -57,6 +57,7 @@ function Label({ labelsWhithAlbums }) {
             </div>
           ))}
         </div>
+
         {/* Rendering the Album component with the selected album's songs */}
         <Album oneAlbumSongs={oneAlbumSongs} />
       </div>

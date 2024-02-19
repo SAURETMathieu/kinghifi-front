@@ -39,7 +39,7 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
         }
       });
     });
-    console.log(datasArray);
+    
     return datasArray;
   } catch (error) {
     console.error('Une erreur s\'est produite:', error);
