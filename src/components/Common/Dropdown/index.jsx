@@ -47,7 +47,7 @@ function Dropdown({
       setIsConnected(false);
       setIsAdmin(false);
       closeDropdown();
-      navigate('/', { state: { from: location }, replace: true})
+      navigate('/', { state: { from: location }, replace: true });
     }
   };
 
