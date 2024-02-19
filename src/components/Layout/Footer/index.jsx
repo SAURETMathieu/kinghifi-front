@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faScaleBalanced } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook, faSoundcloud, faYoutube, faTwitter,
-  faInstagram, faTiktok, faSnapchat, faWhatsapp, faDiscord,
+  faInstagram, faTiktok, faSnapchat, faWhatsapp, faDiscord, faDeezer,
 } from '@fortawesome/free-brands-svg-icons';
 import fetchData from '../../../services/api/call.api';
 
@@ -24,8 +24,7 @@ function Footer() {
     Snapchat: faSnapchat,
     Whatsapp: faWhatsapp,
     Discord: faDiscord,
-
-    // Ajoutez d'autres noms sociaux et icônes correspondantes ici au besoin
+    Deezer: faDeezer,
   };
 
   // fetch all labels with socials
