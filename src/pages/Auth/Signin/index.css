@@ -66,4 +66,8 @@ main{
   .return-link{
     display:none;
   }
+
+  .footer{
+    margin-bottom:0;
+  }
 }
