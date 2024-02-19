@@ -52,7 +52,8 @@ a:hover{
 
     .navbar-main{
         position:relative;
-    }
+        z-index:initial;
+    }  
 
     .navbar-top{
         position:relative;

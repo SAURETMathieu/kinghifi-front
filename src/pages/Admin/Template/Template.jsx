@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react';
 import fetchData from '../../../services/api/call.api';
 import AdminTable from '../../../components/Common/Table/AdminTable';
 import AdminSearch from '../../../components/Common/Search/AdminSearch';
+import CreateForm from '../../../components/Common/Forms/createForm';
 
-function AdminTemplate({ route, title = 'Admin' }) {
+function AdminTemplate({ route, title = 'Admin', optionsList }) {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
@@ -33,6 +34,7 @@ function AdminTemplate({ route, title = 'Admin' }) {
       <h1>{title}</h1>
       <AdminSearch datas={data} onSearch={handleSearch} />
       <AdminTable datas={filteredData} route={route} setFilteredData={setFilteredData} />
+      <CreateForm optionsList={optionsList} route={route} />
     </>
   );
 }
