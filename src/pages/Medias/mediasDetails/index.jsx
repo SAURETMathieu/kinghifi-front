@@ -3,13 +3,34 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 function MediasDetails({ mediasDetails }) {
   const medias = mediasDetails.filter((media) => media.id);
-  console.log(medias);
+
+  const filteredName = medias.map((media) => (
+    media.socials.map((social) => (
+      social.url.split('https://facebook.com/')
+    ))
+  ));
+
+  const crewNameFiltered = filteredName.map((element) => (
+    element[0].pop()
+  ));
+
+  console.log(crewNameFiltered);
 
   return (
     <>
       <h1 className="media_h1">
         Médias
       </h1>
+      {
+medias.map((media) => (
+  media.socials.map((social) => (
+    <div>{social.url.split('https://facebook.com/')}</div>
+  ))
+
+))
+
+}
+
       <div className="fb_containeur">
         <iframe className="fb" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fpure.niceness.records&tabs=timeline&width=1000&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" title="facebook" width="500" height="500" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" />
 
