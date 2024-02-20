@@ -27,7 +27,11 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
       //   formData.append(key, value);
       // });
       // console.log(formData instanceof FormData);
-      options.body = requestData instanceof FormData ? requestData : JSON.stringify(requestData);
+      if (requestData === null) {
+        options.body = null;
+      } else {
+        options.body = requestData instanceof FormData ? requestData : JSON.stringify(requestData);
+      }
     }
 
     const response = await fetch(url, options);
