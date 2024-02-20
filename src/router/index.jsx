@@ -43,8 +43,9 @@ const router = createBrowserRouter([
       {
         path: '/labels',
         element: <Labels />,
-        loader: musicDataLoader,
+        loader: ({ params }) => musicDataLoader(parseInt(params.id, 10)),
         children: [{ path: '/labels/:id', element: <Labels /> }],
+
       },
       {
         path: '/admin',
