@@ -49,14 +49,14 @@ function Dropdown({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div
-        className="dropdown-trigger"
+      <NavLink
+        className={`dropdown-trigger is-open ${isOpen ? 'open' : ''}`}
         onClick={toggleDropdown}
       >
         <span className="navbar-text">{title}</span>
         <FontAwesomeIcon className="navbar-icon" icon={icon} />
         {caret ? <FontAwesomeIcon icon={faCaretDown} aria-haspopup="true" aria-controls="dropdown-menu4" /> : null}
-      </div>
+      </NavLink>
 
       {isOpen && (
         <div className="dropdown-menu" id="dropdown-menu4" role="menu">

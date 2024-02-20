@@ -11,6 +11,7 @@ function Player({ trackData }) {
 
           && (
           <AudioPlayer
+            autoPlay
             src={trackData.url_sound}
             onPlay={() => { console.log('onPlay'); }}
           />
