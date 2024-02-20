@@ -7,7 +7,9 @@ import AdminSearch from '../../../components/Common/Search/AdminSearch';
 import CreateForm from '../../../components/Common/Forms/createForm';
 import CrudModal from '../../../components/Common/Modal/CrudModal';
 
-function AdminTemplate({ route, title = 'Admin', optionsList }) {
+function AdminTemplate({
+  route, title = 'Admin', optionsList,
+}) {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -16,6 +18,7 @@ function AdminTemplate({ route, title = 'Admin', optionsList }) {
   const [modalTitle, setModalTitle] = useState('AJOUTER');
   const [modalMode, setModalMode] = useState('create');
   const [itemSelected, setItemSelected] = useState(null);
+  const [optionsUpdate, setOptionsUpdate] = useState([]);
 
   const handleSearch = (column, search) => {
     const filteredDatas = data.filter((item) => {
@@ -57,22 +60,24 @@ function AdminTemplate({ route, title = 'Admin', optionsList }) {
   };
 
   const handleOpenUpdateModal = (item) => {
+    const optionForUpdate = optionsList.map((obj) => ({ ...obj }));
     Object.keys(item).forEach((key) => {
       optionsList.forEach((objetOptions, index) => {
         if (objetOptions.id === key && objetOptions.type !== 'file') {
-          optionsList[index].value = item[key];
+          optionForUpdate[index].defaultValue = item[key];
         }
         if (objetOptions.type === 'file') {
-          objetOptions.required = false;
+          optionForUpdate.required = false;
         }
       });
     });
+
     setItemSelected(item);
+    setOptionsUpdate(optionForUpdate);
     setModalTitle('MODIFIER');
     setModalMode('update');
     setIsModalVisible(true);
   };
-
   const handleCloseModal = () => {
     setIsModalVisible(false);
   };
@@ -108,6 +113,7 @@ function AdminTemplate({ route, title = 'Admin', optionsList }) {
         <CrudModal handleClose={handleCloseModal} title={modalTitle} mode={modalMode}>
           <CreateForm
             optionsList={optionsList}
+            optionsUpdate={optionsUpdate}
             route={route}
             handleDataCreate={handleDataCreate}
             handleDataUpdate={handleDataUpdate}

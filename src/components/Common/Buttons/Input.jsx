@@ -9,9 +9,7 @@ function Input({
     id,
     label,
     placeholder,
-    value,
-    // value pose un problème de changement visuel du select
-    // mais est nécessaire pour mettre une valeur par défaut
+    defaultValue,
     errorMessage,
     type,
     className,
@@ -35,7 +33,7 @@ function Input({
     id,
     name: id,
     placeholder,
-    value,
+    defaultValue,
     onChange: (event) => (type === 'file' ? handleFileChange(id, event) : handleInputChange(id, event)),
     disabled,
     title,
