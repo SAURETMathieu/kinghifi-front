@@ -26,12 +26,14 @@ import Label from '../pages/Label';
 import Events from '../pages/Events';
 import Medias from '../pages/Medias';
 import Signin from '../pages/Auth/Signin';
+import ErrorPage from '../pages/error';
 
 // Création du routeur
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Home /> },
       {
