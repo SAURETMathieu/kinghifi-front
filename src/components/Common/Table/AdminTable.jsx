@@ -7,7 +7,9 @@ import styles from './AdminTable.module.css';
 import DeleteModal from '../Modal/Delete';
 import fetchData from '../../../services/api/call.api';
 
-function AdminTable({ filteredDatas, handleDataDelete, route }) {
+function AdminTable({
+  filteredDatas, handleDataDelete, handleOpenUpdateModal, route,
+}) {
   const [selectedRow, setSelectedRow] = useState(null);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -41,10 +43,6 @@ function AdminTable({ filteredDatas, handleDataDelete, route }) {
     }
   };
 
-  const handleUpdate = (index) => {
-    setSelectedRow(index);
-  };
-
   if (filteredDatas.length) {
     return (
       <>
@@ -74,7 +72,7 @@ function AdminTable({ filteredDatas, handleDataDelete, route }) {
                     <button
                       className="is-danger"
                       type="button"
-                      onClick={() => handleUpdate(data.id)}
+                      onClick={() => handleOpenUpdateModal(data)}
                       aria-label="update"
                     >
                       <FontAwesomeIcon icon={faPen} />

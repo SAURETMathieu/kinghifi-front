@@ -5,7 +5,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 // Importation des composants
 import App from '../app';
-import Home from '../pages/Home';
+import Home, { homeDataLoader } from '../pages/Home';
 import {
   Admin,
   UserAdmin,
@@ -18,6 +18,7 @@ import {
   MessageAdmin,
   Settings,
 } from '../pages/Admin';
+
 import Contact from '../pages/Contact';
 import Account from '../pages/Account';
 import Signup from '../pages/Auth/Signup';
@@ -35,7 +36,20 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <Home />, loader: homeDataLoader },
+      { path: '/contact', element: <Contact /> },
+      { path: '/account', element: <Account /> },
+      { path: '/signin', element: <Signin /> },
+      { path: '/signup', element: <Signup /> },
+      { path: '/events', element: <Events /> },
+      { path: '/medias', element: <Medias /> },
+      {
+        path: '/labels',
+        element: <Labels />,
+        loader: ({ params }) => musicDataLoader(parseInt(params.id, 10)),
+        children: [{ path: '/labels/:id', element: <Labels /> }],
+
+      },
       {
         path: '/admin',
         element: <Admin />,
@@ -51,17 +65,6 @@ const router = createBrowserRouter([
           { path: 'messages', element: <MessageAdmin /> },
           { path: 'settings', element: <Settings /> },
         ],
-      },
-      { path: '/contact', element: <Contact /> },
-      { path: '/account', element: <Account /> },
-      { path: '/signin', element: <Signin /> },
-      { path: '/signup', element: <Signup /> },
-      { path: '/events', element: <Events /> },
-      { path: '/medias', element: <Medias /> },
-      {
-        path: '/labels',
-        element: <Labels />,
-        children: [{ path: '/labels/:id', element: <Labels /> }],
       },
     ],
   },

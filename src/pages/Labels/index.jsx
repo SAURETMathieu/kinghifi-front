@@ -1,35 +1,26 @@
 // Importing necessary React hooks and components
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import { useLoaderData } from 'react-router-dom';
 
 // Importing local files
+
 import Label from '../Label';
 import fetchData from '../../services/api/call.api';
 
+export const musicDataLoader = async (id) => {
+  if (!id) {
+    const labelsData = await fetchData('GET', 'labels/albums');
+    return labelsData;
+  } const labelsData = await fetchData('GET', `labels/${id}/albums`);
+  return labelsData;
+};
+
 function Labels() {
+  const data = useLoaderData();
+
   // Defining state variables
-  const [labelsAlbums, setLabelsAlbums] = useState([]);
-
-  // Getting the id parameter from the URL (using useParams hook)
-  const { id } = useParams();
-
-  // Function to fetch labels and their albums data
-  const fetchLabelsAlbums = async () => {
-    // If id is undefined, load all labels and albums
-    if (!id) {
-      const labelsData = await fetchData('GET', 'labels/albums');
-      setLabelsAlbums(labelsData);
-    } else {
-      // else, load albums for the label with the specified id
-      const labelsData = await fetchData('GET', `labels/${id}/albums`);
-      setLabelsAlbums(labelsData);
-    }
-  };
-
-  // useEffect hook to trigger data fetching when id changes
-  useEffect(() => {
-    fetchLabelsAlbums();
-  }, [id]);
+  const [labelsAlbums, setLabelsAlbums] = useState(data);
 
   // Rendering the component
   return (

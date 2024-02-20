@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import './index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import fetchData from '../../../services/api/call.api';
 import { UserContext } from '../../../context/userContext';
@@ -73,18 +73,17 @@ function Dropdown({
               {links.map((link) => (
                 (link.path !== '/signout')
                   ? (
-                    <NavLink
+                    <Link
                       key={link.id}
                       to={link.path}
                       onClick={() => { handleClickLink(); closeDropdown(); }}
                     >
                       {link.label}
-                    </NavLink>
+                    </Link>
                   )
                   : (
                     <button
                       key={link.id}
-                      className="button is-warning is-light"
                       type="submit"
                       onClick={logout}
                     >
