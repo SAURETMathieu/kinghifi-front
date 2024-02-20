@@ -23,7 +23,7 @@ function AlbumAdmin() {
       {
         ...options.label_id,
         options: labels,
-        value: labels[0]?.id,
+        defaultValue: labels[0]?.id,
       },
       options.year,
       options.type,
@@ -37,7 +37,11 @@ function AlbumAdmin() {
   }, []);
 
   return (
-    <AdminTemplate route="admin/albums" title="Albums" optionsList={optionsList} />
+    <AdminTemplate
+      route="admin/albums"
+      title="Albums"
+      optionsList={optionsList}
+    />
   );
 }
 

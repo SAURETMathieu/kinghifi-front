@@ -5,6 +5,7 @@ import fetchData from '../../../services/api/call.api';
 
 function CreateForm({
   optionsList,
+  optionsUpdate,
   route,
   handleDataCreate,
   handleClose, modalMode,
@@ -18,18 +19,31 @@ function CreateForm({
 
   const initialForm = () => {
     const initialFormData = {};
-    optionsList?.forEach((option) => {
-      initialFormData[option.id] = option.value || '';
-    });
+
+    if (modalMode === 'create') {
+      optionsList?.forEach((option) => {
+        initialFormData[option.id] = option.defaultValue || '';
+      });
+    }
+
+    if (modalMode === 'update') {
+      optionsUpdate?.forEach((option) => {
+        initialFormData[option.id] = option.defaultValue || '';
+      });
+    }
     setFormData(initialFormData);
   };
 
   useEffect(() => {
-    if (optionsList && optionsList.length > 0) {
+    if (optionsList && optionsList.length > 0 && !formInit) {
       initialForm();
       setFormInit(true);
     }
-  }, [optionsList]);
+    if (optionsUpdate && optionsUpdate.length > 0 && !formInit) {
+      initialForm();
+      setFormInit(true);
+    }
+  }, [optionsList, formInit]);
 
   const handleInputChange = (id, event) => {
     const { value } = event.target;
@@ -63,7 +77,6 @@ function CreateForm({
           handleDataUpdate(resultData[0]);
         }
         setFormKey((prevKey) => prevKey + 1);
-        initialForm();
         setItemSelected(null);
         handleClose();
       }
@@ -74,7 +87,16 @@ function CreateForm({
 
   return (
     <form key={formKey} className="create-form" onSubmit={handleSubmit} encType="multipart/form-data">
-      {optionsList && optionsList.map((options) => (
+      {modalMode === 'create' && optionsList && optionsList.map((options) => (
+        <Input
+          key={options.id}
+          options={options}
+          handleInputChange={handleInputChange}
+          handleFileChange={handleFileChange}
+        />
+      ))}
+
+      {modalMode === 'update' && optionsUpdate && optionsUpdate.map((options) => (
         <Input
           key={options.id}
           options={options}
