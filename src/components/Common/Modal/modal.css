@@ -61,6 +61,10 @@
   align-items: center;
 }
 
+.modal__body form{
+  width:100%;
+}
+
 .close {
   color: #ffffff;
   font-size: 2rem;
@@ -109,8 +113,18 @@
 .modal-submit-buttons{
   display:flex;
   justify-content:space-evenly;
-  padding:1rem;
+  padding:.5rem;
   width:100%;
+}
+
+.add-button{
+  background:#03a727;
+  border:solid 4px #005e10;
+  border-radius:1rem;
+  width:4rem;
+  height:4rem;
+  font-size:2rem;
+  font-weight:600;
 }
 
 @media screen and (max-width: 426px) {
