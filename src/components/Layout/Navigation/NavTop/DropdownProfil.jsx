@@ -1,11 +1,14 @@
 import './DropdownProfil.css';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { faRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '../../../Common/Dropdown';
+import checkConnected from '../../../../services/auth/checkConnected';
+import { UserContext } from '../../../../context/userContext';
 
 function DropdownProfil() {
-  const [isUserLogged, setIsUserLogged] = useState(false);
+  const { isConnected, setIsConnected } = useContext(UserContext);
+
   const loggedLinks = [
     { id: 1, path: '/profil', label: 'Profil' },
     { id: 2, path: '/infos', label: 'Mes informations' },
@@ -22,12 +25,12 @@ function DropdownProfil() {
   useEffect(() => {
     const token = localStorage.getItem('authApiToken');
     if (token) {
-      setIsUserLogged(true);
+      setIsConnected(true);
     }
   }, []);
 
   return (
-    isUserLogged ? (
+    isConnected ? (
       <div className="navbar-top-icon">
         <Dropdown title="" icon={faUser} links={loggedLinks} caret={false} />
       </div>

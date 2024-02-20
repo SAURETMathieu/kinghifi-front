@@ -18,8 +18,21 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
     const options = {
       method,
       headers,
-      body: requestData ? JSON.stringify(requestData) : null,
     };
+
+    if (method !== 'GET') {
+      // const formData = new FormData();
+      // Object.keys(requestData).forEach((key) => {
+      //   const value = requestData[key];
+      //   formData.append(key, value);
+      // });
+      // console.log(formData instanceof FormData);
+      if (requestData === null) {
+        options.body = null;
+      } else {
+        options.body = requestData instanceof FormData ? requestData : JSON.stringify(requestData);
+      }
+    }
 
     const response = await fetch(url, options);
     if (!response.ok) {
@@ -39,7 +52,7 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
         }
       });
     });
-    
+
     return datasArray;
   } catch (error) {
     console.error('Une erreur s\'est produite:', error);

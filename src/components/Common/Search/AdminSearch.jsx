@@ -5,20 +5,26 @@ import styles from './AdminSearch.module.css';
 
 function AdminSearch({ datas, onSearch }) {
   const [searchColumn, setSearchColumn] = useState('');
-  // eslint-disable-next-line no-unused-vars
+  const [searchTerm, setSearchTerm] = useState('');
   const [firstRender, setFirstRender] = useState(true);
+
   const handleSearchColumn = (selectedColumn) => {
     setSearchColumn(selectedColumn);
   };
 
   const handleSearch = (e) => {
-    const searchTerm = e.target.value;
-    onSearch(searchColumn, searchTerm);
+    const newSearchTerm = e.target.value;
+    setSearchTerm(newSearchTerm);
+    onSearch(searchColumn, newSearchTerm);
   };
 
   useEffect(() => {
-    setFirstRender(false);
-  }, []);
+    if (!firstRender) {
+      onSearch(searchColumn, searchTerm);
+    } else {
+      setFirstRender(false);
+    }
+  }, [searchColumn]);
 
   return (
     <section className={styles.section}>

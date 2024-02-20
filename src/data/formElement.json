@@ -1,0 +1,135 @@
+{
+  "options": {
+    "name": {
+      "id": "name",
+      "label": "Nom",
+      "type": "text",
+      "placeholder": "Nom",
+      "required": true
+    },
+    "lastname": {
+      "id": "lastname",
+      "label": "Nom",
+      "type": "text",
+      "placeholder": "Nom",
+      "required": true
+    },
+    "firstname": {
+      "id": "firstname",
+      "label": "Prénom",
+      "type": "text",
+      "placeholder": "Prénom",
+      "required": true
+    },
+    "nickname": {
+      "id": "nickname",
+      "label": "Surnom",
+      "type": "text",
+      "placeholder": "Surnom",
+      "required": false
+    },
+    "year": {
+      "id": "year",
+      "label": "Année",
+      "type": "number",
+      "min": 1900,
+      "max": 2100,
+      "step": 1,
+      "required": true
+    },
+    "city": {
+      "id": "city",
+      "label": "Ville",
+      "type": "text",
+      "placeholder": "Ville",
+      "required": true
+    },
+    "country": {
+      "id": "country",
+      "label": "Pays",
+      "type": "text",
+      "placeholder": "Pays",
+      "required": true
+    },
+    "function": {
+      "id": "function",
+      "label": "Fonction",
+      "type": "text",
+      "placeholder": "Fonction",
+      "required": true
+    },
+    "description": {
+      "id": "description",
+      "label": "Description",
+      "type": "textarea",
+      "placeholder": "Description",
+      "required": true
+    },
+    "url_image": {
+      "id": "url_image",
+      "label": "Image",
+      "type": "file",
+      "accept": "image/*",
+      "required": true
+    },
+    "label_id": {
+      "id": "label_id",
+      "label": "Label",
+      "type": "select",
+      "required": true
+    },
+    "birthdate": {
+      "id": "birthdate",
+      "label": "Date de naissance",
+      "type": "date",
+      "required": true
+    },
+    "zipcode": {
+      "id": "zipcode",
+      "label": "Code postal",
+      "type": "text",
+      "placeholder": "Code postal",
+      "required": true
+    },
+    "role": {
+      "id": "role",
+      "label": "Rôle",
+      "type": "text",
+      "placeholder": "Rôle",
+      "required": true
+    },
+    "email": {
+      "id": "email",
+      "label": "Email",
+      "type": "email",
+      "placeholder": "Email",
+      "required": true
+    },
+    "type": {
+      "id": "type",
+      "label": "Type",
+      "type": "text",
+      "placeholder": "Type",
+      "required": true
+    },
+    "starting_date": {
+      "id": "starting_date",
+      "label": "Date de début",
+      "type": "date",
+      "required": true
+    },
+    "ending_date": {
+      "id": "ending_date",
+      "label": "Date de fin",
+      "type": "date",
+      "required": true
+    },
+    "location": {
+      "id": "location",
+      "label": "Adresse",
+      "type": "text",
+      "placeholder": "Adresse",
+      "required": true
+    }
+  }
+}

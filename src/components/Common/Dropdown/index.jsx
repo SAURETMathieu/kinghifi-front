@@ -2,15 +2,20 @@ import PropTypes from 'prop-types';
 import './index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { useState, useContext } from 'react';
 import fetchData from '../../../services/api/call.api';
+import { UserContext } from '../../../context/userContext';
 
 function Dropdown({
   title, icon, links, caret,
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { isConnected, setIsConnected } = useContext(UserContext);
+  const { isAdmin, setIsAdmin } = useContext(UserContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -39,7 +44,10 @@ function Dropdown({
     const isLoggedOut = await fetchData('GET', 'auth/signout', null, true);
     if (isLoggedOut) {
       localStorage.removeItem('authApiToken');
-      window.location.href = '/';
+      setIsConnected(false);
+      setIsAdmin(false);
+      closeDropdown();
+      navigate('/', { state: { from: location }, replace: true });
     }
   };
 

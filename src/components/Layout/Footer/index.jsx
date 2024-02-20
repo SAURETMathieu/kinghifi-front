@@ -1,14 +1,31 @@
 import './index.css';
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faScaleBalanced } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFacebook, faSoundcloud, faYoutube, faTwitter,
+  faInstagram, faTiktok, faSnapchat, faWhatsapp, faDiscord, faDeezer,
+} from '@fortawesome/free-brands-svg-icons';
 import fetchData from '../../../services/api/call.api';
 
 function Footer() {
   const [labels, setLabels] = useState([]);
   const [contactUs, setContactUs] = useState([]);
   const [legals, setLegals] = useState([]);
+
+  const socialIcons = {
+    Facebook: faFacebook,
+    SoundCloud: faSoundcloud,
+    Youtube: faYoutube,
+    Twitter: faTwitter,
+    Instagram: faInstagram,
+    Tiktok: faTiktok,
+    Snapchat: faSnapchat,
+    Whatsapp: faWhatsapp,
+    Discord: faDiscord,
+    Deezer: faDeezer,
+  };
 
   // fetch all labels with socials
   const fetchLabelsData = async () => {
@@ -35,7 +52,9 @@ function Footer() {
             <div className="socials-icon">
               {label.socials.map((social) => (
                 <div key={social.id}>
-                  <FontAwesomeIcon icon={faEnvelope} />
+                  <Link to={social.url} target="_blank" rel="noreferrer">
+                    {socialIcons[social.name] && <FontAwesomeIcon icon={socialIcons[social.name]} />}
+                  </Link>
                 </div>
               ))}
             </div>
@@ -44,7 +63,7 @@ function Footer() {
       </div>
       <div className="legals">
         <NavLink to="/legals" className="footer-icon">
-          <FontAwesomeIcon icon={faEnvelope} />
+          <FontAwesomeIcon icon={faScaleBalanced} />
           <span className="legals-text">Mentions légales</span>
           {legals}
         </NavLink>

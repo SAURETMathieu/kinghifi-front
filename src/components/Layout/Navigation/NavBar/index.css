@@ -10,6 +10,7 @@
     position:fixed;
     bottom:0;
     left:0;
+    z-index: 50;
 }
 
 .navbar-top{
@@ -57,7 +58,8 @@ a:hover{
 
     .navbar-main{
         position:relative;
-    }
+        z-index:initial;
+    }  
 
     .navbar-top{
         position:relative;
