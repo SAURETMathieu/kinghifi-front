@@ -4,16 +4,16 @@
   width: 20%;
 }
 
-.container{
+.profil-container{
   width: 100%;
   background-color: rgb(96, 96, 96);;
 }
 
-span {
+.tracks-list {
   padding: 0 3rem;
 }
 
-p {
+.tracks-list p {
   padding-bottom: 0.5rem;
 }
 

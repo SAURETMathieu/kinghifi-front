@@ -22,7 +22,7 @@ import {
 import Contact from '../pages/Contact';
 import Account from '../pages/Account';
 import Signup from '../pages/Auth/Signup';
-import Labels from '../pages/Labels';
+import Labels, { musicDataLoader } from '../pages/Labels';
 import Label from '../pages/Label';
 import Events from '../pages/Events';
 import Medias from '../pages/Medias';
@@ -48,7 +48,6 @@ const router = createBrowserRouter([
         element: <Labels />,
         loader: ({ params }) => musicDataLoader(parseInt(params.id, 10)),
         children: [{ path: '/labels/:id', element: <Labels /> }],
-
       },
       {
         path: '/admin',

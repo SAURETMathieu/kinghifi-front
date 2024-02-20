@@ -23,8 +23,8 @@ function Favorites() {
 
   return (
     <div className="account-likes">
-      <span>
-        {likesDetails.map((track) => (
+      <div className="tracks-list">
+        {likesDetails && likesDetails.map((track) => (
           <div key={track.user_id}>
             <p>
               Titre de la piste :
@@ -36,7 +36,7 @@ function Favorites() {
             </p>
           </div>
         ))}
-      </span>
+      </div>
     </div>
   );
 }

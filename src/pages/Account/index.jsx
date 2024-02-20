@@ -9,7 +9,7 @@ import Favorites from './Favorites';
 function Account() {
   return (
     <div className="profil">
-      <div className="container">
+      <div className="profil-container">
         <div className="return-icon">
           <NavLink to="/">
             <FontAwesomeIcon icon={faReply} />
