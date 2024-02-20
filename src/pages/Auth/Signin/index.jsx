@@ -40,7 +40,7 @@ function Account() {
   useEffect(() => {
     const token = localStorage.getItem('authApiToken');
     if (token) {
-      navigate('/', { state: { from: location }, replace: true})
+      navigate('/', { state: { from: location }, replace: true });
     }
   }, []);
 
@@ -56,7 +56,7 @@ function Account() {
     event.preventDefault();
     const result = await postAuth();
     if (result.redirectTo) {
-      navigate(result.redirectTo, { state: { from: location }, replace: true})
+      navigate(result.redirectTo, { state: { from: location }, replace: true });
     } else if (result.error) {
       console.log(result.error);
     }
