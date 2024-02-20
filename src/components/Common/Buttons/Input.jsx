@@ -2,12 +2,16 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-function Input({ options, handleInputChange, handleFileChange }) {
+function Input({
+  options, handleInputChange, handleFileChange,
+}) {
   const {
     id,
     label,
     placeholder,
     value,
+    // value pose un problème de changement visuel du select
+    // mais est nécessaire pour mettre une valeur par défaut
     errorMessage,
     type,
     className,
@@ -60,8 +64,13 @@ function Input({ options, handleInputChange, handleFileChange }) {
       )}
       {type === 'select' && (
       <select id={id} {...inputProps}>
-        {options && options.select && options.select.map((option) => (
-          <option key={option.id} value={option.value}>{option.label}</option>
+        {options && options.options && options.options.map((option) => (
+          <option
+            key={option.id}
+            value={option.id}
+          >
+            {option.name}
+          </option>
         ))}
       </select>
       )}
