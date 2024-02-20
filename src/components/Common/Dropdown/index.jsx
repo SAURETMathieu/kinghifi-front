@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import './index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import fetchData from '../../../services/api/call.api';
 import { UserContext } from '../../../context/userContext';
@@ -57,14 +57,14 @@ function Dropdown({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <NavLink
-        className={`dropdown-trigger is-open ${isOpen ? 'open' : ''}`}
+      <div
+        className="dropdown-trigger"
         onClick={toggleDropdown}
       >
         <span className="navbar-text">{title}</span>
         <FontAwesomeIcon className="navbar-icon" icon={icon} />
         {caret ? <FontAwesomeIcon icon={faCaretDown} aria-haspopup="true" aria-controls="dropdown-menu4" /> : null}
-      </NavLink>
+      </div>
 
       {isOpen && (
         <div className="dropdown-menu" id="dropdown-menu4" role="menu">
@@ -73,18 +73,17 @@ function Dropdown({
               {links.map((link) => (
                 (link.path !== '/signout')
                   ? (
-                    <NavLink
+                    <Link
                       key={link.id}
                       to={link.path}
                       onClick={() => { handleClickLink(); closeDropdown(); }}
                     >
                       {link.label}
-                    </NavLink>
+                    </Link>
                   )
                   : (
                     <button
                       key={link.id}
-                      className="button is-warning is-light"
                       type="submit"
                       onClick={logout}
                     >

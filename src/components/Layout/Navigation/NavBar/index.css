@@ -4,7 +4,7 @@
     justify-content: space-evenly;
     align-items: center;
     width:100%;
-    height: 2rem;
+    height: var(--navbar-height);
     font-size: 1.3rem;
     color:black;
     position:fixed;
@@ -25,8 +25,11 @@ a:hover{
 }
 
 .navbar-main a{
-     padding:0.5rem;
-  
+    padding:0.5rem;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar-main .active{
@@ -43,9 +46,6 @@ a:hover{
     display:flex;
     gap:0.5rem;
 }
-.dropdown-trigger .active{
-   display: none;
-}
 
 @media screen and (min-width: 426px) {
     .navbar-text{
@@ -59,9 +59,19 @@ a:hover{
     .navbar-main{
         position:relative;
         z-index:initial;
-    }  
+    }
 
     .navbar-top{
         position:relative;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .navbar-main svg{
+        color:black;
+    }
+
+    .navbar-main .active svg{
+        color:var(--secondary-color);
     }
 }

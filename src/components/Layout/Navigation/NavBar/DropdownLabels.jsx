@@ -12,7 +12,7 @@ function DropdownLabel() {
   ];
 
   return (
-    <Dropdown title ="Musiques" icon={faMusic} links={labelLinks} />
+    <Dropdown title="Musiques" icon={faMusic} links={labelLinks} />
   );
 }
 
