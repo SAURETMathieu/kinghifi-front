@@ -10,7 +10,7 @@ function DropdownProfil() {
   const { isConnected, setIsConnected } = useContext(UserContext);
 
   const loggedLinks = [
-    { id: 1, path: '/profil', label: 'Profil' },
+    { id: 1, path: '/account', label: 'Profil' },
     { id: 2, path: '/infos', label: 'Mes informations' },
     { id: 3, path: '/favorites', label: 'Mes favoris' },
     { id: 4, path: '/messages', label: 'Mes messages' },
