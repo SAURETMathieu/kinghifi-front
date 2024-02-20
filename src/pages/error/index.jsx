@@ -8,7 +8,7 @@ function ErrorPage() {
         <a className="home_link" href="/">
           OH! LOOKS LIKE YOU GOT LOST!
           <span>
-            Back to Home
+            RIGHT THIS WAY!
           </span>
         </a>
         <p className="rotated rotated_4_1">4</p>

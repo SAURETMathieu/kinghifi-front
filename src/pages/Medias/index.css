@@ -47,9 +47,7 @@
 .images {
   width: 400px;
   height: 350px;
-
   min-width: 320px;
-
   padding: 1rem;
   border-radius: 25%;
 }
