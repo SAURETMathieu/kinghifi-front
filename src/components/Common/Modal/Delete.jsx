@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import './modal.css';
 
@@ -21,7 +22,7 @@ function DeleteModal({ text, handleClose, handleConfirm }) {
         >
           &times;
         </button>
-        <h2 id="confirm-delete-modal-title" className="modal__title">SUPPRIMER</h2>
+        <h2 className="modal__title">SUPPRIMER</h2>
         <div className="modal__body">
           <p>Voulez-vous vraiment supprimer cet élément ?</p>
           <p>L&apos;action sera irréversible et supprimera tous les éléments qui lui sont liés.</p>

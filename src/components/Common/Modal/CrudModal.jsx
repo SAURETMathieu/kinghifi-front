@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import './modal.css';
 
-function CreateModal({
-  children, handleClose,
+function CrudModal({
+  children, handleClose, title, mode,
 }) {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -15,7 +15,7 @@ function CreateModal({
 
   return isVisible ? (
     <div className="modal" aria-label="Close modal" onClick={handleModalClick}>
-      <div className="modal-content modal-style-create">
+      <div className={`modal-content modal-style-${mode}`}>
         <button
           type="button"
           className="close close-modal-btn"
@@ -24,7 +24,7 @@ function CreateModal({
         >
           &times;
         </button>
-        <h2 className="modal__title">AJOUTER</h2>
+        <h2 className="modal__title">{title}</h2>
         <div className="modal__body">
           {React.cloneElement(children, { handleClose })}
         </div>
@@ -33,4 +33,4 @@ function CreateModal({
   ) : null;
 }
 
-export default CreateModal;
+export default CrudModal;

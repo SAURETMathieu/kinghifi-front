@@ -1,5 +1,5 @@
 .modal {
-  display:block;
+  display: block;
   position: fixed;
   z-index: 999;
   left: 0;
@@ -7,8 +7,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  overflow: auto;
-  font-size:1.5rem;
+  font-size: 1.5rem;
 }
 
 .modal-content {
@@ -16,65 +15,66 @@
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 90%;
-  display:flex;
+  display: flex;
   flex-direction: column;
-  justify-content:space-evenly;
-  align-items:center;
-  position:relative;
-  margin:0;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
 }
 
-.modal-style-create{
+.modal-style-create {
   background-color: #005e10;
   border: 5px solid #03a727;
 }
 
-.modal-style-update{
+.modal-style-update {
   background-color: #00165e;
   border: 5px solid #0329a7;
 }
 
-.modal-style-delete{
+.modal-style-delete {
   background-color: #5e0000;
   border: 5px solid #a70303;
 }
 
-.modal__title{
-  font-size:2rem;
-  font-weight:600;
-  width:100%;
-  padding:1rem;
-  color:#ffffff;
+.modal__title {
+  font-size: 2rem;
+  font-weight: 600;
+  width: 100%;
+  padding: 1rem;
+  color: #ffffff;
 }
 
-.modal__body{
-  width:100%;
+.modal__body {
+  width: 100%;
+  max-height: 70vh;
   padding: 1rem;
-  margin:0 auto;
-  background-color:white;
-  color:black;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-evenly;
-  gap:1rem;
+  margin: 0 auto;
+  background-color: white;
+  color: black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 1rem;
   align-items: center;
 }
 
-.modal__body form{
-  width:100%;
+.modal__body form {
+  width: 100%;
+  overflow-y: scroll;
 }
 
 .close {
   color: #ffffff;
   font-size: 2rem;
   font-weight: bold;
-  position:absolute;
-  width:fit-content;
+  position: absolute;
+  width: fit-content;
   top: 1rem;
   right: 1rem;
-  border:none;
-  background:none;
+  border: none;
+  background: none;
 }
 
 .close:hover,
@@ -84,51 +84,64 @@
   cursor: pointer;
 }
 
-.is-success{
+.is-success {
   border: solid 1px green;
   padding: 1rem;
   width: 45%;
   color: green;
-  font-weight:600;
-  background-color:white;
+  font-weight: 600;
+  background-color: white;
 }
 
-.is-cancel{
+.is-cancel {
   border: solid 1px red;
   padding: 1rem;
   width: 45%;
-  color:red;
-  font-weight:600;
-  background-color:white;
+  color: red;
+  font-weight: 600;
+  background-color: white;
 }
 
-.is-success:hover{
-  background-color:rgba(35, 102, 18, 0.2);
+.is-success:hover {
+  background-color: rgba(35, 102, 18, 0.2);
 }
 
-.is-cancel:hover{
-  background-color:rgba(102, 18, 18, 0.2);
+.is-cancel:hover {
+  background-color: rgba(102, 18, 18, 0.2);
 }
 
-.modal-submit-buttons{
-  display:flex;
-  justify-content:space-evenly;
-  padding:.5rem;
-  width:100%;
+.modal-submit-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0.5rem;
+  width: 100%;
 }
 
-.add-button{
-  background:#03a727;
-  border:solid 4px #005e10;
-  border-radius:1rem;
-  width:4rem;
-  height:4rem;
-  font-size:2rem;
-  font-weight:600;
+.add-button {
+  background: #03a727;
+  border: solid 4px #005e10;
+  border-radius: 1rem;
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.modal__body form::-webkit-scrollbar {
+  width: 3px;
+}
+
+.modal__body form::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal__body form::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 426px) {
   .modal {
-    font-size:1rem;
+    font-size: 1rem;
   }
 }

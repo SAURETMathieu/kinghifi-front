@@ -1,45 +1,60 @@
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #9e8a58;
-    --third-color: darkolivegreen;
-    --background-color: #313131;
-    --main-padding:1rem;
-    --navbar-height: 3rem;
-  }
-  
-  #root {
-    min-width: 100vw;
-    min-height: 100vh;
-    text-align: center;
-    min-width:300px;
-    width:100%;
-    box-sizing:border-box;
-  }
+  --primary-color: #007bff;
+  --secondary-color: #9e8a58;
+  --third-color: darkolivegreen;
+  --background-color: #313131;
+  --main-padding: 1rem;
+  --navbar-height: 3rem;
+}
 
-  .is-selected {
-    color: black !important;
-    background:#9e8a5862 !important;
+#root {
+  min-width: 100vw;
+  min-height: 100vh;
+  text-align: center;
+  min-width: 300px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.is-selected {
+  color: black !important;
+  background: #9e8a5862 !important;
+}
+
+main {
+  min-height: 100vh;
+  background: var(--background-color);
+  color: white;
+  padding: 1rem;
+  margin-top: var(--navbar-height);
+}
+
+main a {
+  margin: 0;
+  padding: 0;
+}
+
+.button,
+.input {
+  position: static !important;
+}
+
+/* barre de défilement*/
+/* body::-webkit-scrollbar {
+    width: 5px;
   }
   
-  main{
-    min-height:100vh;
-    background:var(--background-color);
-    color:white;
-    padding:1rem;
-    margin-top:var(--navbar-height);
+  body::-webkit-scrollbar-track {
+    background: transparent;
   }
   
-  main a{
-    margin:0;
-    padding:0;
+  body::-webkit-scrollbar-thumb {
+    background: var(--secondary-color); ; 
+    border-radius: 10px;
+  } */
+
+@media screen and (min-width: 426px) {
+  main {
+    margin-top: 0;
   }
-  
-  .button, .input{
-    position: static !important;
-  }
-  
-  @media screen and (min-width: 426px) {
-    main{
-      margin-top:0;
-    }
-  }
+}
