@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import Input from '../Buttons/Input';
 import fetchData from '../../../services/api/call.api';
 
-function CreateForm({ optionsList, route, handleDataCreate }) {
+function CreateForm({
+  optionsList, route, handleDataCreate, handleClose,
+}) {
   const [formData, setFormData] = useState({});
   const [formInit, setFormInit] = useState(false);
   const [formKey, setFormKey] = useState(0);
@@ -41,11 +43,18 @@ function CreateForm({ optionsList, route, handleDataCreate }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const dataCreated = await fetchData('POST', route, formData, true);
-    if (dataCreated) {
-      handleDataCreate(dataCreated[0]);
-      setFormKey((prevKey) => prevKey + 1);
-      initialForm();
+    const formElement = event.target.closest('form');
+
+    if (formElement && formElement.checkValidity()) {
+      const dataCreated = await fetchData('POST', route, formData, true);
+      if (dataCreated) {
+        handleDataCreate(dataCreated[0]);
+        setFormKey((prevKey) => prevKey + 1);
+        initialForm();
+      }
+      handleClose();
+    } else {
+      console.log('Certains champs du formulaire ne sont pas valides.');
     }
   };
 
@@ -59,7 +68,24 @@ function CreateForm({ optionsList, route, handleDataCreate }) {
           handleFileChange={handleFileChange}
         />
       ))}
-      <button type="submit">Envoyer</button>
+      <div className="modal-submit-buttons">
+        <button
+          type="button"
+          className="is-cancel close-modal-btn"
+          onClick={handleClose}
+          aria-label="Close modal"
+        >
+          Annuler
+        </button>
+        <button
+          type="submit"
+          className="is-success"
+          onClick={handleSubmit}
+          aria-label="Valid form"
+        >
+          Confirmer
+        </button>
+      </div>
     </form>
   );
 }
