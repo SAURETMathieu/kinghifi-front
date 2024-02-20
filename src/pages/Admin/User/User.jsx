@@ -3,14 +3,14 @@ import { options } from '../../../data/formElement.json';
 
 function UserAdmin() {
   const optionsList = [
-    // options.email,
+    options.email,
     options.firstname,
     options.lastname,
-    // options.birthdate,
-    // options.zipcode,
-    // options.role,
+    options.birthdate,
+    options.zipcode,
     options.city,
     options.country,
+    options.role,
   ];
 
   return (

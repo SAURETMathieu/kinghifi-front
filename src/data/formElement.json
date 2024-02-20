@@ -9,9 +9,9 @@
     },
     "lastname": {
       "id": "lastname",
-      "label": "Nom de famille",
+      "label": "Nom",
       "type": "text",
-      "placeholder": "Nom de famille",
+      "placeholder": "Nom",
       "required": true
     },
     "firstname": {
@@ -67,15 +67,68 @@
     },
     "url_image": {
       "id": "url_image",
-      "label": "Upload Image",
+      "label": "Image",
       "type": "file",
       "accept": "image/*",
       "required": true
     },
-    "select": {
-      "id": "url_image",
-      "label": "Upload Image",
+    "label_id": {
+      "id": "label_id",
+      "label": "Label",
       "type": "select",
+      "required": true
+    },
+    "birthdate": {
+      "id": "birthdate",
+      "label": "Date de naissance",
+      "type": "date",
+      "required": true
+    },
+    "zipcode": {
+      "id": "zipcode",
+      "label": "Code postal",
+      "type": "text",
+      "placeholder": "Code postal",
+      "required": true
+    },
+    "role": {
+      "id": "role",
+      "label": "Rôle",
+      "type": "text",
+      "placeholder": "Rôle",
+      "required": true
+    },
+    "email": {
+      "id": "email",
+      "label": "Email",
+      "type": "email",
+      "placeholder": "Email",
+      "required": true
+    },
+    "type": {
+      "id": "type",
+      "label": "Type",
+      "type": "text",
+      "placeholder": "Type",
+      "required": true
+    },
+    "starting_date": {
+      "id": "starting_date",
+      "label": "Date de début",
+      "type": "date",
+      "required": true
+    },
+    "ending_date": {
+      "id": "ending_date",
+      "label": "Date de fin",
+      "type": "date",
+      "required": true
+    },
+    "location": {
+      "id": "location",
+      "label": "Adresse",
+      "type": "text",
+      "placeholder": "Adresse",
       "required": true
     }
   }

@@ -1,39 +1,56 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Input from '../Buttons/Input';
 import fetchData from '../../../services/api/call.api';
 
-function CreateForm({ optionsList, route }) {
-  const initialFormData = optionsList?.reduce((acc, options) => ({
-    ...acc,
-    [options.id]: options.value || '',
-  }), {});
+function CreateForm({ optionsList, route, handleDataCreate }) {
+  const [formData, setFormData] = useState({});
+  const [formInit, setFormInit] = useState(false);
+  const [formKey, setFormKey] = useState(0);
 
-  const [formData, setFormData] = useState(initialFormData);
-
-  const handleInputChange = (name, event) => {
-    const { value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
+  const initialForm = () => {
+    const initialFormData = {};
+    optionsList?.forEach((option) => {
+      initialFormData[option.id] = option.value || '';
     });
+    setFormData(initialFormData);
   };
 
-  const handleFileChange = (name, event) => {
+  useEffect(() => {
+    if (optionsList && optionsList.length > 0) {
+      initialForm();
+      setFormInit(true);
+    }
+  }, [optionsList]);
+
+  const handleInputChange = (id, event) => {
+    const { value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [id]: value,
+    }));
+  };
+
+  const handleFileChange = (id, event) => {
     setFormData({
       ...formData,
-      [name]: event.target.files[0].name,
-      // [`${name}_file`]: event.target.files[0],
+      [id]: event.target.files[0].name,
+      // [`${id}_file`]: event.target.files[0],
     });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const dataCreated = await fetchData('POST', route, formData, true);
+    if (dataCreated) {
+      handleDataCreate(dataCreated[0]);
+      setFormKey((prevKey) => prevKey + 1);
+      initialForm();
+    }
   };
 
   return (
-    <form className="" onSubmit={handleSubmit} encType="multipart/form-data">
+    <form key={formKey} className="" onSubmit={handleSubmit} encType="multipart/form-data">
       {optionsList && optionsList.map((options) => (
         <Input
           key={options.id}

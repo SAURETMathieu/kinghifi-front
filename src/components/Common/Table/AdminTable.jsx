@@ -7,7 +7,7 @@ import styles from './AdminTable.module.css';
 import DeleteModal from '../Modal/Delete';
 import fetchData from '../../../services/api/call.api';
 
-function AdminTable({ datas, setFilteredData, route }) {
+function AdminTable({ filteredDatas, handleDataDelete, route }) {
   const [selectedRow, setSelectedRow] = useState(null);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -35,10 +35,9 @@ function AdminTable({ datas, setFilteredData, route }) {
     const isDelete = await deleteElement();
 
     if (isDelete) {
-      const updatedDatas = datas.filter((item) => item.id !== selectedItem.id);
+      handleDataDelete(selectedItem.id);
       setIsDeleteModalVisible(false);
       setSelectedItem(null);
-      setFilteredData(updatedDatas);
     }
   };
 
@@ -46,14 +45,14 @@ function AdminTable({ datas, setFilteredData, route }) {
     setSelectedRow(index);
   };
 
-  if (datas.length) {
+  if (filteredDatas.length) {
     return (
       <>
         <div className={styles.container}>
           <table className="table is-bordered is-hoverable is-fullwidth">
             <thead>
               <tr>
-                {Object.keys(datas[0]).map((columnName) => (
+                {Object.keys(filteredDatas[0]).map((columnName) => (
                   <th className="has-text-centered has-text-white" key={columnName}>{columnName}</th>
                 ))}
                 <th className="has-text-centered has-text-white">Modifier</th>
@@ -61,7 +60,7 @@ function AdminTable({ datas, setFilteredData, route }) {
               </tr>
             </thead>
             <tbody>
-              {datas.map((data) => (
+              {filteredDatas.map((data) => (
                 <tr
                   key={data.id}
                   onClick={() => handleRowClick(data.id)}
