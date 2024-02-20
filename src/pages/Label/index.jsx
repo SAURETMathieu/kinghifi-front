@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 
 // Importing local files
 import fetchData from '../../services/api/call.api';
-import Album from '../Album';
+import Album from './Album';
 
 function Label({ labelsWhithAlbums }) {
   // Defining state variables
@@ -34,32 +34,35 @@ function Label({ labelsWhithAlbums }) {
   // Rendering the component
   return (
     // Mapping over all albums of all labels
-    labelsWhithAlbums.map((label) => (
-      <div className="label-container" key={label.id}>
+    labelsWhithAlbums?.map((label) => (
+      <>
         {/* Displaying the label name */}
         <div className="label-name hero">
           {label.name}
         </div>
-        {/* Displaying albums for the label */}
-        <div className="label-albums">
-          {label.albums.map((album) => (
-            <div className="button-album-container" key={album.id}>
-              {/* Button to select an album */}
-              <button
-                className="button-album__image"
-                type="button"
-                style={{ backgroundImage: `url(${album.url_image})` }}
-                aria-label={album.name}
-                onClick={() => handleClick(album.id)}
-              />
-              {/* Displaying the album name */}
-              <div className="button-album__name">{album.name}</div>
-            </div>
-          ))}
+        <div className="label-container" key={label.id}>
+          {/* Displaying albums for the label */}
+          <div className="label-albums">
+            {label.albums?.map((album) => (
+              <div className="button-album-container" key={album.id}>
+                {/* Button to select an album */}
+                <button
+                  className="button-album__image"
+                  type="button"
+                  style={{ backgroundImage: `url(${album.url_image})` }}
+                  aria-label={album.name}
+                  onClick={() => handleClick(album.id)}
+                />
+                {/* Displaying the album name */}
+                <div className="button-album__name">{album.name}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Rendering the Album component with the selected album's songs */}
+          <Album oneAlbumSongs={oneAlbumSongs} />
         </div>
-        {/* Rendering the Album component with the selected album's songs */}
-        <Album oneAlbumSongs={oneAlbumSongs} />
-      </div>
+      </>
     ))
   );
 }
