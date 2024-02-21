@@ -11,17 +11,17 @@ import Album from './Album';
 function Label({ labelsWhithAlbums }) {
   // Defining state variables
   const [oneAlbumSongs, setOneAlbumSongs] = useState([]);
-  const [albumId, setAlbumId] = useState(1);
-
-  // Event for selecting an album
-  const handleClick = (key) => {
-    setAlbumId(key);
-  };
+  const [albumId, setAlbumId] = useState(labelsWhithAlbums[0]?.id);
 
   // Function to fetch data for one album
   const fetchOneAlbumData = async () => {
     const oneAlbumData = await fetchData('GET', `albums/${albumId}/tracks`);
     setOneAlbumSongs(oneAlbumData);
+  };
+
+  // Event for selecting an album
+  const handleClick = (id) => {
+    setAlbumId(id);
   };
 
   // useEffect hook to trigger fetching album data when albumId changes
@@ -31,13 +31,17 @@ function Label({ labelsWhithAlbums }) {
     }
   }, [albumId]);
 
+  useEffect(() => {
+    setAlbumId(labelsWhithAlbums[0]?.id);
+  }, [labelsWhithAlbums]);
+
   // Rendering the component
   return (
     // Mapping over all albums of all labels
     labelsWhithAlbums?.map((label) => (
       <>
         {/* Displaying the label name */}
-        <div className="label-name hero">
+        <div className="label-name hero" key={label.name}>
           {label.name}
         </div>
         <div className="label-container" key={label.id}>
@@ -54,13 +58,13 @@ function Label({ labelsWhithAlbums }) {
                   onClick={() => handleClick(album.id)}
                 />
                 {/* Displaying the album name */}
-                <div className="button-album__name">{album.name}</div>
+                <div className="button-album__name" key={album.name}>{album.name}</div>
               </div>
             ))}
           </div>
 
           {/* Rendering the Album component with the selected album's songs */}
-          <Album oneAlbumSongs={oneAlbumSongs} />
+          <Album oneAlbumSongs={oneAlbumSongs} albumId={albumId} />
         </div>
       </>
     ))
