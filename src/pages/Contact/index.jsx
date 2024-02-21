@@ -1,12 +1,14 @@
 import './index.css';
 import { useState } from 'react';
+import fetchData from '../../services/api/call.api';
 
 function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
+    from: '',
+    to: '',
+    html: '',
     email: '',
-    objet: '',
-    message: '',
+    description: '',
   });
 
   const handleChange = (e) => {
@@ -16,15 +18,23 @@ function ContactForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData); // A changer pour envoyer au serveur
+
+    try {
+      const response = await fetchData('POST', 'contact', formData);
+      console.log(response);
+      console.log(formData);
+    } catch (error) {
+      console.log(error);
+    }
 
     setFormData({
-      name: '',
+      from: '',
+      to: '',
+      html: '',
       email: '',
-      objet: '',
-      message: '',
+      description: '',
     });
   };
 
@@ -34,30 +44,42 @@ function ContactForm() {
         Contact
       </h1>
       <form className="form_containeur" onSubmit={handleSubmit}>
+
         <div className="form_div">
-          <label className="form_label" htmlFor="name">
-            <p className="label_name">Nom</p>
-            <input className="contact_input" type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
+          <label className="form_label" htmlFor="from">
+            <p className="label_name">from</p>
+            <input className="contact_input" type="email" id="from" name="from" value={formData.from} onChange={handleChange} />
           </label>
         </div>
+
+        <div className="form_div">
+          <label className="form_label" htmlFor="to">
+            <p className="label_name">to</p>
+            <input className="contact_input" type="text" id="to" name="to" value={formData.to} onChange={handleChange} />
+          </label>
+        </div>
+
+        <div className="form_div">
+          <label className="form_label" htmlFor="html">
+            <p className="label_name">html</p>
+            <input className="contact_input" type="text" id="html" name="html" value={formData.html} onChange={handleChange} />
+          </label>
+        </div>
+
         <div className="form_div">
           <label className="form_label" htmlFor="email">
-            <p className="label_name">Email</p>
+            <p className="label_name">email</p>
             <input className="contact_input" type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
           </label>
         </div>
-        <div className="form_div">
-          <label className="form_label" htmlFor="objet">
-            <p className="label_name">Objet</p>
-            <input className="contact_input" type="text" id="objet" name="objet" value={formData.objet} onChange={handleChange} />
-          </label>
-        </div>
+
         <div className="form_div">
           <label className="form_label" htmlFor="message">
-            <p className="label_name">Message</p>
-            <textarea className="contact_text-area" id="message" name="message" value={formData.message} onChange={handleChange} />
+            <p className="label_name">description</p>
+            <textarea className="contact_text-area" id="description" name="description" value={formData.description} onChange={handleChange} />
           </label>
         </div>
+
         <button className="submit_contact_button" type="submit">Envoyer</button>
       </form>
     </>
