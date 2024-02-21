@@ -1,23 +1,30 @@
 /* eslint-disable react/prop-types */
-// Importing styles
+import React, { useState, useEffect } from 'react';
 import './index.css';
-import { useState, useEffect } from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
-
+import { faPlay, faStar } from '@fortawesome/free-solid-svg-icons';
 import Player from '../Player';
 
 function Album({ oneAlbumSongs, albumId }) {
-  const [trackData, setTrackData] = useState();
-  // créer une const false/true, changée dans useEfect
-  const handleClick = (track) => { setTrackData(track); };
+  const [trackData, setTrackData] = useState(null);
+  const [likedTracks, setLikedTracks] = useState([]);
+
+  const handleClickPlay = (track) => { setTrackData(track); };
+
+  const handleClickLikes = (trackId) => {
+    if (likedTracks.includes(trackId)) {
+      setLikedTracks(likedTracks.filter((id) => id !== trackId));
+    } else {
+      setLikedTracks([...likedTracks, trackId]);
+    }
+  };
+  // console.log(likedTracks);
 
   useEffect(() => {
     if (trackData) {
       console.log(trackData.name);
     }
-  }, [albumId, oneAlbumSongs]);
+  }, [albumId, oneAlbumSongs, trackData]);
 
   return (
     <div className="album-container">
@@ -33,7 +40,8 @@ function Album({ oneAlbumSongs, albumId }) {
               <img className="track-cover" src={track.url_image} alt={track.name} />
               <FontAwesomeIcon
                 icon={faPlay}
-                onClick={() => handleClick(track)}
+                className="play-icon"
+                onClick={() => handleClickPlay(track)}
               />
               <div className="track-name">
                 {track.name}
@@ -41,9 +49,16 @@ function Album({ oneAlbumSongs, albumId }) {
               <div className="track-duration">
                 {track.duration}
               </div>
+              <FontAwesomeIcon
+                icon={faStar}
+                //le data-prefix est bien changé, mais l'icone ne change pas ; utilisation du className
+                data-prefix={likedTracks.includes(track.id) ? 'fas' : 'far'}
+                className={likedTracks.includes(track.id) ? 'icon-like-on' : 'icon-like-off'}
+                onClick={() => handleClickLikes(track.id)}
+              />
+
 
             </div>
-
           ))
         )
         // false: tell this at the user.
@@ -52,4 +67,5 @@ function Album({ oneAlbumSongs, albumId }) {
     </div>
   );
 }
+
 export default Album;

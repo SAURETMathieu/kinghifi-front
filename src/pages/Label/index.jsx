@@ -38,13 +38,14 @@ function Label({ labelsWhithAlbums }) {
   // Rendering the component
   return (
     // Mapping over all albums of all labels
+    // Rendu de la liste de labels
     labelsWhithAlbums?.map((label) => (
-      <>
+      <div key={label.id}>
         {/* Displaying the label name */}
-        <div className="label-name hero" key={label.name}>
+        <div className="label-name hero">
           {label.name}
         </div>
-        <div className="label-container" key={label.id}>
+        <div className="label-container">
           {/* Displaying albums for the label */}
           <div className="label-albums">
             {label.albums?.map((album) => (
@@ -58,16 +59,16 @@ function Label({ labelsWhithAlbums }) {
                   onClick={() => handleClick(album.id)}
                 />
                 {/* Displaying the album name */}
-                <div className="button-album__name" key={album.name}>{album.name}</div>
+                <div className="button-album__name">{album.name}</div>
               </div>
             ))}
           </div>
-
           {/* Rendering the Album component with the selected album's songs */}
           <Album oneAlbumSongs={oneAlbumSongs} albumId={albumId} />
         </div>
-      </>
+      </div>
     ))
+
   );
 }
 
