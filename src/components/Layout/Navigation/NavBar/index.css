@@ -19,7 +19,7 @@
   left: 0;
 }
 
-a:hover {
+.navbar-main a:hover {
   color: var(--secondary-color);
   background-color: black;
 }
