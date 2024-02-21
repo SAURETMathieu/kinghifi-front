@@ -3,9 +3,14 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
   const apiUrl = import.meta.env.VITE_API_URL;
   try {
     const url = `${apiUrl}/${endpoint}`;
-    const headers = {
-      'Content-Type': 'application/json',
-    };
+    let headers = {};
+
+    if (method === 'GET' && method === 'DELETE') {
+      headers = {
+        'Content-Type': 'application/json',
+      };
+    }
+
     if (needToken) {
       const token = localStorage.getItem('authApiToken');
       if (token) {
@@ -20,17 +25,16 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
       headers,
     };
 
-    if (method !== 'GET') {
-      // const formData = new FormData();
-      // Object.keys(requestData).forEach((key) => {
-      //   const value = requestData[key];
-      //   formData.append(key, value);
-      // });
-      // console.log(formData instanceof FormData);
+    if (method !== 'GET' && method !== 'DELETE') {
+      const formData = new FormData();
+      Object.keys(requestData).forEach((key) => {
+        const value = requestData[key];
+        formData.append(key, value);
+      });
       if (requestData === null) {
         options.body = null;
       } else {
-        options.body = requestData instanceof FormData ? requestData : JSON.stringify(requestData);
+        options.body = formData instanceof FormData ? formData : JSON.stringify(formData);
       }
     }
 
