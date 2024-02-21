@@ -33,32 +33,32 @@ function ContactForm() {
       <h1 className="contact-h1">
         Contact
       </h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">
-            Nom:
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
+      <form className="form_containeur" onSubmit={handleSubmit}>
+        <div className="form_div">
+          <label className="form_label" htmlFor="name">
+            <p className="label_name">Nom</p>
+            <input className="contact_input" type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
           </label>
         </div>
-        <div>
-          <label htmlFor="email">
-            Email:
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
+        <div className="form_div">
+          <label className="form_label" htmlFor="email">
+            <p className="label_name">Email</p>
+            <input className="contact_input" type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
           </label>
         </div>
-        <div>
-          <label htmlFor="objet">
-            Objet:
-            <input type="text" id="objet" name="objet" value={formData.objet} onChange={handleChange} />
+        <div className="form_div">
+          <label className="form_label" htmlFor="objet">
+            <p className="label_name">Objet</p>
+            <input className="contact_input" type="text" id="objet" name="objet" value={formData.objet} onChange={handleChange} />
           </label>
         </div>
-        <div>
-          <label htmlFor="message">
-            Message:
-            <textarea id="message" name="message" value={formData.message} onChange={handleChange} />
+        <div className="form_div">
+          <label className="form_label" htmlFor="message">
+            <p className="label_name">Message</p>
+            <textarea className="contact_text-area" id="message" name="message" value={formData.message} onChange={handleChange} />
           </label>
         </div>
-        <button type="submit">Envoyer</button>
+        <button className="submit_contact_button" type="submit">Envoyer</button>
       </form>
     </>
   );
