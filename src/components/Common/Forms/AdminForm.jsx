@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Input from '../Buttons/Input';
 import fetchData from '../../../services/api/call.api';
 
-function CreateForm({
+function AdminForm({
   optionsList,
   optionsUpdate,
   route,
@@ -56,8 +56,7 @@ function CreateForm({
   const handleFileChange = (id, event) => {
     setFormData({
       ...formData,
-      [id]: event.target.files[0].name,
-      // [`${id}_file`]: event.target.files[0],
+      [id]: event.target.files[0],
     });
   };
 
@@ -126,4 +125,4 @@ function CreateForm({
   );
 }
 
-export default CreateForm;
+export default AdminForm;
