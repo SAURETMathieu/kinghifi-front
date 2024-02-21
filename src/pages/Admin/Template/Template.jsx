@@ -67,11 +67,10 @@ function AdminTemplate({
           optionForUpdate[index].defaultValue = item[key];
         }
         if (objetOptions.type === 'file') {
-          optionForUpdate.required = false;
+          delete optionForUpdate[index].required;
         }
       });
     });
-
     setItemSelected(item);
     setOptionsUpdate(optionForUpdate);
     setModalTitle('MODIFIER');

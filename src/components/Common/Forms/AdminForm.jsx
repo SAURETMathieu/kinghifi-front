@@ -56,8 +56,7 @@ function AdminForm({
   const handleFileChange = (id, event) => {
     setFormData({
       ...formData,
-      [id]: event.target.files[0].name,
-      // [`${id}_file`]: event.target.files[0],
+      [id]: event.target.files[0],
     });
   };
 
