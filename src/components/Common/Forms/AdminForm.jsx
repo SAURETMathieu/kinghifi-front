@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Input from '../Buttons/Input';
 import fetchData from '../../../services/api/call.api';
 
-function CreateForm({
+function AdminForm({
   optionsList,
   optionsUpdate,
   route,
@@ -126,4 +126,4 @@ function CreateForm({
   );
 }
 
-export default CreateForm;
+export default AdminForm;
