@@ -29,7 +29,7 @@ function AdminSearch({ datas, onSearch }) {
   return (
     <section className={styles.section}>
       <div>
-        Recherche par
+        <span>Recherche par</span>
         <select onChange={(e) => handleSearchColumn(e.target.value)}>
           {datas.length > 0
       && Object.keys(datas[0]).map((columnName) => (

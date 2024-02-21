@@ -1,11 +1,10 @@
-.label-container{
-  display:flex;
+.label-container {
+  display: flex;
   flex-direction: column;
   width: 25rem;
 }
 
-.label-name{
-  
+.label-name {
   border: 1px solid var(--secondary-color);
   border-radius: 0.5rem;
   background-color: black;
@@ -14,17 +13,15 @@
   font-size: 1.2rem;
   padding: 0.3rem;
   margin: 0.3rem;
-
 }
 
-.label-albums{
+.label-albums {
   display: flex;
   flex-direction: row;
   width: 5rem;
-  
 }
 
-.button-album-container{
+.button-album-container {
   display: flex;
   flex-wrap: wrap;
   width: 3.5rem;
@@ -32,33 +29,25 @@
   justify-content: center;
   color: var(--secondary-color);
   margin: 0.3rem;
-    
 }
 
-.button-album__image{
-  
+.button-album__image {
   height: 75%;
-  
 }
-.button-album__name{
+.button-album__name {
   font-size: 0.8rem;
-  
-  }
-
-h1{
-  font-size: 1.5rem !important;
 }
 
 @media screen and (min-width: 426px) {
-  .label-container{
+  .label-container {
     flex-direction: row;
   }
-  .label-albums{
+  .label-albums {
     flex-direction: column;
     justify-content: space-between;
   }
 
-  .album{
-    margin:0.2rem;
+  .album {
+    margin: 0.2rem;
   }
 }

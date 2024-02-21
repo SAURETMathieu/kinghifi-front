@@ -118,13 +118,18 @@
 }
 
 .add-button {
-  background: #03a727;
-  border: solid 4px #005e10;
-  border-radius: 1rem;
+  background: var(--secondary-color);
+  border: solid 4px #000000;
+  color: #000000;
   width: 4rem;
   height: 4rem;
   font-size: 2rem;
   font-weight: 600;
+}
+
+.add-button:hover {
+ transform:scale(1.03);
+ opacity:0.8;
 }
 
 .modal__body form::-webkit-scrollbar {
