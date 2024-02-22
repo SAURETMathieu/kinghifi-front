@@ -1,0 +1,37 @@
+.album-container{
+  background-color: rgb(81, 81, 79);
+  border-radius: 10px;
+  width: 20rem;
+  padding: 0.2rem;
+  
+}
+.button-album-container:hover{ 
+  transform: scale(1.2) ;
+  filter: drop-shadow(0 0.5rem 0.5rem var(--secondary-color));
+  transition: 0.7s;
+  border-radius: 15%;
+}
+.album-container__title{
+  font-size: 1.3rem;
+  font-weight: lighter;
+  color: var(--secondary-color);
+}
+
+
+.track-container{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 12rem;
+ 
+}
+.track-cover{
+  width: 3rem;
+}
+
+.play-icon{
+  color: var(--secondary-color);
+}
+.likes-icon{
+  color: var(--secondary-color);
+}
