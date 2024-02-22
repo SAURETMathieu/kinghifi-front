@@ -7,11 +7,15 @@ import ErrorModal from './errorModal';
 
 function ContactForm() {
   const token = localStorage.getItem('authApiToken');
-  const decodedToken = jwtDecode(token);
-  const { email } = decodedToken;
+  let email = '';
+
+  if (token) {
+    const decodedToken = jwtDecode(token);
+    email = decodedToken.email;
+  }
 
   const [formData, setFormData] = useState({
-    from: email || '',
+    from: email,
     subject: '',
     company: '',
     message: '',
@@ -41,7 +45,7 @@ function ContactForm() {
       }
 
       setFormData({
-        from: email || '',
+        from: email,
         subject: '',
         company: '',
         message: '',
