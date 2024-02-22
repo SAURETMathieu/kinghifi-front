@@ -13,7 +13,7 @@ function ErrorModal({ isOpen, message, onRequestClose }) {
       contentLabel="Error Modal"
       appElement={document.getElementById('root')}
     >
-      <h2 className="h2_contact_modal">Erreur</h2>
+      <h2 className="h2_contact_modal">Infos</h2>
       <p className="message_contact_modal">{message}</p>
       <button className="button_contact_modal" type="submit" onClick={onRequestClose}>Fermer</button>
     </Modal>
