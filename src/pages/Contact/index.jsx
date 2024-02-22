@@ -1,12 +1,17 @@
 /* eslint-disable no-console */
 import './index.css';
 import { useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
 import fetchData from '../../services/api/call.api';
 import ErrorModal from './errorModal';
 
 function ContactForm() {
+  const token = localStorage.getItem('authApiToken');
+  const decodedToken = jwtDecode(token);
+  const { email } = decodedToken;
+
   const [formData, setFormData] = useState({
-    from: '',
+    from: email || '',
     subject: '',
     company: '',
     message: '',
@@ -36,7 +41,7 @@ function ContactForm() {
       }
 
       setFormData({
-        from: '',
+        from: email || '',
         subject: '',
         company: '',
         message: '',
