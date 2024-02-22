@@ -2,6 +2,7 @@
 import './index.css';
 import { useState } from 'react';
 import fetchData from '../../services/api/call.api';
+import ErrorModal from './errorModal';
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,9 @@ function ContactForm() {
     company: '',
     message: '',
   });
+
+  const [errorModalOpen, setErrorModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -24,20 +28,35 @@ function ContactForm() {
     try {
       const response = await fetchData('POST', 'contact', formData);
       console.log(response);
+      if (response === null || response.error) {
+        // Affichez la modal d'erreur en cas d'échec de l'envoi
+        setErrorMessage('Erreur lors de l\'envoi du message');
+        setErrorModalOpen(true);
+        return;
+      }
+
+      setFormData({
+        from: '',
+        subject: '',
+        company: '',
+        message: '',
+      });
     } catch (error) {
       console.log(error);
+      setErrorModalOpen(true);
+      setErrorMessage("Erreur lors de l'envoi du message");
     }
-
-    setFormData({
-      from: '',
-      subject: '',
-      company: '',
-      message: '',
-    });
   };
 
   return (
     <>
+
+      <ErrorModal
+        isOpen={errorModalOpen}
+        message={errorMessage}
+        onRequestClose={() => setErrorModalOpen(false)}
+      />
+
       <h1 className="contact-h1">
         Contact
       </h1>
