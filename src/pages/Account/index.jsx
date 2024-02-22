@@ -22,7 +22,9 @@ function Account() {
             Mes informations
           </a>
           <a href="#favorites">
-            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon
+              icon={faStar}
+            />
             Mes favoris
           </a>
         </div>
