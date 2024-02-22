@@ -9,9 +9,10 @@ function Player({ trackData }) {
 
           && (
           <AudioPlayer
+            className="audio-player"
             autoPlay
             src={trackData.url_sound}
-            onPlay={() => { console.log('onPlay'); }}
+
           />
           )
 

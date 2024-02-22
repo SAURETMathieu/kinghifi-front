@@ -5,7 +5,7 @@ import './index.css';
 import { useState, useEffect } from 'react';
 
 // Importing local files
-import fetchData from '../../services/api/call.api';
+import fetchData from '../../../services/api/call.api';
 import Album from './Album';
 
 function Label({ labelsWhithAlbums }) {

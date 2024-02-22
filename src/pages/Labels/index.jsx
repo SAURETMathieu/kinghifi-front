@@ -5,7 +5,7 @@ import { useLoaderData } from 'react-router-dom';
 
 // Importing local files
 
-import Label from '../Label';
+import Label from './Label';
 import fetchData from '../../services/api/call.api';
 
 export const musicDataLoader = async (id) => {
@@ -23,6 +23,7 @@ function Labels() {
 
   // Defining state variables
   const [labelsAlbums, setLabelsAlbums] = useState(data);
+  console.log(labelsAlbums);
 
   useEffect(() => {
     const fetchLabelsAlbums = async () => {
