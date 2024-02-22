@@ -1,8 +1,13 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
 import './index.css';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
+
+import React, { useState, useEffect } from 'react';
+
+import fetchData from '../../../services/api/call.api';
 import Player from '../Player';
 
 function Album({ oneAlbumSongs, albumId }) {
@@ -18,7 +23,10 @@ function Album({ oneAlbumSongs, albumId }) {
       setLikedTracks([...likedTracks, trackId]);
     }
   };
-  // console.log(likedTracks);
+
+  const handleClickAddLikes = async (trackId) => {
+    await fetchData('GET', `tracks/${trackId}/likes`, null, true);
+  };
 
   useEffect(() => {
     if (trackData) {
@@ -49,14 +57,17 @@ function Album({ oneAlbumSongs, albumId }) {
               <div className="track-duration">
                 {track.duration}
               </div>
-              <FontAwesomeIcon
-                icon={faStar}
-                //le data-prefix est bien changé, mais l'icone ne change pas ; utilisation du className
-                data-prefix={likedTracks.includes(track.id) ? 'fas' : 'far'}
-                className={likedTracks.includes(track.id) ? 'icon-like-on' : 'icon-like-off'}
-                onClick={() => handleClickLikes(track.id)}
-              />
 
+              <FontAwesomeIcon
+                icon={likedTracks.includes(track.id) ? solidStar : regularStar}
+                onClick={() => {
+                // function onclik to view if the track is liked
+                  handleClickLikes(track.id);
+                  // function onclik to add liked track onf avorite of user
+                  handleClickAddLikes(track.id);
+                }}
+                className="likes-icon"
+              />
 
             </div>
           ))
