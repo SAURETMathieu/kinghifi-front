@@ -7,6 +7,7 @@ import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
 
 import React, { useState, useEffect } from 'react';
 
+import fetchData from '../../../services/api/call.api';
 import Player from '../Player';
 
 function Album({ oneAlbumSongs, albumId }) {
@@ -22,7 +23,10 @@ function Album({ oneAlbumSongs, albumId }) {
       setLikedTracks([...likedTracks, trackId]);
     }
   };
-  // console.log(likedTracks);
+
+  const handleClickAddLikes = async (trackId) => {
+    await fetchData('GET', `tracks/${trackId}/likes`, null, true);
+  };
 
   useEffect(() => {
     if (trackData) {
@@ -56,7 +60,12 @@ function Album({ oneAlbumSongs, albumId }) {
 
               <FontAwesomeIcon
                 icon={likedTracks.includes(track.id) ? solidStar : regularStar}
-                onClick={() => handleClickLikes(track.id)}
+                onClick={() => {
+                // function onclik to view if the track is liked
+                  handleClickLikes(track.id);
+                  // function onclik to add liked track onf avorite of user
+                  handleClickAddLikes(track.id);
+                }}
                 className="likes-icon"
               />
 
