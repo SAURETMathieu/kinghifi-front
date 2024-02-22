@@ -40,13 +40,24 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
 
     const response = await fetch(url, options);
     if (!response.ok) {
+      const data = await response.json();
+      if (response.status === 403 && data.error === 'Le token est invalide') {
+        localStorage.removeItem('authApiToken');
+        console.log('Votre session a expiré');
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 3000);
+        return false;
+      }
       throw new Error(`Erreur HTTP: ${response.status}`);
     }
     if (response.status === 204) {
       console.log('Suppression réussie.');
       return true;
     }
+
     const data = await response.json();
+
     const datasArray = Array.isArray(data) ? data : [data];
 
     datasArray.forEach((dataArray) => {
