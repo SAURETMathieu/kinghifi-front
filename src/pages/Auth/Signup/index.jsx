@@ -2,6 +2,7 @@ import './index.css';
 
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import fetchData from '../../../services/api/call.api';
 
 function Singup() {
   const [formUserData, setFormUserData] = useState({
@@ -35,13 +36,24 @@ function Singup() {
     setFormUserData({ ...formUserData, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      const response = await fetchData('POST', 'auth/signup', formUserData);
+      console.log(response);
+      if (response === null || response.error) {
+        console.log(response);
+        return;
+      }
 
-    console.log({ ...formUserData });
-
-    setFormUserData({ ...initialFormUserData });
+      setFormUserData({ ...initialFormUserData });
+    } catch (error) {
+      console.log(error);
+    }
   };
+  // console.log({ ...formUserData });
+
+  // setFormUserData({ ...initialFormUserData });
 
   return (
 
@@ -49,7 +61,7 @@ function Singup() {
 
       <input
         className="input is-expanded is-warning"
-        type="text"
+        type="email"
         name="email"
         placeholder="Email"
         value={formUserData.email}
@@ -76,7 +88,7 @@ function Singup() {
 
       <input
         className="input is-normal is-warning"
-        type="text"
+        type="date"
         name="birthdate"
         placeholder="Date de naissance"
         value={formUserData.birthdate}
@@ -121,7 +133,7 @@ function Singup() {
 
       <input
         className="input is-expanded is-warning"
-        type="password"
+        type="text"
         name="password"
         placeholder="Mot de passe"
         value={formUserData.password}
@@ -130,7 +142,7 @@ function Singup() {
 
       <input
         className="input is-expanded is-warning"
-        type="password"
+        type="text"
         name="passwordConfirm"
         placeholder="Confirmation du mot de passe"
         value={formUserData.passwordConfirm}
@@ -138,7 +150,7 @@ function Singup() {
       />
 
       <button className="button is-warning is-light" type="submit"> S&apos;inscrire </button>
-      <NavLink to="/account"> Retour </NavLink>
+      <NavLink to="/"> Retour </NavLink>
 
     </form>
 
