@@ -38,7 +38,7 @@ function Infos() {
         </span>
         <p>
           Date de naissance :
-          {accountDetails.birthdate ? accountDetails.birthdate.substring(0, 10) : 'erreur de données'}
+          {accountDetails.birthdate}
         </p>
         <p>
           Adresse :
@@ -46,7 +46,7 @@ function Infos() {
         </p>
         <span>
           Code postal :
-          {accountDetails.zipcode}
+          {accountDetails.address}
         </span>
         <span>
           Ville :

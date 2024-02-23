@@ -14,9 +14,9 @@ function Favorites() {
 
   const fetchLikesData = async (id) => {
     const fetchedLikesData = await fetchData('GET', `users/${id}/likes`, null, true);
-    const likesData = fetchedLikesData;
-
-    setLikesDetails(likesData);
+    if(fetchedLikesData){
+      setLikesDetails(fetchedLikesData);
+    }
   };
 
   useEffect(() => {
