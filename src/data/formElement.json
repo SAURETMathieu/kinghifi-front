@@ -144,6 +144,13 @@
       "placeholder": "Style",
       "required": true
     },
+    "url": {
+      "id": "url",
+      "label": "Lien",
+      "type": "text",
+      "placeholder": "Lien",
+      "required": true
+    },
     "url_sound": {
       "id": "url_sound",
       "label": "Son",
