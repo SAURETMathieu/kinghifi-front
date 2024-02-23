@@ -78,6 +78,12 @@
       "type": "select",
       "required": true
     },
+    "artist_id": {
+      "id": "artist_id",
+      "label": "Artiste",
+      "type": "select",
+      "required": true
+    },
     "album_id": {
       "id": "album_id",
       "label": "Albums",
