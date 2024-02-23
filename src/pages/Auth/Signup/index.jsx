@@ -1,10 +1,10 @@
 import './index.css';
 
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import fetchData from '../../../services/api/call.api';
 // eslint-disable-next-line import/order
-import { ToastContainer, toast } from 'react-toastify';
+import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Singup() {
@@ -34,6 +34,8 @@ function Singup() {
     country: '',
   };
 
+  const navigate = useNavigate();
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormUserData({ ...formUserData, [name]: value });
@@ -41,24 +43,46 @@ function Singup() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     // const notify = () => toast('Wow so easy!');
     try {
       const response = await fetchData('POST', 'auth/signup', formUserData);
-      console.log(response);
+
       if (response === null || response.error) {
-        console.log(response);
         throw new Error('Une erreur s\'est produite !');
       }
-
+      toast.success('Inscription réussi !', {
+        position: 'bottom-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Slide,
+      });
       setFormUserData({ ...initialFormUserData });
+
+      setTimeout(() => {
+        navigate('/');
+      }, 6000);
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      toast.error(error.message, {
+        position: 'bottom-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Slide,
+
+      });
     }
   };
-  // console.log({ ...formUserData });
-
-  // setFormUserData({ ...initialFormUserData });
 
   return (
     <>
@@ -143,7 +167,7 @@ function Singup() {
 
         <input
           className="input is-expanded is-warning"
-          type="text"
+          type="password"
           name="password"
           placeholder="Mot de passe"
           value={formUserData.password}
@@ -152,7 +176,7 @@ function Singup() {
 
         <input
           className="input is-expanded is-warning"
-          type="text"
+          type="password"
           name="passwordConfirm"
           placeholder="Confirmation du mot de passe"
           value={formUserData.passwordConfirm}
