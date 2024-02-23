@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReply, faUser, faStar } from '@fortawesome/free-solid-svg-icons';
 import Infos from './Infos';
 import Favorites from './Favorites';
+import DeleteAccount from './DeleteAccount';
+import EditAccount from './EditAccount';
 
 function Account() {
   return (
@@ -29,12 +31,16 @@ function Account() {
       </div>
       <div>
         <Infos />
+        <EditAccount />
       </div>
       <div className="favorite-icon">
         <h2 id="favorites">Favoris</h2>
       </div>
       <div>
         <Favorites />
+      </div>
+      <div>
+        <DeleteAccount />
       </div>
     </div>
   );
