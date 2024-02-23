@@ -2,16 +2,18 @@
 
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faPen, faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 import styles from './AdminTable.module.css';
 import DeleteModal from '../Modal/Delete';
 import fetchData from '../../../services/api/call.api';
+import AddModal from '../Modal/Add';
 
 function AdminTable({
   filteredDatas, handleDataDelete, handleOpenUpdateModal, route,
 }) {
   const [selectedRow, setSelectedRow] = useState(null);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+  const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
   const deleteElement = async () => {
@@ -21,6 +23,16 @@ function AdminTable({
 
   const handleRowClick = (index) => {
     setSelectedRow(index);
+  };
+
+  const handleOpenAddModal = (item) => {
+    setIsAddModalVisible(true);
+    setSelectedItem(item);
+  };
+
+  const handleCloseAddModal = () => {
+    setIsAddModalVisible(false);
+    setSelectedItem(null);
   };
 
   const handleOpenDeleteModal = (item) => {
@@ -43,6 +55,12 @@ function AdminTable({
     }
   };
 
+  const handleConfirmAdd = async () => {
+    // TODO requete
+    setIsAddModalVisible(false);
+    setSelectedItem(null);
+  };
+
   if (filteredDatas.length) {
     return (
       <>
@@ -53,6 +71,11 @@ function AdminTable({
                 {Object.keys(filteredDatas[0]).map((columnName) => (
                   <th className="has-text-centered has-text-white" key={columnName}>{columnName}</th>
                 ))}
+                {route === 'admin/tracks' ? (
+                  <th className="has-text-centered has-text-white">
+                    Artistes
+                  </th>
+                ) : null}
                 <th className="has-text-centered has-text-white">Modifier</th>
                 <th className="has-text-centered has-text-white">Supprimer</th>
               </tr>
@@ -67,6 +90,19 @@ function AdminTable({
                   {Object.keys(data).map((columnName) => (
                     <td key={columnName}>{data[columnName]}</td>
                   ))}
+
+                  {route === 'admin/tracks' ? (
+                    <td>
+                      <button
+                        className="is-danger"
+                        type="button"
+                        onClick={() => handleOpenAddModal(data)}
+                        aria-label="add"
+                      >
+                        <FontAwesomeIcon icon={faPeopleGroup} />
+                      </button>
+                    </td>
+                  ) : null}
                   <td>
 
                     <button
@@ -97,6 +133,14 @@ function AdminTable({
         <DeleteModal
           handleClose={handleCloseDeleteModal}
           handleConfirm={handleConfirmDelete}
+          item={selectedItem}
+        />
+        )}
+        {isAddModalVisible
+        && (
+        <AddModal
+          handleClose={handleCloseAddModal}
+          handleConfirm={handleConfirmAdd}
           item={selectedItem}
         />
         )}
