@@ -36,6 +36,10 @@
   margin-left: 1rem;
 }
 
+.global_description {
+  font-size: 1.5rem;
+}
+
 @media screen and (max-width: 600px) {
   .event_container {
     flex-direction: column;
