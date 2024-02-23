@@ -65,8 +65,8 @@ function Singup() {
       setFormUserData({ ...initialFormUserData });
 
       setTimeout(() => {
-        navigate('/');
-      }, 6000);
+        navigate('/signin');
+      }, 5500);
     } catch (error) {
       console.log(error);
       toast.error(error.message, {
