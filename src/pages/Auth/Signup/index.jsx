@@ -1,7 +1,9 @@
-import './index.css';
-
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import fetchData from '../../../services/api/call.api';
+// eslint-disable-next-line import/order
+import { Slide, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Singup() {
   const [formUserData, setFormUserData] = useState({
@@ -30,118 +32,142 @@ function Singup() {
     country: '',
   };
 
+  const navigate = useNavigate();
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormUserData({ ...formUserData, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log({ ...formUserData });
+    // const notify = () => toast('Wow so easy!');
+    try {
+      const response = await fetchData('POST', 'auth/signup', formUserData);
 
-    setFormUserData({ ...initialFormUserData });
+      if (response === null || response.error) {
+        throw new Error('Une erreur s\'est produite !');
+      }
+      toast.success('Inscription réussi !', {
+        position: 'bottom-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Slide,
+      });
+      setFormUserData({ ...initialFormUserData });
+
+      setTimeout(() => {
+        navigate('/signin');
+      }, 5500);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message, {
+        position: 'bottom-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Slide,
+
+      });
+    }
   };
 
   return (
+    <>
+      <div>
 
-    <form className="submit-form is-horizontal" onSubmit={handleSubmit}>
+        <ToastContainer />
+      </div>
 
-      <input
-        className="input is-expanded is-warning"
-        type="text"
-        name="email"
-        placeholder="Email"
-        value={formUserData.email}
-        onChange={handleChange}
-      />
+      <h1 className="contact-h1">
+        Inscription
+      </h1>
+      <form className="form_containeur" onSubmit={handleSubmit}>
 
-      <input
-        className="input is-normal is-warning"
-        type="text"
-        name="lastname"
-        placeholder="Nom"
-        value={formUserData.lastname}
-        onChange={handleChange}
-      />
+        <div className="form_div">
+          <label className="form_label" htmlFor="email">
+            <p className="label_name">Votre Email</p>
+            <input className="contact_input" type="email" id="email" name="email" value={formUserData.email} onChange={handleChange} />
+          </label>
+        </div>
 
-      <input
-        className="input is-normal is-warning"
-        type="text"
-        name="firstname"
-        placeholder="Prénom"
-        value={formUserData.firstname}
-        onChange={handleChange}
-      />
+        <div className="form_div">
+          <label className="form_label" htmlFor="lastname">
+            <p className="label_name">Nom</p>
+            <input className="contact_input" type="text" id="lastname" name="lastname" value={formUserData.lastname} onChange={handleChange} />
+          </label>
+        </div>
 
-      <input
-        className="input is-normal is-warning"
-        type="text"
-        name="birthdate"
-        placeholder="Date de naissance"
-        value={formUserData.birthdate}
-        onChange={handleChange}
-      />
+        <div className="form_div">
+          <label className="form_label" htmlFor="firstname">
+            <p className="label_name">Prénom</p>
+            <input className="contact_input" type="text" id="firstname" name="firstname" value={formUserData.firstname} onChange={handleChange} />
+          </label>
+        </div>
 
-      <input
-        className="input is-expanded is-warning"
-        type="text"
-        name="address"
-        placeholder="Adresse"
-        value={formUserData.address}
-        onChange={handleChange}
-      />
+        <div className="form_div">
+          <label className="form_label" htmlFor="birthdate">
+            <p className="label_name">Date de naissance</p>
+            <input className="contact_input" type="date" id="birthdate" name="birthdate" value={formUserData.birthdate} onChange={handleChange} />
+          </label>
+        </div>
 
-      <input
-        className="input is-normal is-warning"
-        type="text"
-        name="zipcode"
-        placeholder="Code postal"
-        value={formUserData.zipcode}
-        onChange={handleChange}
-      />
+        <div className="form_div">
+          <label className="form_label" htmlFor="address">
+            <p className="label_name">Adresse</p>
+            <input className="contact_input" type="text" id="address" name="address" value={formUserData.address} onChange={handleChange} />
+          </label>
+        </div>
 
-      <input
-        className="input is-normal is-warning"
-        type="text"
-        name="city"
-        placeholder="Ville"
-        value={formUserData.city}
-        onChange={handleChange}
-      />
+        <div className="form_div">
+          <label className="form_label" htmlFor="zipcode">
+            <p className="label_name">Code postal</p>
+            <input className="contact_input" type="text" id="zipcode" name="zipcode" value={formUserData.zipcode} onChange={handleChange} />
+          </label>
+        </div>
 
-      <input
-        className="input is-normal is-warning"
-        type="text"
-        name="country"
-        placeholder="Pays"
-        value={formUserData.country}
-        onChange={handleChange}
-      />
+        <div className="form_div">
+          <label className="form_label" htmlFor="city">
+            <p className="label_name">Ville</p>
+            <input className="contact_input" type="text" id="city" name="city" value={formUserData.city} onChange={handleChange} />
+          </label>
+        </div>
 
-      <input
-        className="input is-expanded is-warning"
-        type="password"
-        name="password"
-        placeholder="Mot de passe"
-        value={formUserData.password}
-        onChange={handleChange}
-      />
+        <div className="form_div">
+          <label className="form_label" htmlFor="country">
+            <p className="label_name">Pays</p>
+            <input className="contact_input" type="text" id="country" name="country" value={formUserData.country} onChange={handleChange} />
+          </label>
+        </div>
 
-      <input
-        className="input is-expanded is-warning"
-        type="password"
-        name="passwordConfirm"
-        placeholder="Confirmation du mot de passe"
-        value={formUserData.passwordConfirm}
-        onChange={handleChange}
-      />
+        <div className="form_div">
+          <label className="form_label" htmlFor="password">
+            <p className="label_name">Mot de passe</p>
+            <input className="contact_input" type="password" id="password" name="password" value={formUserData.password} onChange={handleChange} />
+          </label>
+        </div>
 
-      <button className="button is-warning is-light" type="submit"> S&apos;inscrire </button>
-      <NavLink to="/account"> Retour </NavLink>
+        <div className="form_div">
+          <label className="form_label" htmlFor="passwordConfirm">
+            <p className="label_name">Confirmez votre mot de passe</p>
+            <input className="contact_input" type="password" id="passwordConfirm" name="passwordConfirm" value={formUserData.passwordConfirm} onChange={handleChange} />
+          </label>
+        </div>
 
-    </form>
+        <button className="submit_contact_button" type="submit">Envoyer</button>
 
+      </form>
+    </>
   );
 }
 

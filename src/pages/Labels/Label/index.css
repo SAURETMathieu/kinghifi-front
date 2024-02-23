@@ -34,9 +34,47 @@
 .button-album__image {
   height: 75%;
 }
+
 .button-album__name {
   font-size: 0.8rem;
 }
+
+.player-container {
+  position: fixed;
+  bottom: 6rem;
+  left: 0;
+  width: 100%;
+  height: 2rem;  
+}
+
+
+.rhap_time{
+  color:black !important;
+}
+
+.rhap_container{
+  background-color: rgb(81, 81, 79) !important;
+  
+  }
+
+.rhap_container button {  
+  color: var(--secondary-color) !important;
+}
+
+.rhap_progress-filled {
+  background-color: var(--secondary-color) !important; 
+}
+.rhap_progress-indicator{
+  background-color: var(--secondary-color) !important; 
+}
+.rhap_volume-indicator{
+  background-color: var(--secondary-color) !important; 
+}
+.rhap_volume-bar::-webkit-slider-runnable-track{
+  background-color: var(--secondary-color) !important; 
+}
+
+
 
 @media screen and (min-width: 426px) {
   .label-container {
@@ -46,8 +84,11 @@
     flex-direction: column;
     justify-content: space-between;
   }
-
   .album {
     margin: 0.2rem;
+  }
+  .player-container {
+    
+    bottom: 3rem;    
   }
 }
