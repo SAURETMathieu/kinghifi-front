@@ -4,7 +4,7 @@
   padding: 20px;
   border: 5px solid #9e8a58;
   border-radius: 20px;
-  background-color: 313131;
+  background-color: #313131;
 }
 
 .label_name {
@@ -18,8 +18,9 @@
 .form_label {
   display: block;
   font-weight: bold;
-  font-size: large;
+  font-size: 1.2rem;
   color: #af8928;
+  margin: 1rem 0 1.5rem 0;
 }
 
 .contact_input,
