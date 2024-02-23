@@ -1,6 +1,8 @@
 // Importing styles
 import './index.css';
 
+import { jwtDecode } from 'jwt-decode';
+
 // Importing hooks from React
 import { useState, useEffect } from 'react';
 
@@ -13,10 +15,23 @@ function Label({ labelsWhithAlbums }) {
   const [oneAlbumSongs, setOneAlbumSongs] = useState([]);
   const [albumId, setAlbumId] = useState(labelsWhithAlbums[0]?.id);
 
+  let userId;
+  const token = localStorage.getItem('authApiToken');
+  if (token) {
+    const decodedToken = jwtDecode(token);
+    userId = decodedToken.userId;
+  }
+
   // Function to fetch data for one album
-  const fetchOneAlbumData = async () => {
-    const oneAlbumData = await fetchData('GET', `albums/${albumId}/tracks`);
-    setOneAlbumSongs(oneAlbumData);
+  const fetchAlbumData = async () => {
+    // ajout condition si connécté ou pas
+    if (userId) {
+      const fetchOneAlbumData = await fetchData('GET', `albums/${albumId}/tracks/likes`, null, true);
+      setOneAlbumSongs(fetchOneAlbumData);
+    } else {
+      const fetchOneAlbumData = await fetchData('GET', `albums/${albumId}/tracks`);
+      setOneAlbumSongs(fetchOneAlbumData);
+    }
   };
 
   // Event for selecting an album
@@ -27,7 +42,7 @@ function Label({ labelsWhithAlbums }) {
   // useEffect hook to trigger fetching album data when albumId changes
   useEffect(() => {
     if (albumId !== null) {
-      fetchOneAlbumData();
+      fetchAlbumData();
     }
   }, [albumId]);
 
@@ -64,11 +79,14 @@ function Label({ labelsWhithAlbums }) {
             ))}
           </div>
           {/* Rendering the Album component with the selected album's songs */}
-          <Album oneAlbumSongs={oneAlbumSongs} albumId={albumId} />
+          <Album
+            oneAlbumSongs={oneAlbumSongs}
+            setOneAlbumSongs={setOneAlbumSongs}
+            albumId={albumId}
+          />
         </div>
       </div>
     ))
-
   );
 }
 
