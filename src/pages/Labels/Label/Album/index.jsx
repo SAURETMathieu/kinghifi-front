@@ -40,45 +40,50 @@ function Album({ oneAlbumSongs, setOneAlbumSongs, albumId }) {
   }, [albumId, oneAlbumSongs, trackData]);
 
   return (
-    <div className="album-container">
-      <h1>
-        {oneAlbumSongs[0]?.name}
-      </h1>
+    <>
+      <div className="album-container">
+        <h1 className="album-container__title">
+          {oneAlbumSongs[0]?.name}
+        </h1>
 
-      {oneAlbumSongs.length && oneAlbumSongs[0].tracks.length
+        {oneAlbumSongs.length && oneAlbumSongs[0].tracks.length
         // true: map over the tracks array of the first album
-        ? (
-          oneAlbumSongs[0].tracks.map((track) => (
-            <div className="track-container" key={track.id}>
-              <img className="track-cover" src={track.url_image} alt={track.name} />
-              <FontAwesomeIcon
-                icon={faPlay}
-                className="play-icon"
-                onClick={() => handleClickPlay(track)}
-              />
-              <div className="track-name">
-                {track.name}
-              </div>
-              <div className="track-duration">
-                {track.duration}
-              </div>
+          ? (
+            oneAlbumSongs[0].tracks.map((track) => (
+              <div className="track-container" key={track.id}>
+                <img className="track-cover" src={track.url_image} alt={track.name} />
+                <FontAwesomeIcon
+                  icon={faPlay}
+                  className="play-icon"
+                  onClick={() => handleClickPlay(track)}
+                />
+                <div className="track-name">
+                  {track.name}
+                </div>
+                <div className="track-duration">
+                  {track.duration}
+                </div>
 
-              <FontAwesomeIcon
-                icon={track.liked ? solidStar : regularStar}
-                onClick={() => {
-                  handleClickAddLikes(track);
-                }}
-                className="likes-icon"
-              />
-              <ToastContainer />
+                <FontAwesomeIcon
+                  icon={track.liked ? solidStar : regularStar}
+                  onClick={() => {
+                    handleClickAddLikes(track);
+                  }}
+                  className="likes-icon"
+                />
+                <ToastContainer />
 
-            </div>
-          ))
-        )
+              </div>
+            ))
+          )
         // false: tell this at the user.
-        : ('Aucun sons dans cet album')}
-      <Player trackData={trackData} />
-    </div>
+          : ('Aucun sons dans cet album')}
+
+      </div>
+      <div className="player-container">
+        <Player trackData={trackData} />
+      </div>
+    </>
   );
 }
 

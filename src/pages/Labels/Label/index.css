@@ -1,7 +1,7 @@
 .label-container {
   display: flex;
   flex-direction: column;
-  width: 25rem;
+  width: 100%;
 }
 
 .label-name {
@@ -11,14 +11,16 @@
   color: var(--secondary-color);
   font-weight: lighter;
   font-size: 1.2rem;
+  width: 100%;
   padding: 0.3rem;
-  margin: 0.3rem;
+  margin-bottom: 0.4rem;
 }
 
 .label-albums {
   display: flex;
   flex-direction: row;
   width: 5rem;
+  margin:0.3rem
 }
 
 .button-album-container {

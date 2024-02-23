@@ -66,6 +66,7 @@ function Label({ labelsWhithAlbums }) {
             {label.albums?.map((album) => (
               <div className="button-album-container" key={album.id}>
                 {/* Button to select an album */}
+                {/* {A remplacer par une image clickable} */}
                 <button
                   className="button-album__image"
                   type="button"
