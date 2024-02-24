@@ -47,8 +47,15 @@
   opacity: 0.9;
 }
 
+.container [aria-label="add"] svg {
+  color: green !important;
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
 .container [aria-label="update"]:hover,
-.container [aria-label="delete"]:hover {
+.container [aria-label="delete"]:hover,
+.container [aria-label="add"]:hover {
   transform: scale(1.1);
 }
 
