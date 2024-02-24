@@ -49,19 +49,58 @@ function AddModal({
     setFormVisible(false);
   };
 
+  const mooveArtistBack = (artistToDelete) => {
+    const updatedArtistTrack = artistsOfTrack.filter((artist) => artist.id !== artistToDelete.id);
+    optionsSelect.options.push({
+      id: artistToDelete.id,
+      name: `${artistToDelete.firstname} ${artistToDelete.lastname}`,
+    });
+    setOptionsSelect(optionsSelect);
+    setArtistsOfTrack(updatedArtistTrack);
+  };
+
+  const handleDeleteArtist = async (artist) => {
+    const artistDeleted = await fetchData('DELETE', `admin/tracks/${item.id}/artists/${artist.id}`, null, true);
+    if (artistDeleted) {
+      mooveArtistBack(artist);
+      handleHideForm();
+    }
+  };
+
+  const mooveArtist = (newArtist, artistTrack, artistNotTrack) => {
+    const index = artistNotTrack
+      .findIndex((artist) => artist.id === newArtist[0].artist_id);
+    const indexOfAllArtist = allArtists
+      .findIndex((artist) => artist.id === newArtist[0].artist_id);
+
+    if (index !== -1 && indexOfAllArtist !== -1) {
+      const artistMooved = artistNotTrack.splice(index, 1)[0];
+      const artistInfos = allArtists.splice(indexOfAllArtist, 1)[0];
+      artistInfos.role = newArtist[0].role;
+      artistInfos.order = newArtist[0].order;
+      setArtistsOfTrack([...artistTrack, artistInfos]);
+      setOptionsSelect({
+        ...optionsSelect,
+        options: artistNotTrack,
+        defaultValue: artistNotTrack[0]?.id,
+      });
+    } else {
+      console.log("Erreur lors de la mise à jour de l'affichage avec les nouvelles données.");
+    }
+  };
+
   const handleSubmitForm = async (event) => {
     event.preventDefault();
     const formElement = event.target.closest('form');
     if (formElement && formElement.checkValidity()) {
       const artistAdded = await fetchData('POST', `admin/tracks/${item.id}/artists`, formData, true);
       if (artistAdded) {
-        // TODO mettre a jour les listes
+        mooveArtist(artistAdded, artistsOfTrack, optionsSelect.options);
         handleHideForm();
       }
     } else {
       console.log('Certains champs du formulaire ne sont pas valides.');
     }
-    setFormVisible(false);
   };
 
   const getAllArtists = async () => {
@@ -109,7 +148,7 @@ function AddModal({
 
   return isVisible ? (
     <div className="modal" aria-label="Add modal" onClick={handleModalClick}>
-      <div className="modal-content modal-style-add">
+      <div className="modal-content modal-style-add modal-add">
         <button
           type="button"
           className="close close-modal-btn"
@@ -118,7 +157,7 @@ function AddModal({
         >
           &times;
         </button>
-        <h2 className="modal__title">{`ARTISTES ${item.name}`}</h2>
+        <h2 className="modal__title">ARTISTES</h2>
         <div className="modal__body">
           <div className="artists-container">
             {formVisible ? null : (
@@ -169,11 +208,24 @@ function AddModal({
             </form>
             )}
 
-            {artistsOfTrack?.length && artistsOfTrack.map((artist) => (
-              <div key={artist.id}>
-                <h3>{`${artist.firstname} ${artist.lastname}`}</h3>
-              </div>
-            ))}
+            <div className="tracks-artists-list">
+              {artistsOfTrack?.length && artistsOfTrack.map((artist) => (
+                <div className="tracks-artist-card" key={artist.id}>
+                  <button
+                    type="button"
+                    className="close close-modal-btn"
+                    aria-label="Close modal"
+                    onClick={() => handleDeleteArtist(artist)}
+                  >
+                    &times;
+                  </button>
+                  <img src={artist.url_image} alt={`${artist.firstname} ${artist.lastname}`} />
+                  <h3>{`${artist.firstname} ${artist.lastname}`}</h3>
+                  <h4>{`${artist.role}`}</h4>
+                </div>
+              ))}
+            </div>
+
           </div>
           <div className="modal-submit-buttons">
             <button
