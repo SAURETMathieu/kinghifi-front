@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './modal.css';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Sortable from 'sortablejs';
 import fetchData from '../../../services/api/call.api';
 import Input from '../Buttons/Input';
 import { options } from '../../../data/formElement.json';
+import Artist from '../../../pages/Admin/Track/Artist';
 
 function AddModal({
   text, handleClose, item,
@@ -17,6 +19,7 @@ function AddModal({
   const [optionsSelect, setOptionsSelect] = useState([]);
   const [formData, setFormData] = useState({});
   const [formInit, setFormInit] = useState(false);
+  const listRef = useRef(null);
 
   const handleInputChange = (id, event) => {
     const { value } = event.target;
@@ -30,6 +33,8 @@ function AddModal({
     const initialFormData = {};
 
     initialFormData.artist_id = optionsSelect.defaultValue || '';
+
+    initialFormData.order = artistsOfTrack.length + 1;
 
     setFormData(initialFormData);
   };
@@ -113,6 +118,36 @@ function AddModal({
     return artistsList[0].artists;
   };
 
+  const handleDrop = async (dropIndex, dragIndex) => {
+    const updatedArtists = [...artistsOfTrack];
+    const draggedArtist = updatedArtists[dragIndex];
+    updatedArtists.splice(dragIndex, 1);
+    updatedArtists.splice(dropIndex, 0, draggedArtist);
+    setArtistsOfTrack(updatedArtists);
+    const orders = updatedArtists.map((artist) => ({ artistId: artist.id }));
+    try {
+      const token = localStorage.getItem('authApiToken');
+      if (token) {
+        const apiUrl = import.meta.env.VITE_API_URL;
+        const response = await fetch(`${apiUrl}/admin/tracks/${item.id}/artists/orders`, {
+          method: 'PATCH',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ orders }),
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          console.log(data.error);
+        }
+        console.log(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const fetchAllArtists = async () => {
       const artistsList = await getAllArtists();
@@ -134,6 +169,20 @@ function AddModal({
     };
     fetchAllArtists();
   }, []);
+
+  useEffect(() => {
+    const sortableList = Sortable.create(listRef.current, {
+      group: 'artists',
+      animation: 150,
+      onEnd(event) {
+        handleDrop(event.newIndex, event.oldIndex);
+      },
+    });
+
+    return () => {
+      sortableList.destroy();
+    };
+  }, [artistsOfTrack]);
 
   useEffect(() => {
     if (optionsSelect && !formInit) {
@@ -207,25 +256,17 @@ function AddModal({
               </div>
             </form>
             )}
-
-            <div className="tracks-artists-list">
-              {artistsOfTrack?.length && artistsOfTrack.map((artist) => (
-                <div className="tracks-artist-card" key={artist.id}>
-                  <button
-                    type="button"
-                    className="close close-modal-btn"
-                    aria-label="Close modal"
-                    onClick={() => handleDeleteArtist(artist)}
-                  >
-                    &times;
-                  </button>
-                  <img src={artist.url_image} alt={`${artist.firstname} ${artist.lastname}`} />
-                  <h3>{`${artist.firstname} ${artist.lastname}`}</h3>
-                  <h4>{`${artist.role}`}</h4>
-                </div>
+            <div className="tracks-artists-list" ref={listRef}>
+              {artistsOfTrack?.length && artistsOfTrack.map((artist, index) => (
+                <Artist
+                  key={artist.id}
+                  index={index}
+                  artist={artist}
+                  handleDeleteArtist={handleDeleteArtist}
+                  handleDrop={handleDrop}
+                />
               ))}
             </div>
-
           </div>
           <div className="modal-submit-buttons">
             <button
