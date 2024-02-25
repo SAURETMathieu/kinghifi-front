@@ -7,10 +7,12 @@ function UserAdmin() {
     options.firstname,
     options.lastname,
     options.birthdate,
+    options.address,
     options.zipcode,
     options.city,
     options.country,
-    options.role,
+    options.password,
+    options.passwordConfirm,
   ];
 
   return (
