@@ -65,6 +65,10 @@ function AdminForm({
     const formElement = event.target.closest('form');
 
     if (formElement && formElement.checkValidity()) {
+      if (!formData.password || !formData.passwordConfirm) {
+        delete formData.password;
+        delete formData.passwordConfirm;
+      }
       const resultData = modalMode === 'create'
         ? await fetchData('POST', route, formData, true)
         : await fetchData('PATCH', `${route}/${itemSelected.id}`, formData, true);
