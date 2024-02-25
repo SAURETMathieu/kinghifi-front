@@ -66,7 +66,7 @@ function AdminTemplate({
         if (objetOptions.id === key && objetOptions.type !== 'file') {
           optionForUpdate[index].defaultValue = item[key];
         }
-        if (objetOptions.type === 'file') {
+        if (objetOptions.type === 'file' || objetOptions.type === 'password') {
           delete optionForUpdate[index].required;
         }
       });
