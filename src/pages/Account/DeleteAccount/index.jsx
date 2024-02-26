@@ -52,14 +52,13 @@ function DeleteAccount({ userId }) {
   return (
     <>
       <div
-        className="delete-account"
-        aria-label="Delete Account"
         tabIndex={0} // Rend l'élément focusable
         onClick={handleOpenDeleteModal}
         onKeyDown={handleKeyDown}
         role="button"
       >
         <FontAwesomeIcon
+          className="icon-gretter-size"
           icon={faTrashCan}
         />
         <span className="delete-account-text">Supprimer le compte</span>

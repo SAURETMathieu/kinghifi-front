@@ -12,38 +12,38 @@ function Infos({ accountDetails }) {
   }, [accountDetails]);
 
   return (
-    <div className="account">
+    <div>
       <h2 id="informations">Informations personnelles</h2>
-      <div className="account-details">
-        <p>
+      <div className="account">
+        <p className="account-details">
           Email :
           {localAccountDetails.email}
         </p>
-        <span>
-          Nom :
-          {localAccountDetails.firstname}
-        </span>
-        <span>
+        <p className="account-details">
           Prénom :
+          {localAccountDetails.firstname}
+        </p>
+        <p className="account-details">
+          Nom :
           {localAccountDetails.lastname}
-        </span>
-        <p>
+        </p>
+        <p className="account-details">
           Date de naissance :
           {localAccountDetails.birthdate}
         </p>
-        <p>
+        <p className="account-details">
           Adresse :
           {localAccountDetails.address}
         </p>
-        <span>
+        <p className="account-details">
           Code postal :
-          {localAccountDetails.address}
-        </span>
-        <span>
+          {localAccountDetails.zipcode}
+        </p>
+        <p className="account-details">
           Ville :
           {localAccountDetails.city}
-        </span>
-        <p>
+        </p>
+        <p className="account-details">
           Pays :
           {localAccountDetails.country}
         </p>

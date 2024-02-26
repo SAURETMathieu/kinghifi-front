@@ -3,7 +3,7 @@
 import './index.css';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserPen } from '@fortawesome/free-solid-svg-icons';
+import { faUserPen, faShare } from '@fortawesome/free-solid-svg-icons';
 import fetchData from '../../../services/api/call.api';
 
 function EditAccount({ accountDetails, setAccountDetails, userId }) {
@@ -63,6 +63,8 @@ function EditAccount({ accountDetails, setAccountDetails, userId }) {
     }
   }, [updatedAccountDetails]);
 
+  // console.log(updatedAccountDetails[0]);
+
   return (
     <div
       className="edit-account"
@@ -73,20 +75,47 @@ function EditAccount({ accountDetails, setAccountDetails, userId }) {
       tabIndex={0}
     >
       {isFormVisible ? (
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="email" defaultValue={accountDetails.email} />
-          <input type="text" name="firstname" defaultValue={accountDetails.firstname} />
-          <input type="text" name="lastname" defaultValue={accountDetails.lastname} />
-          <input type="text" name="birthdate" defaultValue={accountDetails.birthdate} />
-          <input type="text" name="adress" defaultValue={accountDetails.address} />
-          <input type="text" name="zipcode" defaultValue={accountDetails.zipcode} />
-          <input type="text" name="city" defaultValue={accountDetails.city} />
-          <input type="text" name="country" defaultValue={accountDetails.country} />
-          <button type="submit">Envoyer</button>
+        <form className="form-account" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="email">Email </label>
+            <input type="email" id="email" name="email" defaultValue={accountDetails.email} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="firstname">Prénom </label>
+            <input type="text" id="firstname" name="firstname" defaultValue={accountDetails.firstname} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="lastname">Nom </label>
+            <input type="text" id="lastname" name="lastname" defaultValue={accountDetails.lastname} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="birthdate">Date de naissance </label>
+            <input type="text" id="birthdate" name="birthdate" defaultValue={accountDetails.birthdate} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="adress">Adresse </label>
+            <input type="text" id="adress" name="adress" defaultValue={accountDetails.address} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="zipcode">Code postal </label>
+            <input type="text" id="zipcode" name="zipcode" defaultValue={accountDetails.zipcode} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="city">Ville </label>
+            <input type="text" id="city" name="city" defaultValue={accountDetails.city} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="country">Pays </label>
+            <input type="text" id="country" name="country" defaultValue={accountDetails.country} />
+          </div>
+          <button className="edit-button" type="submit">
+            <FontAwesomeIcon className="icon-gretter-size" icon={faShare} />
+            <span className="edit-account-text">Modifier le compte</span>
+          </button>
         </form>
       ) : (
         <>
-          <FontAwesomeIcon icon={faUserPen} />
+          <FontAwesomeIcon className="icon-gretter-size" icon={faUserPen} />
           <span className="edit-account-text">Modifier le compte</span>
         </>
       )}
