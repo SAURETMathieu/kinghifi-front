@@ -63,9 +63,6 @@ function MediasDetails() {
 
   return (
     <>
-      <h1 className="media_h1">
-        Médias
-      </h1>
 
       {/* Implementation of the Facebook group page. Awaiting validation by Meta */}
 
