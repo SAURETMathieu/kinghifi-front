@@ -16,6 +16,14 @@
   box-sizing: border-box;
 }
 
+.Toastify__toast-container{
+  padding-top:3rem;
+}
+
+.Toastify__close-button{
+  width:fit-content;
+}
+
 .is-selected {
   color: black !important;
   background: #9e8a5862 !important;
