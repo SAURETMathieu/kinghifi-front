@@ -2,6 +2,7 @@
 function EventsDetails({ eventsDetails }) {
   //   const [uneVariable, setUneVariable] = useState('');
   const events = eventsDetails.filter((event) => event.name);
+
   return (
     <>
       <h1 className="event_h1">
@@ -13,7 +14,7 @@ function EventsDetails({ eventsDetails }) {
             events.map((event, index) => (
               <div className={index % 2 === 0 ? 'event_container' : 'event_container is_active'} key={event.id}>
                 <div className="img_container">
-                  <img className="event_image" src="images/Barracuda.jpg" alt="Barracuda" />
+                  <img className="event_image" src={event.url_image} alt={event.name} />
                 </div>
                 <div className="text_containeur global_description">
                   <h2 className="event_h2">
