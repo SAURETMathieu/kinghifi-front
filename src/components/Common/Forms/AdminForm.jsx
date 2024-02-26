@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import Input from '../Buttons/Input';
 import fetchData from '../../../services/api/call.api';
 
@@ -84,7 +85,7 @@ function AdminForm({
         handleClose();
       }
     } else {
-      console.log('Certains champs du formulaire ne sont pas valides.');
+      toast.error('Certains champs du formulaire ne sont pas valides.');
     }
   };
 

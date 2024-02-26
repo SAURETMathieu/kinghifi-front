@@ -11,7 +11,7 @@ function MediaAdmin() {
       const labelsData = await fetchData('GET', 'labels');
       return labelsData;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return null;
     }
   };
