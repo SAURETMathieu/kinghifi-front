@@ -1,7 +1,55 @@
 /* eslint-disable react/prop-types */
+import React from 'react';
+import ImageGallery from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
 
-function MediasDetails({ mediasDetails }) {
-  const medias = mediasDetails.filter((media) => media.id);
+function MediasDetails() {
+  // const medias = mediasDetails.filter((media) => media.id);
+
+  const images = [
+    {
+      original: '/images/dj.jpg',
+      thumbnail: '/images/dj.jpg',
+
+    },
+    {
+      original: '/images/box_2.jpg',
+      thumbnail: '/images/box_2.jpg',
+    },
+    {
+      original: '/images/public.jpg',
+      thumbnail: '/images/public.jpg',
+    },
+    {
+      original: '/images/Stamps_purenice.jpg',
+      thumbnail: '/images/Stamps_purenice.jpg',
+    },
+    {
+      original: '/images/Barracuda.jpg',
+      thumbnail: '/images/Barracuda.jpg',
+
+    },
+    {
+      original: '/images/Stack_Fest_Bouc.jpg',
+      thumbnail: '/images/Stack_Fest_Bouc.jpg',
+    },
+    {
+      original: '/images/KHF_Goodies.jpg',
+      thumbnail: '/images/KHF_Goodies.jpg',
+    },
+    {
+      original: '/images/vue_fete_zik_2014.jpg',
+      thumbnail: '/images/vue_fete_zik_2014.jpg',
+    },
+    {
+      original: '/images/KHF_fete_zik_2015.jpg',
+      thumbnail: '/images/KHF_fete_zik_2015.jpg',
+    },
+    {
+      original: '/images/Roots_culture_Nicolas_Rattlehead.jpg',
+      thumbnail: '/images/Roots_culture_Nicolas_Rattlehead.jpg',
+    },
+  ];
 
   return (
     <>
@@ -28,20 +76,7 @@ function MediasDetails({ mediasDetails }) {
         <iframe className="video_up" width="560" height="315" src="https://www.youtube.com/embed/aUN5L2zJwlU?si=OqZJxV8nOvUHm6n9" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
       </div>
 
-      <div className="images_container">
-        <img className="images" src="/images/Barracuda.jpg" alt="Barracuda" />
-        <img className="images" src="/images/box_2.jpg" alt="" />
-        <img className="images" src="/images/public.jpg" alt="" />
-        <img className="images" src="/images/Stamps_purenice.jpg" alt="" />
-        <img className="images" src="/images/vue_fete_zik_2014.jpg" alt="" />
-        <img className="images" src="/images/Stack_Fest_Bouc.jpg" alt="" />
-        <img className="images" src="/images/KHF_Goodies.jpg" alt="" />
-        <img className="images" src="/images/enceintes.jpg" alt="" />
-        <img className="images" src="/images/KHF_dijon.jpg" alt="" />
-        <img className="images" src="/images/dj.jpg" alt="" />
-        <img className="images" src="/images/KHF_fete_zik_2015.jpg" alt="" />
-        <img className="images" src="/images/Roots_culture_Nicolas_Rattlehead.jpg" alt="" />
-      </div>
+      <ImageGallery items={images} />
 
     </>
   );
