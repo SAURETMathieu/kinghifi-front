@@ -1,25 +1,35 @@
 /* eslint-disable react/prop-types */
 import './index.css';
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
-
+import AudioPlayer from 'react-h5-audio-player';
 import fetchData from '../../../../services/api/call.api';
-import Player from '../Player';
+import 'react-h5-audio-player/lib/styles.css';
 
 function Album({ oneAlbumSongs, setOneAlbumSongs, albumId }) {
   const [trackData, setTrackData] = useState(null);
-
-  const handleClickPlay = (track) => { setTrackData(track); };
-
+  const player = useRef();
+  const handleClickPlay = async (track) => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    try {
+      const fecthSoundData = await fetch(`${apiUrl}/tracks/${track.id}/audio`);
+      if (!fecthSoundData.ok) {
+        toast.error('Erreur lors du chargement de la musique');
+        throw new Error('Erreur lors du chargement de la musique');
+      }
+      const audioBlob = await fecthSoundData.blob();
+      const audioUrl = URL.createObjectURL(audioBlob);
+      setTrackData(audioUrl);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const handleClickAddLikes = async (track) => {
     const likeWithSuccess = await fetchData('GET', `tracks/${track.id}/likes`, null, true);
-
     if (likeWithSuccess) {
       setOneAlbumSongs((prevData) => prevData?.map((album) => ({
         ...album,
@@ -31,19 +41,12 @@ function Album({ oneAlbumSongs, setOneAlbumSongs, albumId }) {
     }
   };
 
-  useEffect(() => {
-    if (trackData) {
-      console.log(trackData.name);
-    }
-  }, [albumId, oneAlbumSongs, trackData]);
-
   return (
     <>
       <div className="album-container">
         <h1 className="album-container__title">
           {oneAlbumSongs[0]?.name}
         </h1>
-
         {oneAlbumSongs.length && oneAlbumSongs[0].tracks.length
         // true: map over the tracks array of the first album
           ? (
@@ -61,7 +64,6 @@ function Album({ oneAlbumSongs, setOneAlbumSongs, albumId }) {
                 <div className="track-duration">
                   {track.duration}
                 </div>
-
                 <FontAwesomeIcon
                   icon={track.liked ? solidStar : regularStar}
                   onClick={() => {
@@ -74,13 +76,19 @@ function Album({ oneAlbumSongs, setOneAlbumSongs, albumId }) {
           )
         // false: tell this at the user.
           : ('Aucun sons dans cet album')}
-
       </div>
+      {trackData && (
       <div className="player-container">
-        <Player trackData={trackData} />
+        <AudioPlayer
+          preload="metadata"
+          src={trackData}
+          className="audio-player"
+          ref={player}
+          autoPlay
+        />
       </div>
+      )}
     </>
   );
 }
-
 export default Album;
