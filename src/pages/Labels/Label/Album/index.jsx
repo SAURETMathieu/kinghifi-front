@@ -28,8 +28,6 @@ function Album({ oneAlbumSongs, setOneAlbumSongs, albumId }) {
           liked: item.id === track.id ? !track.liked : item.liked,
         })),
       })));
-    } else {
-      toast.error('Inscription necessaire pour avoir des titres favoris');
     }
   };
 
