@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import fetchData from '../../../services/api/call.api';
 // eslint-disable-next-line import/order
-import { Slide, ToastContainer, toast } from 'react-toastify';
+import { Slide, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Singup() {
@@ -49,46 +49,19 @@ function Singup() {
       if (response === null || response.error) {
         throw new Error('Une erreur s\'est produite !');
       }
-      toast.success('Inscription réussi !', {
-        position: 'bottom-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-        transition: Slide,
-      });
+      toast.success('Inscription réussi !');
       setFormUserData({ ...initialFormUserData });
 
       setTimeout(() => {
         navigate('/signin');
       }, 5500);
     } catch (error) {
-      console.log(error);
-      toast.error(error.message, {
-        position: 'bottom-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-        transition: Slide,
-
-      });
+      console.error(error.message);
     }
   };
 
   return (
     <>
-      <div>
-
-        <ToastContainer />
-      </div>
-
       <h1 className="contact-h1">
         Inscription
       </h1>

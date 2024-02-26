@@ -2,7 +2,7 @@
 import './index.css';
 
 import React, { useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -71,8 +71,6 @@ function Album({ oneAlbumSongs, setOneAlbumSongs, albumId }) {
                   }}
                   className="likes-icon"
                 />
-                <ToastContainer />
-
               </div>
             ))
           )

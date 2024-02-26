@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 /* eslint-disable no-param-reassign */
 const fetchData = async (method, endpoint, requestData = null, needToken = false) => {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -43,16 +45,17 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
       const data = await response.json();
       if (response.status === 403 && data.error === 'Le token est invalide') {
         localStorage.removeItem('authApiToken');
-        console.log('Votre session a expiré');
+        toast.error('Votre session a expiré');
         setTimeout(() => {
           window.location.href = '/';
         }, 3000);
         return false;
       }
-      throw new Error(`Erreur HTTP: ${response.status}`);
+      throw new Error(`Erreur: ${data.error}`);
     }
+
     if (response.status === 204) {
-      console.log('Suppression réussie.');
+      toast.success('Suppression réussie.');
       return true;
     }
 
@@ -70,7 +73,7 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
 
     return datasArray;
   } catch (error) {
-    console.error('Une erreur s\'est produite:', error);
+    toast.error(error);
     return null;
   }
 };

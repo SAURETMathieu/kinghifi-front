@@ -2,7 +2,7 @@
 import './index.css';
 import { useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
-import { Slide, ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import fetchData from '../../services/api/call.api';
 import ErrorModal from './errorModal';
 
@@ -45,17 +45,7 @@ function ContactForm() {
         return;
       }
 
-      toast.success('Message envoyé !', {
-        position: 'bottom-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-        transition: Slide,
-      });
+      toast.success('Message envoyé !');
 
       setFormData({
         from: email,
@@ -72,11 +62,6 @@ function ContactForm() {
 
   return (
     <>
-      <div>
-
-        <ToastContainer />
-      </div>
-
       <ErrorModal
         isOpen={errorModalOpen}
         message={errorMessage}
