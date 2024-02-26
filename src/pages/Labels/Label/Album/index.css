@@ -1,7 +1,8 @@
 .album-container{
-  background-color: rgb(81, 81, 79);
-  border-radius: 10px;
-  width: 100%;
+  background-color: #51514f;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 25px;
+  width: 95%;
   padding: 0.2rem;
   
 }
