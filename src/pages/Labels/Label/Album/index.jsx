@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import './index.css';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,7 +12,6 @@ import 'react-h5-audio-player/lib/styles.css';
 
 function Album({ oneAlbumSongs, setOneAlbumSongs, albumId }) {
   const [trackData, setTrackData] = useState(null);
-  const player = useRef();
   const handleClickPlay = async (track) => {
     const apiUrl = import.meta.env.VITE_API_URL;
     try {
@@ -83,7 +82,6 @@ function Album({ oneAlbumSongs, setOneAlbumSongs, albumId }) {
           preload="metadata"
           src={trackData}
           className="audio-player"
-          ref={player}
           autoPlay
         />
       </div>
