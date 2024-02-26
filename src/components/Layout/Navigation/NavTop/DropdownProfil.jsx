@@ -3,7 +3,6 @@ import './DropdownProfil.css';
 import { useEffect, useContext } from 'react';
 import { faRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '../../../Common/Dropdown';
-import checkConnected from '../../../../services/auth/checkConnected';
 import { UserContext } from '../../../../context/userContext';
 
 function DropdownProfil() {

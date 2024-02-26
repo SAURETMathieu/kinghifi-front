@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import fetchData from '../../../services/api/call.api';
 // eslint-disable-next-line import/order
-import { Slide, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 function Singup() {
   const [formUserData, setFormUserData] = useState({

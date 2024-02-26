@@ -11,7 +11,7 @@ import { options } from '../../../data/formElement.json';
 import Artist from '../../../pages/Admin/Track/Artist';
 
 function AddModal({
-  text, handleClose, item,
+  handleClose, item,
 }) {
   const [isVisible, setIsVisible] = useState(true);
   const [formVisible, setFormVisible] = useState(false);

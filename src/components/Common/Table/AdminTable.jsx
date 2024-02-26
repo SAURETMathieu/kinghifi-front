@@ -55,12 +55,6 @@ function AdminTable({
     }
   };
 
-  const handleConfirmAdd = async () => {
-    // TODO requete
-    setIsAddModalVisible(false);
-    setSelectedItem(null);
-  };
-
   if (filteredDatas.length) {
     return (
       <>
@@ -140,7 +134,6 @@ function AdminTable({
         && (
         <AddModal
           handleClose={handleCloseAddModal}
-          handleConfirm={handleConfirmAdd}
           item={selectedItem}
         />
         )}

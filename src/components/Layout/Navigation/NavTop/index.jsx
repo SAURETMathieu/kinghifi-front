@@ -1,6 +1,6 @@
 import './index.css';
 // import des icons
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { NavLink, useLocation } from 'react-router-dom';
