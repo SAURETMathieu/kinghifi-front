@@ -45,7 +45,6 @@ function Singup() {
     // const notify = () => toast('Wow so easy!');
     try {
       const response = await fetchData('POST', 'auth/signup', formUserData);
-
       if (response === null || response.error) {
         throw new Error('Une erreur s\'est produite !');
       }

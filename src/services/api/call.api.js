@@ -51,7 +51,10 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
         }, 3000);
         return false;
       }
-      throw new Error(`Erreur: ${data.error}`);
+      if (data.error) {
+        toast.error(data.error);
+        throw new Error(data.error);
+      }
     }
 
     if (response.status === 204) {
@@ -73,7 +76,7 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
 
     return datasArray;
   } catch (error) {
-    toast.error(error);
+    console.error(error);
     return null;
   }
 };
