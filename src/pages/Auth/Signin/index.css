@@ -40,13 +40,11 @@ button {
   text-decoration: underline;
 }
 
-/* .navbar-top{
-  display:none;
+.link-forgot{
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+  font-weight: bold;
 }
-
-main{
-  margin-top:0;
-} */
 
 .header-connexion {
   position: relative;

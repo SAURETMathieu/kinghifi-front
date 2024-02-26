@@ -100,7 +100,7 @@ function Account() {
       </form>
 
       <div className="links-container">
-        <Link className="link" to="/recover">Mot de passe oublié ?</Link>
+        <Link className="link-forgot" to="/recover">Mot de passe oublié ?</Link>
         <Link className="link" to="/signup"> S'inscrire</Link>
       </div>
 
