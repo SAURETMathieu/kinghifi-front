@@ -1,7 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import './index.css';
 import { useState, useEffect } from 'react';
-
+import { jwtDecode } from 'jwt-decode';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import fetchData from '../../../services/api/call.api';
 
 function Favorites({ userId }) {
@@ -9,8 +11,9 @@ function Favorites({ userId }) {
   // Fetch likes data from the API
   const fetchLikesData = async (id) => {
     const fetchedLikesData = await fetchData('GET', `users/${id}/likes`, null, true);
-    const likesData = fetchedLikesData;
-    setLikesDetails(likesData);
+    if(fetchedLikesData){
+      setLikesDetails(fetchedLikesData);
+    }
   };
 
   useEffect(() => {
@@ -29,6 +32,7 @@ function Favorites({ userId }) {
               {track.album_name}
               Année :
               {track.album_year}
+              <FontAwesomeIcon icon={faTrashCan} />
             </p>
           </div>
         ))}

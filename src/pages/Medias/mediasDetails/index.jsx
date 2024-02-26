@@ -3,8 +3,6 @@
 function MediasDetails({ mediasDetails }) {
   const medias = mediasDetails.filter((media) => media.id);
 
-  console.log(medias);
-
   return (
     <>
       <h1 className="media_h1">

@@ -5,7 +5,7 @@ import { useLoaderData } from 'react-router-dom';
 
 // Importing local files
 
-import Label from '../Label';
+import Label from './Label';
 import fetchData from '../../services/api/call.api';
 
 export const musicDataLoader = async (id) => {

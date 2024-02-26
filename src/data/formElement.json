@@ -21,6 +21,20 @@
       "placeholder": "Prénom",
       "required": true
     },
+    "password": {
+      "id": "password",
+      "label": "Mot de passe",
+      "type": "password",
+      "placeholder": "Mot de passe",
+      "required": true
+    },
+    "passwordConfirm": {
+      "id": "passwordConfirm",
+      "label": "Confirmer le mot de passe",
+      "type": "password",
+      "placeholder": "Retaper votre mot de passe",
+      "required": true
+    },
     "nickname": {
       "id": "nickname",
       "label": "Surnom",
@@ -74,7 +88,19 @@
     },
     "label_id": {
       "id": "label_id",
-      "label": "Label",
+      "label": "Labels",
+      "type": "select",
+      "required": true
+    },
+    "artist_id": {
+      "id": "artist_id",
+      "label": "Artiste",
+      "type": "select",
+      "required": true
+    },
+    "album_id": {
+      "id": "album_id",
+      "label": "Albums",
       "type": "select",
       "required": true
     },
@@ -115,13 +141,13 @@
     "starting_date": {
       "id": "starting_date",
       "label": "Date de début",
-      "type": "date",
+      "type": "datetime-local",
       "required": true
     },
     "ending_date": {
       "id": "ending_date",
       "label": "Date de fin",
-      "type": "date",
+      "type": "datetime-local",
       "required": true
     },
     "location": {
@@ -129,6 +155,34 @@
       "label": "Adresse",
       "type": "text",
       "placeholder": "Adresse",
+      "required": true
+    },
+    "address": {
+      "id": "address",
+      "label": "Adresse",
+      "type": "text",
+      "placeholder": "Adresse",
+      "required": true
+    },
+    "style": {
+      "id": "style",
+      "label": "Style",
+      "type": "text",
+      "placeholder": "Style",
+      "required": true
+    },
+    "url": {
+      "id": "url",
+      "label": "Lien",
+      "type": "text",
+      "placeholder": "Lien",
+      "required": true
+    },
+    "url_sound": {
+      "id": "url_sound",
+      "label": "Son",
+      "type": "file",
+      "accept": "audio/*",
       "required": true
     }
   }

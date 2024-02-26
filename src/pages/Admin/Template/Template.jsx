@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import fetchData from '../../../services/api/call.api';
 import AdminTable from '../../../components/Common/Table/AdminTable';
 import AdminSearch from '../../../components/Common/Search/AdminSearch';
-import CreateForm from '../../../components/Common/Forms/createForm';
+import AdminForm from '../../../components/Common/Forms/AdminForm';
 import CrudModal from '../../../components/Common/Modal/CrudModal';
 
 function AdminTemplate({
@@ -66,12 +66,11 @@ function AdminTemplate({
         if (objetOptions.id === key && objetOptions.type !== 'file') {
           optionForUpdate[index].defaultValue = item[key];
         }
-        if (objetOptions.type === 'file') {
-          optionForUpdate.required = false;
+        if (objetOptions.type === 'file' || objetOptions.type === 'password') {
+          delete optionForUpdate[index].required;
         }
       });
     });
-
     setItemSelected(item);
     setOptionsUpdate(optionForUpdate);
     setModalTitle('MODIFIER');
@@ -111,7 +110,7 @@ function AdminTemplate({
       {isModalVisible
         && (
         <CrudModal handleClose={handleCloseModal} title={modalTitle} mode={modalMode}>
-          <CreateForm
+          <AdminForm
             optionsList={optionsList}
             optionsUpdate={optionsUpdate}
             route={route}

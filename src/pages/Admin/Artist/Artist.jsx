@@ -11,6 +11,7 @@ function ArtistAdmin() {
     options.country,
     options.description,
     options.function,
+    options.url_image,
   ];
 
   return (

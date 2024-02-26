@@ -5,6 +5,7 @@ import { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { toast } from 'react-toastify';
 import { UserContext } from '../../../context/userContext';
 import checkAdminRole from '../../../services/auth/checkAdmin';
 import checkConnected from '../../../services/auth/checkConnected';
@@ -56,9 +57,10 @@ function Account() {
     event.preventDefault();
     const result = await postAuth();
     if (result.redirectTo) {
+      toast.success('Connexion réussie');
       navigate(result.redirectTo, { state: { from: location }, replace: true });
     } else if (result.error) {
-      console.log(result.error);
+      toast.error(result.error);
     }
   };
 

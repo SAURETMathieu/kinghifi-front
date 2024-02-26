@@ -13,7 +13,7 @@ function Medias() {
       const mediasData = await fetchData('GET', 'labels/socials');
       setMediasDetails(mediasData);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   useEffect(() => {

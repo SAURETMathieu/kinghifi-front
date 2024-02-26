@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import Input from '../Buttons/Input';
 import fetchData from '../../../services/api/call.api';
 
-function CreateForm({
+function AdminForm({
   optionsList,
   optionsUpdate,
   route,
@@ -56,8 +57,7 @@ function CreateForm({
   const handleFileChange = (id, event) => {
     setFormData({
       ...formData,
-      [id]: event.target.files[0].name,
-      // [`${id}_file`]: event.target.files[0],
+      [id]: event.target.files[0],
     });
   };
 
@@ -66,6 +66,10 @@ function CreateForm({
     const formElement = event.target.closest('form');
 
     if (formElement && formElement.checkValidity()) {
+      if (!formData.password || !formData.passwordConfirm) {
+        delete formData.password;
+        delete formData.passwordConfirm;
+      }
       const resultData = modalMode === 'create'
         ? await fetchData('POST', route, formData, true)
         : await fetchData('PATCH', `${route}/${itemSelected.id}`, formData, true);
@@ -81,7 +85,7 @@ function CreateForm({
         handleClose();
       }
     } else {
-      console.log('Certains champs du formulaire ne sont pas valides.');
+      toast.error('Certains champs du formulaire ne sont pas valides.');
     }
   };
 
@@ -126,4 +130,4 @@ function CreateForm({
   );
 }
 
-export default CreateForm;
+export default AdminForm;

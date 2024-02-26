@@ -2,7 +2,6 @@
 function EventsDetails({ eventsDetails }) {
   //   const [uneVariable, setUneVariable] = useState('');
   const events = eventsDetails.filter((event) => event.name);
-
   return (
     <>
       <h1 className="event_h1">
@@ -16,7 +15,7 @@ function EventsDetails({ eventsDetails }) {
                 <div className="img_container">
                   <img className="event_image" src="images/Barracuda.jpg" alt="Barracuda" />
                 </div>
-                <div className="text_containeur">
+                <div className="text_containeur global_description">
                   <h2 className="event_h2">
                     {event.name}
                   </h2>
@@ -27,10 +26,20 @@ function EventsDetails({ eventsDetails }) {
                     {event.description}
                   </p>
                   <p className="event_date_debut global_description">
-                    {event.starting_date}
+                    Début:
+                    {' '}
+                    {new Date(event.starting_date).toLocaleString('fr-FR', {
+                      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric',
+                    })}
+
                   </p>
                   <p className="event_date_fin global_description">
-                    {event.ending_date}
+                    Fin:
+                    {' '}
+                    {new Date(event.ending_date).toLocaleString('fr-FR', {
+                      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric',
+                    })}
+
                   </p>
                   <p className="event_ville global_description">
                     {event.city}

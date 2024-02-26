@@ -1,11 +1,18 @@
+import { toast } from 'react-toastify';
+
 /* eslint-disable no-param-reassign */
 const fetchData = async (method, endpoint, requestData = null, needToken = false) => {
   const apiUrl = import.meta.env.VITE_API_URL;
   try {
     const url = `${apiUrl}/${endpoint}`;
-    const headers = {
-      'Content-Type': 'application/json',
-    };
+    let headers = {};
+
+    if (method === 'GET' && method === 'DELETE') {
+      headers = {
+        'Content-Type': 'application/json',
+      };
+    }
+
     if (needToken) {
       const token = localStorage.getItem('authApiToken');
       if (token) {
@@ -20,29 +27,43 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
       headers,
     };
 
-    if (method !== 'GET') {
-      // const formData = new FormData();
-      // Object.keys(requestData).forEach((key) => {
-      //   const value = requestData[key];
-      //   formData.append(key, value);
-      // });
-      // console.log(formData instanceof FormData);
+    if (method !== 'GET' && method !== 'DELETE') {
+      const formData = new FormData();
+      Object.keys(requestData).forEach((key) => {
+        const value = requestData[key];
+        formData.append(key, value);
+      });
       if (requestData === null) {
         options.body = null;
       } else {
-        options.body = requestData instanceof FormData ? requestData : JSON.stringify(requestData);
+        options.body = formData instanceof FormData ? formData : JSON.stringify(formData);
       }
     }
 
     const response = await fetch(url, options);
     if (!response.ok) {
-      throw new Error(`Erreur HTTP: ${response.status}`);
+      const data = await response.json();
+      if (response.status === 403 && data.error === 'Le token est invalide') {
+        localStorage.removeItem('authApiToken');
+        toast.error('Votre session a expiré');
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 3000);
+        return false;
+      }
+      if (data.error) {
+        toast.error(data.error);
+        throw new Error(data.error);
+      }
     }
+
     if (response.status === 204) {
-      console.log('Suppression réussie.');
+      toast.success('Suppression réussie.');
       return true;
     }
+
     const data = await response.json();
+
     const datasArray = Array.isArray(data) ? data : [data];
 
     datasArray.forEach((dataArray) => {
@@ -55,7 +76,7 @@ const fetchData = async (method, endpoint, requestData = null, needToken = false
 
     return datasArray;
   } catch (error) {
-    console.error('Une erreur s\'est produite:', error);
+    console.error(error);
     return null;
   }
 };
