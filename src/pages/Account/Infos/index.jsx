@@ -1,24 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 import './index.css';
 import { useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
-import fetchData from '../../../services/api/call.api';
 
-function Infos() {
-  const token = localStorage.getItem('authApiToken');
-  const decodedToken = jwtDecode(token);
-  const { userId } = decodedToken;
-  const [accountDetails, setAccountDetails] = useState([]);
+function Infos({ accountDetails }) {
+  // Using a local for stocking account informations
+  const [localAccountDetails, setLocalAccountDetails] = useState(accountDetails);
 
-  const fetchAccountData = async (id) => {
-    const fetchedData = await fetchData('GET', `users/${id}`, null, true);
-    const accountData = fetchedData[0];
-    setAccountDetails(accountData);
-  };
-
+  // Updating local account informations when accountDetails change
   useEffect(() => {
-    fetchAccountData(userId);
-  }, [userId]);
+    setLocalAccountDetails(accountDetails);
+  }, [accountDetails]);
 
   return (
     <div className="account">
@@ -26,35 +17,35 @@ function Infos() {
       <div className="account-details">
         <p>
           Email :
-          {accountDetails.email}
+          {localAccountDetails.email}
         </p>
         <span>
           Nom :
-          {accountDetails.firstname}
+          {localAccountDetails.firstname}
         </span>
         <span>
           Prénom :
-          {accountDetails.lastname}
+          {localAccountDetails.lastname}
         </span>
         <p>
           Date de naissance :
-          {accountDetails.birthdate}
+          {localAccountDetails.birthdate}
         </p>
         <p>
           Adresse :
-          {accountDetails.address}
+          {localAccountDetails.address}
         </p>
         <span>
           Code postal :
-          {accountDetails.address}
+          {localAccountDetails.address}
         </span>
         <span>
           Ville :
-          {accountDetails.city}
+          {localAccountDetails.city}
         </span>
         <p>
           Pays :
-          {accountDetails.country}
+          {localAccountDetails.country}
         </p>
       </div>
     </div>
