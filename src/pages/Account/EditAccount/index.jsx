@@ -1,17 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
 import './index.css';
 import { useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPen } from '@fortawesome/free-solid-svg-icons';
 import fetchData from '../../../services/api/call.api';
 
-function EditAccount() {
-  const token = localStorage.getItem('authApiToken');
-  const decodedToken = jwtDecode(token);
-  const { userId } = decodedToken;
-  const [accountDetails, setAccountDetails] = useState([]);
+function EditAccount({ accountDetails, setAccountDetails, userId }) {
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [updatedAccountDetails, setUpdatedAccountDetails] = useState({});
 
   // if no userId or userId = main administrator, don't show the edit-account div
   if ((!userId) || parseInt(userId, 10) === 1) {
@@ -30,21 +27,11 @@ function EditAccount() {
     }
   };
 
-  const fetchAccountData = async (id) => {
-    const fetchedData = await fetchData('GET', `users/${id}`, null, true);
-    const accountData = fetchedData[0];
-    setAccountDetails(accountData);
-  };
-
-  useEffect(() => {
-    fetchAccountData(userId);
-  }, [accountDetails]);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-
-    const updatedAccountDetails = {
+    // Create an object with the updated account details
+    const updatedData = {
       email: formData.get('email'),
       firstname: formData.get('firstname'),
       lastname: formData.get('lastname'),
@@ -57,17 +44,24 @@ function EditAccount() {
 
     // send updated account details to the API
     try {
-      const updatedData = await fetchData('PATCH', `users/${userId}`, updatedAccountDetails, true);
-      // Rerender the page with the updated account details
-      if (updatedData) {
-        setAccountDetails(updatedData);
-        console.log('Les informations du compte ont été mises à jour avec succès!');
+      const responseData = await fetchData('PATCH', `users/${userId}`, updatedData, true);
+      if (responseData) {
+        setUpdatedAccountDetails(responseData);
       }
     } catch (error) {
       console.error('Erreur lors de la mise à jour des informations du compte :', error);
       console.log('Une erreur est survenue lors de la mise à jour des informations du compte. Veuillez réessayer.');
     }
   };
+
+  useEffect(() => {
+    // formatting the updated account and rerender the informations for Infos component
+    if (Object.keys(updatedAccountDetails).length !== 0) {
+      setAccountDetails(updatedAccountDetails[0]);
+      setIsFormVisible(false);
+      console.log('Les informations du compte ont été mises à jour avec succès!');
+    }
+  }, [updatedAccountDetails]);
 
   return (
     <div

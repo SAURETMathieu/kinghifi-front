@@ -33,7 +33,6 @@ function ContactForm() {
 
     try {
       const response = await fetchData('POST', 'contact', formData);
-      console.log(response);
       if (response === null || response.error) {
         // Affichez la modal d'erreur en cas d'échec de l'envoi
         return;
@@ -48,7 +47,7 @@ function ContactForm() {
         message: '',
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
