@@ -27,24 +27,30 @@ function Account() {
     fetchAccountData(userId);
   }, [userId]);
 
+  // console.log(accountDetails.birthdate);
+
   return (
     <div className="profil">
       <div className="profil-container">
         <div className="return-icon">
           <NavLink to="/">
-            <FontAwesomeIcon icon={faReply} />
+            <FontAwesomeIcon className="icon-gretter-size" icon={faReply} />
           </NavLink>
         </div>
-        <h1>PROFIL</h1>
+        <h1 id="h1-profil">PROFIL</h1>
         <div className="profil-icons">
           <a href="#informations">
-            <FontAwesomeIcon icon={faUser} />
+            <FontAwesomeIcon className="icon-gretter-size" icon={faUser} />
             Mes informations
           </a>
           <a href="#favorites">
+<<<<<<< HEAD
+            <FontAwesomeIcon className="icon-gretter-size" icon={faStar} />
+=======
             <FontAwesomeIcon
               icon={faStar}
             />
+>>>>>>> 9ad9ddd3c7308f4caf2d604c5fe149b2d72932a1
             Mes favoris
           </a>
         </div>
@@ -65,7 +71,10 @@ function Account() {
       <div>
         <Favorites userId={userId} />
       </div>
-      <div>
+      <div
+        className="delete-account"
+        aria-label="Delete Account"
+      >
         <DeleteAccount userId={userId} />
       </div>
     </div>

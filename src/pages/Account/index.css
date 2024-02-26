@@ -1,14 +1,26 @@
 .return-icon{
   display: flex;
+  padding-left: 1.5rem;
   justify-content: flex-start;
-  width: 20%;
 }
 
 .profil-container{
   width: 100%;
-  background-color: rgb(96, 96, 96);;
+  border-radius: 1.5rem;
+  background-color: rgb(96, 96, 96);
 }
 
+#h1-profil{
+  margin: 0;
+}
+
+.icon-gretter-size{
+  font-size: 1.5rem;
+}
+
+.profil-icons a{
+  margin-right: 10px;
+}
 .tracks-list {
   padding: 0 3rem;
 }
@@ -17,4 +29,15 @@
   padding-bottom: 0.5rem;
 }
 
+.delete-account{
+  display: inline-block;
+  justify-content: center;
+}
 
+#favorites {
+  border-top: 1px solid rgb(96, 96, 96);
+  margin-top: .5rem;
+  padding-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
