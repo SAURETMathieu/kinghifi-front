@@ -1,15 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 import './index.css';
 import { useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
+
 import fetchData from '../../../services/api/call.api';
 
-function Favorites() {
-  const token = localStorage.getItem('authApiToken');
-  const decodedToken = jwtDecode(token);
-  const { userId } = decodedToken;
+function Favorites({ userId }) {
   const [likesDetails, setLikesDetails] = useState([]);
-
+  // Fetch likes data from the API
   const fetchLikesData = async (id) => {
     const fetchedLikesData = await fetchData('GET', `users/${id}/likes`, null, true);
     const likesData = fetchedLikesData;
