@@ -44,13 +44,7 @@ function Account() {
             Mes informations
           </a>
           <a href="#favorites">
-<<<<<<< HEAD
             <FontAwesomeIcon className="icon-gretter-size" icon={faStar} />
-=======
-            <FontAwesomeIcon
-              icon={faStar}
-            />
->>>>>>> 9ad9ddd3c7308f4caf2d604c5fe149b2d72932a1
             Mes favoris
           </a>
         </div>
