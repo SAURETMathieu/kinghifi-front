@@ -2,7 +2,6 @@
 function EventsDetails({ eventsDetails }) {
   //   const [uneVariable, setUneVariable] = useState('');
   const events = eventsDetails.filter((event) => event.name);
-  console.log(events);
   return (
     <>
       <h1 className="event_h1">

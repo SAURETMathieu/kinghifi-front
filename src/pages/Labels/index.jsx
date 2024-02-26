@@ -23,7 +23,6 @@ function Labels() {
 
   // Defining state variables
   const [labelsAlbums, setLabelsAlbums] = useState(data);
-  console.log(labelsAlbums);
 
   useEffect(() => {
     const fetchLabelsAlbums = async () => {

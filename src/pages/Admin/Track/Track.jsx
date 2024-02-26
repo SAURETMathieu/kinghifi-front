@@ -11,7 +11,7 @@ function TrackAdmin() {
       const albumsData = await fetchData('GET', 'albums');
       return albumsData;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return null;
     }
   };

@@ -4,6 +4,7 @@ import './modal.css';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Sortable from 'sortablejs';
+import { toast } from 'react-toastify';
 import fetchData from '../../../services/api/call.api';
 import Input from '../Buttons/Input';
 import { options } from '../../../data/formElement.json';
@@ -90,7 +91,7 @@ function AddModal({
         defaultValue: artistNotTrack[0]?.id,
       });
     } else {
-      console.log("Erreur lors de la mise à jour de l'affichage avec les nouvelles données.");
+      toast.error("Erreur lors de la mise à jour de l'affichage avec les nouvelles données.");
     }
   };
 
@@ -104,7 +105,7 @@ function AddModal({
         handleHideForm();
       }
     } else {
-      console.log('Certains champs du formulaire ne sont pas valides.');
+      toast.error('Certains champs du formulaire ne sont pas valides.');
     }
   };
 
@@ -138,13 +139,10 @@ function AddModal({
           body: JSON.stringify({ orders }),
         });
         const data = await response.json();
-        if (!response.ok) {
-          console.log(data.error);
-        }
-        console.log(data);
+        toast.success(data);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
