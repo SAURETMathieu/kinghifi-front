@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faScaleBalanced } from '@fortawesome/free-solid-svg-icons';
 import {
-  faFacebook, faSoundcloud, faYoutube, faTwitter,
+  faFacebook, faSoundcloud, faBandcamp, faYoutube, faTwitter,
   faInstagram, faTiktok, faSnapchat, faWhatsapp, faDiscord, faDeezer,
 } from '@fortawesome/free-brands-svg-icons';
 import fetchData from '../../../services/api/call.api';
@@ -17,6 +17,7 @@ function Footer() {
   const socialIcons = {
     Facebook: faFacebook,
     SoundCloud: faSoundcloud,
+    Bandcamp: faBandcamp,
     Youtube: faYoutube,
     Twitter: faTwitter,
     Instagram: faInstagram,
@@ -53,7 +54,11 @@ function Footer() {
               {label.socials.map((social) => (
                 <div key={social.id}>
                   <Link to={social.url} target="_blank" rel="noreferrer">
-                    {socialIcons[social.name] && <FontAwesomeIcon icon={socialIcons[social.name]} />}
+                    {socialIcons[social.name] && (
+                    <FontAwesomeIcon
+                      icon={socialIcons[social.name]}
+                    />
+                    )}
                   </Link>
                 </div>
               ))}

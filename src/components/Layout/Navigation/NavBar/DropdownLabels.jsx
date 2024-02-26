@@ -8,7 +8,7 @@ function DropdownLabel() {
   const labelName = labelsData.map((label) => label.name);
 
   const labelLinks = [
-    { id: 1, path: '/labels/1', label: labelName[0] },
+    // { id: 1, path: '/labels/1', label: labelName[0] },
     { id: 2, path: '/labels/2', label: labelName[1] },
     { id: 3, path: '/labels/3', label: labelName[2] },
     // lien vers toutes les musiques: page non fonctionnelle
