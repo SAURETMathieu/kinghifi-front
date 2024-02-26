@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { toast } from 'react-toastify';
 import fetchData from '../../services/api/call.api';
-import ErrorModal from './errorModal';
 
 function ContactForm() {
   const token = localStorage.getItem('authApiToken');
@@ -22,9 +21,6 @@ function ContactForm() {
     message: '',
   });
 
-  const [errorModalOpen, setErrorModalOpen] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -39,8 +35,6 @@ function ContactForm() {
       const response = await fetchData('POST', 'contact', formData);
       if (response === null || response.error) {
         // Affichez la modal d'erreur en cas d'échec de l'envoi
-        setErrorMessage('Erreur lors de l\'envoi du message');
-        setErrorModalOpen(true);
         return;
       }
 
@@ -54,18 +48,11 @@ function ContactForm() {
       });
     } catch (error) {
       console.error(error);
-      setErrorModalOpen(true);
-      setErrorMessage("Erreur lors de l'envoi du message");
     }
   };
 
   return (
     <>
-      <ErrorModal
-        isOpen={errorModalOpen}
-        message={errorMessage}
-        onRequestClose={() => setErrorModalOpen(false)}
-      />
 
       <h1 className="contact-h1">
         Contact
