@@ -12,7 +12,7 @@ function NavBar() {
         <span className="navbar-text">Accueil</span>
         <FontAwesomeIcon className="navbar-icon" icon={faHouse} />
       </NavLink>
-      <div className="nav-icon">
+      <div className="navbar-main-dropdown">
         <DropdownLabels />
       </div>
       <NavLink to="/events">

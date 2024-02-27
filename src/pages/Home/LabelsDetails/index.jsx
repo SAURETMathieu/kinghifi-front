@@ -1,46 +1,42 @@
 /* eslint-disable react/prop-types */
 
+// functional componenttakes a prop labelsDetails
 function LabelsDetails({ labelsDetails }) {
-  // TODO: remplacer Label 1 par le vrai nom
-  const crews = labelsDetails.filter((label) => label.name === 'Label 1');
+  // Filtering the labelsDetails array to get crews ('King Hi-Fi Sound System')
+  const crews = labelsDetails.filter((label) => label.name === 'King Hi-Fi Sound System');
 
-  const labels = labelsDetails.filter((label) => label.name !== 'Label 1');
+  // Filtering the labelsDetails array to get the other labels
+  const labels = labelsDetails.filter((label) => label.name !== 'King Hi-Fi Sound System');
 
   return (
     <>
-      {
-      crews.map((crew) => (
+      {/* Mapping over the crews array and rendering crew details */}
+      {crews.map((crew) => (
         <section className="hero" key={crew.id}>
           <img className="hero-image" src={crew.url_image} alt={crew.name} />
           <p className="title">
             {crew.name}
           </p>
           <p className="subtitle">
-            { crew.year }
-            { crew.description }
-            { crew.country }
-            { crew.city }
+            {crew.description}
           </p>
         </section>
-      ))
-      }
+      ))}
 
-      {
-      labels.map((label) => (
-        <div className="label__card" key={label.id}>
-          <div className="label__card-header" />
-          <img className="label__card-image" src={label.url_image} alt={label.name} />
+      {/* Mapping over the labels array and rendering label details */}
+      {labels.map((label, index) => (
+        <div className={index % 2 === 0 ? 'label__card-main' : 'label__card-main is_reverse'} key={label.id}>
+          <div className="label__card-header">
+            <img className="label__card-image" src={label.url_image} alt={label.name} />
+          </div>
           <div className="label__card-content">
-            { label.year }
-            { label.description }
-            { label.country }
-            { label.city }
+            {label.description}
           </div>
         </div>
-      ))
-      }
+      ))}
     </>
   );
 }
 
+// Exporting the LabelsDetails component
 export default LabelsDetails;

@@ -1,70 +1,50 @@
 /* eslint-disable react/no-unescaped-entities */
 import './index.css';
 
-// import jwt from 'jsonwebtoken';
-
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState, useContext } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { toast } from 'react-toastify';
+import { UserContext } from '../../../context/userContext';
+import checkAdminRole from '../../../services/auth/checkAdmin';
+import checkConnected from '../../../services/auth/checkConnected';
 
 function Account() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  // const [token, setToken] = useState('');
+  const [email, setEmail] = useState('ap@ap.fr');
+  const [password, setPassword] = useState('12341234');
+  const { isAdmin, setIsAdmin } = useContext(UserContext);
+  const { isConnected, setIsConnected } = useContext(UserContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const postAuth = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/auth/signin', {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const response = await fetch(`${apiUrl}/auth/signin`, {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
       const data = await response.json();
       if (!response.ok) {
-        return data.error;
+        return { error: data.error };
       }
-
       localStorage.setItem('authApiToken', data.token);
-      // const token = localStorage.getItem('authApiToken');
-      // console.log(token);
-
-      // jwt.verify(token, `${import.meta.env.JWT_SECRET}`, async (err, user) => {
-      //   // Get the current timestamp in seconds to compare with token expiration
-      //   const currentTimestampInSeconds = Math.floor(Date.now() / 1000);
-
-      //   if (user.exp < currentTimestampInSeconds) {
-      //     console.log('expiré');
-      //   }
-      //   console.log(user);
-      // });
-      return data.token;
+      setIsAdmin(checkAdminRole());
+      setIsConnected(checkConnected());
+      return { redirectTo: '/' };
     } catch (error) {
-      return error;
+      return { error };
     }
   };
 
-  // useEffect(() => {
-  //   // Récupérer le token du localStorage (ou de tout autre endroit où vous l'avez stocké)
-  //   const storedToken = localStorage.getItem('authApiToken');
-  //   console.log(storedToken);
-  //   if (storedToken) {
-  //     setToken(storedToken);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   if (token) {
-  //     const decodedToken = jwtDecode(token);
-  //     console.log('Informations du token :', decodedToken);
-  //     try {
-  //       const verifiedToken = jwt.verify(token, `${import.meta.env.JWT_SECRET}`);
-  //       console.log('Token vérifié :', verifiedToken);
-  //     } catch (error) {
-  //       console.error('Erreur lors de la vérification du token :', error.message);
-  //     }
-  //   }
-  // }, [token]);
+  useEffect(() => {
+    const token = localStorage.getItem('authApiToken');
+    if (token) {
+      navigate('/', { state: { from: location }, replace: true });
+    }
+  }, []);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -74,12 +54,15 @@ function Account() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const requestMessage = postAuth();
-
-    setEmail('');
-    setPassword('');
+    const result = await postAuth();
+    if (result.redirectTo) {
+      toast.success('Connexion réussie');
+      navigate(result.redirectTo, { state: { from: location }, replace: true });
+    } else if (result.error) {
+      toast.error(result.error);
+    }
   };
 
   return (
@@ -118,7 +101,7 @@ function Account() {
       </form>
 
       <div className="links-container">
-        <Link className="link" to="/recover">Mot de passe oublié ?</Link>
+        <Link className="link-forgot" to="/recover">Mot de passe oublié ?</Link>
         <Link className="link" to="/signup"> S'inscrire</Link>
       </div>
 

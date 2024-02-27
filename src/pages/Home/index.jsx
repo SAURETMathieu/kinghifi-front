@@ -1,33 +1,36 @@
+// Importing styles
 import './index.css';
 
-import { useState, useEffect } from 'react';
+// Importing necessary React hooks
+import { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 
+// Importing local files
+import fetchData from '../../services/api/call.api';
 import LabelsDetails from './LabelsDetails';
-import Test from '../Auth/Signin/test';
 
+// RMQ: si loader a un temps de chargement trop long, utiliser useNavigation
+export const homeDataLoader = async () => {
+  // Fetching labels data from the API
+  const labelsData = await fetchData('GET', 'labels');
+  // Setting the fetched data to the state
+  return labelsData;
+};
+
+// Defining the Home component
 function Home() {
-  const [labelsDetails, setLabelsDetails] = useState([]);
+  const data = useLoaderData();
 
-  // TODO factoriser dans /services/api/getLabels.jsx
-  const fetchDetails = async () => {
-    try {
-      const response = await fetch('http://localhost:4000/api/labels');
-      const data = await response.json();
-      setLabelsDetails(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    fetchDetails();
-  }, []);
+  // Utilizing useState to store data
+  const [labelsDetails, setLabelsDetails] = useState(data);
 
+  // Rendering the component
   return (
-    <>
-      <LabelsDetails labelsDetails={labelsDetails} />
-      <Test />
-    </>
+    // Rendering the LabelsDetails component and passing labelsDetails as prop
+    <LabelsDetails labelsDetails={labelsDetails} />
+
   );
 }
 
+// Exporting the Home component
 export default Home;

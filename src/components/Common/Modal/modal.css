@@ -1,0 +1,257 @@
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 1.5rem;
+}
+
+.modal-content {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 280px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.modal-style-create {
+  background-color: #005e10;
+  border: 5px solid #03a727;
+}
+
+.modal-style-update {
+  background-color: #00165e;
+  border: 5px solid #0329a7;
+}
+
+.modal-style-delete {
+  background-color: #5e0000;
+  border: 5px solid #a70303;
+}
+
+.modal-style-add {
+  background-color: rgb(63, 63, 63);
+  border: 5px solid black;
+}
+
+.modal__title {
+  font-size: 2rem;
+  font-weight: 600;
+  width: 100%;
+  padding: 1rem;
+  color: #ffffff;
+  height: 4rem;
+}
+
+.modal__body {
+  width: 100%;
+  max-height: 70vh;
+  padding: 1rem;
+  margin: 0 auto;
+  background-color: white;
+  color: black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 1rem;
+  align-items: center;
+}
+
+.modal__body form {
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.close {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: bold;
+  position: absolute;
+  width: fit-content;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: none;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.is-success {
+  border: solid 1px green;
+  padding: 1rem;
+  width: 45%;
+  color: green;
+  font-weight: 600;
+  background-color: white;
+}
+
+.is-cancel {
+  border: solid 1px red;
+  padding: 1rem;
+  width: 45%;
+  color: red;
+  font-weight: 600;
+  background-color: white;
+}
+
+.is-success:hover {
+  background-color: rgba(35, 102, 18, 0.2);
+}
+
+.is-cancel:hover {
+  background-color: rgba(102, 18, 18, 0.2);
+}
+
+.modal-submit-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.modal .artists-container {
+  width: 100%;
+  min-height: calc(100% - 10rem);
+}
+
+.modal .add-artist-form {
+  padding: 0.3rem;
+  margin: 1rem 0;
+  width: 100%;
+  background: rgb(63, 63, 63);
+}
+
+.modal .add-artist-form label {
+  color: white !important;
+}
+
+.modal .add-artist-form button {
+  padding: 0.2rem;
+}
+
+.modal .add-button {
+  margin-bottom: 1rem;
+}
+
+.modal-style-add .modal-submit-buttons .close-modal-btn {
+  border: solid 2px rgb(63, 63, 63);
+  color: rgb(63, 63, 63);
+  padding: 0.3rem;
+}
+
+.modal .close-artist-form,
+.submit-artist-form {
+  background: white;
+  color: rgb(63, 63, 63);
+}
+
+.add-button {
+  border: solid 3px rgb(63, 63, 63);
+  color: rgb(63, 63, 63);
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.add-button:hover {
+  transform: scale(1.03);
+}
+
+.tracks-artists-list {
+  width: 100%;
+  max-height: 18rem;
+  overflow-y: scroll;
+  background: rgb(63, 63, 63);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex: 1;
+  font-size: 1rem;
+  padding: 0.5rem;
+  gap: 0.3rem;
+}
+
+.tracks-artists-list::-webkit-scrollbar {
+  width: 0.6rem;
+} 
+
+.tracks-artists-list::-webkit-scrollbar-thumb {
+  background: rgb(43, 43, 43);
+  border-radius: 10px;
+}
+
+.tracks-artist-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem;
+  width: 8rem;
+  height: 8rem;
+  color: black;
+  background: rgb(170, 170, 170);
+  border: solid 3px black;
+}
+
+.tracks-artist-card .close {
+  top: 0;
+  right: 0.2rem;
+  font-size: 1.5rem;
+  color: black;
+}
+
+.tracks-artist-card .close:hover {
+  opacity: 0.7;
+}
+
+.tracks-artist-card:hover {
+  cursor: grabbing;
+}
+
+.tracks-artist-card h3 {
+  font-weight: 600;
+}
+
+.tracks-artist-card img {
+  font-size: 0.8rem;
+  width: 4rem;
+  height: 4rem;
+  padding: 0.2rem;
+  border: solid 1px black;
+}
+
+.modal__body form::-webkit-scrollbar {
+  width: 3px;
+}
+
+.modal__body form::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal__body form::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 426px) {
+  .modal {
+    font-size: 1rem;
+  }
+}

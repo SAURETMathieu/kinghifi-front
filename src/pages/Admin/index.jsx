@@ -1,10 +1,10 @@
-// import './index.css'
-
-
-const Admin = () => {
-          
-  return("Admin")
- }
-
-
-export default Admin;
+export { default as Admin } from './Admin';
+export { default as UserAdmin } from './User/User';
+export { default as ArtistAdmin } from './Artist/Artist';
+export { default as LabelAdmin } from './Label/Label';
+export { default as AlbumAdmin } from './Album/Album';
+export { default as TrackAdmin } from './Track/Track';
+export { default as EventAdmin } from './Event/Event';
+export { default as MediaAdmin } from './Media/Media';
+export { default as MessageAdmin } from './Message/Message';
+export { default as Settings } from './Settings/Settings';
