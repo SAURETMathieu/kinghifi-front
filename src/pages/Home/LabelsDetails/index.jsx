@@ -18,10 +18,7 @@ function LabelsDetails({ labelsDetails }) {
             {crew.name}
           </p>
           <p className="subtitle">
-            {crew.year}
             {crew.description}
-            {crew.country}
-            {crew.city}
           </p>
         </section>
       ))}
@@ -33,10 +30,7 @@ function LabelsDetails({ labelsDetails }) {
             <img className="label__card-image" src={label.url_image} alt={label.name} />
           </div>
           <div className="label__card-content">
-            {label.year}
             {label.description}
-            {label.country}
-            {label.city}
           </div>
         </div>
       ))}
