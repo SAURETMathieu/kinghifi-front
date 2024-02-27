@@ -23,7 +23,7 @@
   border: 2px solid var(--background-color);
 } */
 
-.navbar-main a {
+.navbar-main a, .navbar-main-dropdown {
   padding: 0.5rem;
   height: 100%;
   display: flex;
@@ -32,17 +32,17 @@
 }
 
 .navbar-main .active {
-border: 2px solid var(--background-color);
-border-radius: 7px;
+  border: 2px solid var(--background-color);
+  border-radius: 7px;
 }
 
-.navbar-main .dropdown.is-hoverable.is-right.hovered{
+.navbar-main .dropdown.is-hoverable.is-right.hovered {
   border: 2px solid var(--background-color);
   border-radius: 7px;
   height: var(--navbar-height);
   padding: 0.4rem;
 }
-svg.fa-music{
+svg.fa-music {
   height: 1.3rem;
 }
 
@@ -73,10 +73,26 @@ svg.fa-music{
     position: relative;
   }
 
-  .navbar-main a:hover {
+  .navbar-main a:hover, .navbar-main-dropdown:hover {
     color: var(--secondary-color);
     background-color: var(--background-color);
     border-radius: 0px;
+  }
+
+  .navbar-main a:hover, 
+  .navbar-main-dropdown:hover .navbar-text
+  {
+    color: var(--secondary-color);
+    background-color: var(--background-color);
+    border-radius: 0px;
+  }
+
+  .navbar-main-dropdown .dropdown.is-hoverable.is-right.hovered{
+    padding:0;
+  }
+
+  .navbar-main-dropdown:hover .dropdown.is-hoverable.is-right.hovered svg{
+    color: var(--secondary-color);
   }
 
   .navbar-main .active {
@@ -84,15 +100,16 @@ svg.fa-music{
     color: var(--secondary-color);
     border-radius: 0px;
   }
+
   .navbar-main .dropdown.is-hoverable.is-right.hovered {
     color: var(--secondary-color);
     background-color: var(--background-color);
-    border-radius: 0px;
+    border: 0px;
   }
 
-  .dropdown-item a:hover{
+  .dropdown-item a:hover {
     background-color: var(--secondary-color);
-    color:var(--background-color)
+    color: var(--background-color);
   }
 }
 
