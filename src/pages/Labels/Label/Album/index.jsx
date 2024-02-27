@@ -39,6 +39,12 @@ function Album({ oneAlbumSongs, setOneAlbumSongs, albumId }) {
     }
   };
 
+  const formatDuration = (durationInSeconds) => {
+    const minutes = Math.floor(durationInSeconds / 60);
+    const seconds = durationInSeconds % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  };
+
   return (
     <>
       <div className="album-container">
@@ -50,25 +56,31 @@ function Album({ oneAlbumSongs, setOneAlbumSongs, albumId }) {
           ? (
             oneAlbumSongs[0].tracks.map((track) => (
               <div className="track-container" key={track.id}>
-                <img className="track-cover" src={track.url_image} alt={track.name} />
-                <FontAwesomeIcon
-                  icon={faPlay}
-                  className="play-icon"
-                  onClick={() => handleClickPlay(track)}
-                />
+                <div className="track-cover-container">
+                  <img className="track-cover" src={track.url_image} alt={track.name} />
+                </div>
+                <div className="track-play">
+                  <FontAwesomeIcon
+                    icon={faPlay}
+                    className="play-icon"
+                    onClick={() => handleClickPlay(track)}
+                  />
+                </div>
                 <div className="track-name">
                   {track.name}
                 </div>
                 <div className="track-duration">
-                  {track.duration}
+                  {formatDuration(track.duration)}
                 </div>
-                <FontAwesomeIcon
-                  icon={track.liked ? solidStar : regularStar}
-                  onClick={() => {
-                    handleClickAddLikes(track);
-                  }}
-                  className="likes-icon"
-                />
+                <div className="track-fav">
+                  <FontAwesomeIcon
+                    icon={track.liked ? solidStar : regularStar}
+                    onClick={() => {
+                      handleClickAddLikes(track);
+                    }}
+                    className="likes-icon"
+                  />
+                </div>
               </div>
             ))
           )
