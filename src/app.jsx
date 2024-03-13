@@ -10,6 +10,7 @@ import Footer from './components/Layout/Footer';
 function App() {
   const location = useLocation();
   useEffect(() => {
+    if(!location.pathname.contains('#'))
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
