@@ -53,9 +53,9 @@ function Album({ oneAlbumSongs, setOneAlbumSongs }) {
                 <div className="track-name">
                   {track.name}
                 </div>
-                <div className="track-year">
-                  {track.year}
-                </div>
+                <div className="track-artist">
+                  {track.artist}
+              </div>
               </div>
 
               <div className="track-duration">
