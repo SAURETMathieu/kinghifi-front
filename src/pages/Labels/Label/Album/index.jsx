@@ -8,6 +8,7 @@ import { PlayerContext } from '../../../../context/playerContext';
 import fetchData from '../../../../services/api/call.api';
 
 function Album({ oneAlbumSongs, setOneAlbumSongs }) {
+  
   const { handleClickPlay } = useContext(PlayerContext);
 
   const handleClickAddLikes = async (track) => {

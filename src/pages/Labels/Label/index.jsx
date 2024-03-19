@@ -12,9 +12,10 @@ import Album from './Album';
 import { PlayerContext } from '../../../context/playerContext';
 
 function Label({ labelsWhithAlbums }) {
+  
   // Defining state variables
   const { oneAlbumSongs, setOneAlbumSongs } = useContext(PlayerContext);
-  const [albumId, setAlbumId] = useState(labelsWhithAlbums[0]?.id);
+  const [albumId, setAlbumId] = useState(labelsWhithAlbums[0]?.albums[0]?.id);
 
   let userId;
   const token = localStorage.getItem('authApiToken');
@@ -23,7 +24,7 @@ function Label({ labelsWhithAlbums }) {
     userId = decodedToken.userId;
   }
 
-  // Function to fetch data for one album
+ // Function to fetch data for one album
   const fetchAlbumData = async () => {
     // ajout condition si connécté ou pas
     if (userId) {
@@ -34,21 +35,21 @@ function Label({ labelsWhithAlbums }) {
       setOneAlbumSongs(fetchOneAlbumData);
     }
   };
-
+  
   // Event for selecting an album
   const handleClick = (id) => {
     setAlbumId(id);
   };
-
+  
   // useEffect hook to trigger fetching album data when albumId changes
-  useEffect(() => {
-    if (albumId !== null) {
-      fetchAlbumData();
-    }
-  }, [albumId]);
+   useEffect(() => {
+     if (albumId !== null) {
+       fetchAlbumData();
+     }
+   }, [albumId]);
 
   useEffect(() => {
-    setAlbumId(labelsWhithAlbums[0]?.id);
+    setAlbumId(labelsWhithAlbums[0]?.albums[0]?.id);
   }, [labelsWhithAlbums]);
 
   // Rendering the component

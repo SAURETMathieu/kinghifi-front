@@ -11,8 +11,8 @@
 }
 
 .list__album-container:hover{ 
-  transform: scale(1.02) ;
-  filter: drop-shadow(0 0.5rem 0.5rem var(--secondary-color));
+  transform: scale(1.1) ;
+  filter: drop-shadow(0 0.6rem 0.8rem var(--secondary-color));
   transition: 0.7s;
   border-radius: 15%;
 }
