@@ -19,6 +19,7 @@
 .image-gallery-slide-wrapper button{
   width:fit-content;
   padding:0;
+  z-index:1;
 }
 
 .image-gallery-slide{
