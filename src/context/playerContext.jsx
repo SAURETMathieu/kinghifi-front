@@ -3,7 +3,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 export const PlayerContext = createContext();
 
@@ -90,6 +90,14 @@ function PlayerProvider({ children }) {
             onClick={() => { handleClosePlayer(); }}
           />
         </div>
+
+        {/* <div className="reduce-player">
+          <FontAwesomeIcon
+            icon={faArrowUpRightFromSquare}
+            className="icon-reduce-player"
+            onClick={() => { handleClosePlayer(); }}
+          />
+        </div> */}
 
         <div className="audio-player__track-name">
           {trackName}
