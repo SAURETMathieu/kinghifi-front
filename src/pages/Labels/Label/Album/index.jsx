@@ -8,7 +8,6 @@ import { PlayerContext } from '../../../../context/playerContext';
 import fetchData from '../../../../services/api/call.api';
 
 function Album({ oneAlbumSongs, setOneAlbumSongs }) {
-  
   const { handleClickPlay } = useContext(PlayerContext);
 
   const handleClickAddLikes = async (track) => {
@@ -55,8 +54,8 @@ function Album({ oneAlbumSongs, setOneAlbumSongs }) {
                   {track.name}
                 </div>
                 <div className="track-artist">
-                  {track.artist}
-              </div>
+                  {/* {track.artists?.map((artist) => artist.firstname).join(', ')} */}
+                </div>
               </div>
 
               <div className="track-duration">
@@ -75,7 +74,7 @@ function Album({ oneAlbumSongs, setOneAlbumSongs }) {
           ))
         )
         // false: tell this at the user.
-        : ('Aucun sons dans cet album')}
+        : (<span className="no-tracks">Aucun son dans cet album</span>)}
     </div>
   );
 }
