@@ -365,8 +365,8 @@
 }
 
 .tracks-artist-card:hover,
-.albums-track-card:hover {
-  cursor: grabbing;
+.albums-track-card span:hover {
+  cursor:move;
 }
 
 .tracks-artist-card h3 {
