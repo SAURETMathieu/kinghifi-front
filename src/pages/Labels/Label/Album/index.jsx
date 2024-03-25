@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
+import { toast } from 'react-toastify';
 import { PlayerContext } from '../../../../context/playerContext';
 import fetchData from '../../../../services/api/call.api';
 
@@ -21,6 +22,11 @@ function Album({ oneAlbumSongs, setOneAlbumSongs }) {
           liked: item.id === track.id ? !track.liked : item.liked,
         })),
       })));
+      if (!track.liked) {
+        toast.success('Ajout aux favoris réussi.');
+      } else {
+        toast.success('Retrait aux favoris réussi.');
+      }
     }
   };
 
