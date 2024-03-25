@@ -58,6 +58,7 @@ function TrackModal({
     const sortableList = Sortable.create(listRef.current, {
       group: 'tracks',
       animation: 150,
+      handle: '.albums-track-card span, .albums-track-card img',
       onEnd(event) {
         handleDrop(event.newIndex, event.oldIndex);
       },
