@@ -1,61 +1,71 @@
 // Importing styles
 import './index.css';
 
+// Importing jwtDecode function 
 import { jwtDecode } from 'jwt-decode';
 
 // Importing hooks from React
 import { useState, useEffect, useContext } from 'react';
 
 // Importing local files
-import fetchData from '../../../services/api/call.api';
-import Album from './Album';
-import { PlayerContext } from '../../../context/playerContext';
+import fetchData from '../../../services/api/call.api'; 
+import Album from './Album'; 
+import { PlayerContext } from '../../../context/playerContext'; 
 
+// Defining a functional component called Label which receives 'labelsWhithAlbums' as a prop
 function Label({ labelsWhithAlbums }) {
-  
-  // Defining state variables
-  const { oneAlbumSongs, setOneAlbumSongs } = useContext(PlayerContext);
-  const [albumId, setAlbumId] = useState(labelsWhithAlbums[0]?.albums[0]?.id);
 
-  let userId;
-  const token = localStorage.getItem('authApiToken');
-  if (token) {
-    const decodedToken = jwtDecode(token);
-    userId = decodedToken.userId;
+// Defining state variables using the useContext hook to access values from PlayerContext
+const { oneAlbumSongs, setOneAlbumSongs } = useContext(PlayerContext);
+
+// Defining a state variable 'albumId' using the useState hook
+const [albumId, setAlbumId] = useState(labelsWhithAlbums[0]?.albums[0]?.id);
+
+// Declaring a variable 'userId'
+let userId;
+// Retrieving the token from localStorage
+const token = localStorage.getItem('authApiToken');
+
+if (token) {
+  // Decoding the token
+  const decodedToken = jwtDecode(token);
+  userId = decodedToken.userId; // Get the userId from the token
+}
+
+// Function to fetch data for one album
+const fetchAlbumData = async () => {
+  // Adding a condition to check if the user is logged in or not
+  if (userId) {
+    // Fetching album data including liked tracks if user is logged in
+    const fetchOneAlbumData = await fetchData('GET', `albums/${albumId}/tracks/likes`, null, true);
+    setOneAlbumSongs(fetchOneAlbumData); // Setting fetched album data
+  } else {
+    // Fetching album data without liked tracks if user is unlogged
+    const fetchOneAlbumData = await fetchData('GET', `albums/${albumId}/tracks`);
+    setOneAlbumSongs(fetchOneAlbumData); // Setting fetched album data
   }
-
- // Function to fetch data for one album
-  const fetchAlbumData = async () => {
-    // ajout condition si connécté ou pas
-    if (userId) {
-      const fetchOneAlbumData = await fetchData('GET', `albums/${albumId}/tracks/likes`, null, true);
-      setOneAlbumSongs(fetchOneAlbumData);
-    } else {
-      const fetchOneAlbumData = await fetchData('GET', `albums/${albumId}/tracks`);
-      setOneAlbumSongs(fetchOneAlbumData);
-    }
-  };
+};
   
-  // Event for selecting an album
-  const handleClick = (id) => {
-    setAlbumId(id);
-  };
-  
-  // useEffect hook to trigger fetching album data when albumId changes
-   useEffect(() => {
-     if (albumId !== null) {
-       fetchAlbumData();
-     }
-   }, [albumId]);
+// Event handler for selecting an album
+const handleClick = (id) => {
+  setAlbumId(id);
+};
 
-  useEffect(() => {
-    setAlbumId(labelsWhithAlbums[0]?.albums[0]?.id);
-  }, [labelsWhithAlbums]);
+// useEffect hook to trigger fetching album data when albumId changes
+useEffect(() => {
+  if (albumId !== null) {
+    fetchAlbumData();
+  }
+}, [albumId]); //useEffect will re-run whenever albumId changes
+
+// useEffect hook to set the initial albumId when labelsWhithAlbums changes
+useEffect(() => {
+  setAlbumId(labelsWhithAlbums[0]?.albums[0]?.id);
+}, [labelsWhithAlbums]); //useEffect will re-run whenever labelsWhithAlbums changes
 
   // Rendering the component
   return (
     // Mapping over all albums of all labels
-    // Rendu de la liste de labels
     labelsWhithAlbums?.map((label) => (
       <div key={label.id}>
         {/* Displaying the label name */}
@@ -90,6 +100,5 @@ function Label({ labelsWhithAlbums }) {
     ))
   );
 }
-
 // Exporting the Label component
 export default Label;
