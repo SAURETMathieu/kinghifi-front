@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Import des fonctions pour création du routeur
-import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 
 // Importation des composants
 import App from '../app';
@@ -29,7 +29,7 @@ import Signin from '../pages/Auth/Signin';
 import ErrorPage from '../pages/error';
 
 // Création du routeur
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <App />,
