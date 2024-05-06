@@ -52,34 +52,34 @@ Ce dépôt contient une application web destinée à un véritable groupe de mus
 
 ## Quelques captures d'écran du back office
 
-### Tableaux de données
+## Tableaux de données
 
 ![Labels](./img_readme/labels.png)
 
-### Ordonner les albums pour un label via le drag and drop
+## Ordonner les albums pour un label via le drag and drop
 
 ![Alt text](./img_readme/album_order.png)
 
-### Ordonner les sons pour un album via le drag and drop
+## Ordonner les sons pour un album via le drag and drop
 
 ![Alt text](./img_readme/sound_order.png)
 
-### Ordonner les artistes pour un son via le drag and drop
+## Ordonner les artistes pour un son via le drag and drop
 
 ![Alt text](./img_readme/artist_order.png)
 
-### Modale de création
+## Modale de création
 
 ![Alt text](./img_readme/modal_create.png)
 
-### Modale de modification
+## Modale de modification
 
 ![Alt text](./img_readme/modal_update.png)
 
-### Modale de suppression
+## Modale de suppression
 
 ![Alt text](./img_readme/modal_delete.png)
 
-### Recherche en temps réel
+## Recherche en temps réel
 
 ![Alt text](./img_readme/search.png)
